@@ -1,10 +1,10 @@
 # West Virginia University - High Performance Computing
 
-## Latest Workshop
+## Current Workshop
 
 [2018 Summer Lectures](https://wvuhpc.github.io/2018-SummerWorkshop).
 
-## Previous Events
+## Previous Workshop
 
 [2017 Summer Lectures](https://wvuhpc.github.io/2017-SummerWorkshop).
 
