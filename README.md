@@ -12,6 +12,9 @@ redirect_from: "/build/html/"
 
 [2017 Summer Lectures](https://wvuhpc.github.io/2017-SummerWorkshop).
 
+## Main Page
+
+[Main Page](https://wvuhpc.github.io/build/html/).
 
 <!---
 
