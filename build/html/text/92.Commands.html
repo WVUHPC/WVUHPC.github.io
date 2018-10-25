@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Linux Commands &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="prev" title="Common Unix commands" href="91.CommandList.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="90.References.html">References</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="91.CommandList.html">Common Unix commands</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Linux Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#moving-around-the-file-system">Moving around the file system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examining-files">Examining Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#manipulating-files-and-directories">Manipulating Files and Directories</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="90.References.html">References</a> &raquo;</li>
+        
+      <li>Linux Commands</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/92.Commands.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="linux-commands">
+<h1>Linux Commands<a class="headerlink" href="#linux-commands" title="Permalink to this headline">¶</a></h1>
+<p>The Research Computing HPC server&#8217;s use Red Hat Enterprise Linux (RHEL)
+as the operating system. Many clusters around the world run exclusively
+Unix/Linux based operating systems. We strongly encourage users to
+actively get familiar with Unix command line interface and GNU/Linux in
+particular. Outstanding and Free documentation is provided at <a class="reference external" href="http://www.tldp.org">The Linux
+Documentation Project</a>, specifically their
+<a class="reference external" href="http://www.tldp.org/guides.html">Guides</a> which cover basic topics
+including Using Linux and shell scripting to advanced File system and
+kernel modulization guides. Below is a succinct list of Unix commands
+that will help you get started in moving around and manipulating files.</p>
+<div class="section" id="moving-around-the-file-system">
+<h2>Moving around the file system<a class="headerlink" href="#moving-around-the-file-system" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>pwd</strong></td>
+<td>List current directory</td>
+</tr>
+<tr class="row-even"><td><strong>ls</strong></td>
+<td>List contents of current directory</td>
+</tr>
+<tr class="row-odd"><td><strong>ls -l</strong></td>
+<td>List contents of current directory with more information per file including permissions, last edited time, and size of file</td>
+</tr>
+<tr class="row-even"><td><strong>ls -lh</strong></td>
+<td>Same as ls -lh except file size in included in &#8216;human readable&#8217; form (gigabytes, megabytes, kilobytes)</td>
+</tr>
+<tr class="row-odd"><td><strong>ls -lt</strong></td>
+<td>Same as ls -l, except list files in chronological order with newer files occurring at the top</td>
+</tr>
+<tr class="row-even"><td><strong>cd</strong> <strong>*dirname*</strong></td>
+<td>Changes current directory to <em>dirname</em></td>
+</tr>
+<tr class="row-odd"><td><strong>cd ..</strong></td>
+<td>Changes current directory up one hiearchy level</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="examining-files">
+<h2>Examining Files<a class="headerlink" href="#examining-files" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>cat</strong> <strong>*filename*</strong></td>
+<td>Concatenates <em>filename</em> and prints to standard output (screen)</td>
+</tr>
+<tr class="row-even"><td><strong>less</strong> <strong>*filename*</strong></td>
+<td>A filter that pages through <em>filename</em> one screenful at a time. Allows both forward and backward movement through file</td>
+</tr>
+<tr class="row-odd"><td><strong>more</strong> <strong>*filename*</strong></td>
+<td>Similar to less, except cannot move backwards through file</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="manipulating-files-and-directories">
+<h2>Manipulating Files and Directories<a class="headerlink" href="#manipulating-files-and-directories" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>cp</strong> <strong>*filename1 filename2*</strong></td>
+<td>Copies <em>filename1</em> to <em>filename2</em>. If <em>filename2</em> is the name of a directory, copies <em>filename1</em> into the directory</td>
+</tr>
+<tr class="row-even"><td><strong>cp -i</strong> <strong>*filename1 filename2*</strong></td>
+<td>Copies <em>filename1</em> to <em>filename2</em> and ask permission before overwriting</td>
+</tr>
+<tr class="row-odd"><td><strong>cp -r</strong> <strong>*directory1 directory2*</strong></td>
+<td>Copies &#8216;&#8217;directory1 and all of it&#8217;s contents to <em>directory2</em></td>
+</tr>
+<tr class="row-even"><td><strong>mv</strong> <strong>*filename1 filename2*</strong></td>
+<td>Renames <em>filename1</em> to <em>filename2</em>. If <em>filename2</em> is a directory, moves <em>filename1</em> into directory</td>
+</tr>
+<tr class="row-odd"><td><strong>mv -i</strong> <strong>*filename1 filename2*</strong></td>
+<td>Renames <em>filename1</em> to <em>filename2</em> and ask permission before overwriting files</td>
+</tr>
+<tr class="row-even"><td><strong>rm</strong> <strong>*filename*</strong></td>
+<td>Removes file</td>
+</tr>
+<tr class="row-odd"><td><strong>rm -i</strong> <strong>*filename*</strong></td>
+<td>Removes file and ask permission before doing so</td>
+</tr>
+<tr class="row-even"><td><strong>rm -r</strong> <strong>*directory*</strong></td>
+<td>Removes directory and it&#8217;s contents</td>
+</tr>
+<tr class="row-odd"><td><strong>rm -ir</strong> <strong>*directory*</strong></td>
+<td>Removes directory and it&#8217;s contents asking permission for each file</td>
+</tr>
+<tr class="row-even"><td><strong>mkdir</strong> <strong>*directory*</strong></td>
+<td>Create a directory with <em>directory</em> as a name</td>
+</tr>
+<tr class="row-odd"><td><strong>rmdir</strong> <strong>*directory*</strong></td>
+<td>Remove an emptry directory</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="91.CommandList.html" class="btn btn-neutral" title="Common Unix commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Guillermo Avendano-Franco
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

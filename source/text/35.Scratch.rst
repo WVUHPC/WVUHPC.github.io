@@ -1,0 +1,161 @@
+Managing Scratch Contents
+=========================
+
+Scratch is designed to be a high-performance, low-latency, parallel file
+system and it is uniquely built for HPC systems. That means that data is
+allocated in parallel on several virtual disks intended to be read and
+write in parallel from several computers. In order for the scratch
+system to perform its best the files should be balanced across all disks
+and frequently used files should also being balanced.
+
+In the page we will offer some tricks that will help you regain control
+of your scratch space in preparation to transferring your files to other
+locations.
+
+Knowing my current usage
+------------------------
+
+First we should know what we have in terms of used space and number of
+files
+
+::
+
+    $ /usr/lpp/mmfs/bin/mmlsquota --block-size M gpfs01:scratch
+                             Block Limits                                               |     File Limits
+    Filesystem Fileset    type             MB      quota      limit   in_doubt    grace |    files   quota    limit in_doubt    grace  Remarks
+    gpfs01     scratch    USR         1943448   62914560   68157440        235     none |   557657 24000000 25000000      172     none
+
+You can also get this information in GigaBytes
+
+::
+
+    $ /usr/lpp/mmfs/bin/mmlsquota --block-size G gpfs01:scratch
+                             Block Limits                                               |     File Limits
+    Filesystem Fileset    type             GB      quota      limit   in_doubt    grace |    files   quota    limit in_doubt    grace  Remarks
+    gpfs01     scratch    USR            1898      61440      66560          1     none |   557657 24000000 25000000      172     none
+
+On this case I am using almos 1900 GB of data in half million files. I
+would like to reduce as much as possible before trying to move my data
+out of Scratch. We will focus on command line tricks that will help you
+search for Big files, search for small and numerous files. The idea is
+to attack first the biggest contributors to my usage. This examples will
+be as generic as possible. At the end of the day its up to you to decide
+which data is not longer needed and can be safely deleted.
+
+Consider delete a irreversible procedure, there is a way to recover
+files that have been deleted very recently but do not count on it. Being
+sure that you delete what you actually want to delete. The commands
+below are powerful and with that power comes a danger too.
+
+Searching for empty files
+-------------------------
+
+An empty file is still a file. Even if apparently not using space its
+metadata still exists and any transfer of that file is also a file
+operation. This is something that in most cases is harmless. Be careful,
+in some cases empty files are used for some codes to indicate run
+conditions. Their sole existence carries a meaning.
+
+On Spruce every user has an environmental variable pointing to their
+personal Scratch folder. You can see that variable with:
+
+::
+
+    $ echo $SCRATCH
+    /scratch/<USERNAME>
+
+On this examples we will use this variable to allow you to copy and
+paste this commands in total generality
+
+::
+
+    find $SCRATCH -size 0
+
+I got thousands of files. Some of them I do not want to remove, but
+there are quite a number of files like this:
+
+::
+
+    ./OrbitalGAF/58d36a1374d8b558e47f9623/58d36a1374d8b558e47f9623.e1165669
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cf7/58d46c6d74d8b558e47f9cf7.o1172814
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cf7/58d46c6d74d8b558e47f9cf7.e1172814
+    ./OrbitalGAF/58d36a1374d8b558e47f9629/58d36a1374d8b558e47f9629.o1165671
+    ./OrbitalGAF/58d36a1374d8b558e47f9629/58d36a1374d8b558e47f9629.e1165671
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cc7/58d46c6d74d8b558e47f9cc7.o1172802
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cc7/58d46c6d74d8b558e47f9cc7.e1172802
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cca/58d46c6d74d8b558e47f9cca.o1172803
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cca/58d46c6d74d8b558e47f9cca.e1172803
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cd3/58d46c6d74d8b558e47f9cd3.o1172806
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cd3/58d46c6d74d8b558e47f9cd3.e1172806
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cd6/58d46c6d74d8b558e47f9cd6.o1172807
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cd6/58d46c6d74d8b558e47f9cd6.e1172807
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cd9/58d46c6d74d8b558e47f9cd9.o1172808
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cd9/58d46c6d74d8b558e47f9cd9.e1172808
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cf4/58d46c6d74d8b558e47f9cf4.o1172813
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cf4/58d46c6d74d8b558e47f9cf4.e1172813
+    ./OrbitalGAF/58d36a1374d8b558e47f963e/58d36a1374d8b558e47f963e.o1165678
+    ./OrbitalGAF/58d36a1374d8b558e47f963e/58d36a1374d8b558e47f963e.e1165678
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cb5/58d46c6d74d8b558e47f9cb5.o1172796
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cb5/58d46c6d74d8b558e47f9cb5.e1172796
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cbe/58d46c6d74d8b558e47f9cbe.o1172799
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cbe/58d46c6d74d8b558e47f9cbe.e1172799
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cc1/58d46c6d74d8b558e47f9cc1.o1172800
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cc1/58d46c6d74d8b558e47f9cc1.e1172800
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cc4/58d46c6d74d8b558e47f9cc4.o1172801
+    ./OrbitalGAF/58d46c6d74d8b558e47f9cc4/58d46c6d74d8b558e47f9cc4.e1172801
+    ./OrbitalGAF/58d36a1374d8b558e47f9653/58d36a1374d8b558e47f9653.o1165683
+
+All those are empty files created by Torque/Moab from simulations that I
+have carried out in the past. Those files in the format:
+
+::
+
+    <JOB_NAME>.o<JOB_ID_NUMBER>
+    <JOB_NAME>.e<JOB_ID_NUMBER>
+
+Those files contain the standard Output (o) and Standard Error (e) from
+the jobs that run on Spruce. Many of those files are empty because on my
+executions I usually send the output of the command to some other file
+and because the codes that I use do not write anything on the standard
+error. Deleting those empty files will not help me with my storage usage
+by it will reduce the number of files that I will have to move later on.
+
+I can target those files with a more specific command:
+
+::
+
+    find $SCRATCH -size 0 -regextype posix-egrep  -regex ".*\.[o,e][0-9]{5,7}"
+
+The command above search for all empty files on Scratch that contains.
+On my account I found thousands of cases that I can safely delete. In
+most cases those files are not important to you to keep. They are empty
+and not used at all other than telling you the JOB\_ID that you probably
+do not need for old jobs. If you feel confortable deleting those files
+you can execute:
+
+::
+
+    find $SCRATCH -size 0 -regextype posix-egrep  -regex ".*\.[o,e][0-9]{5,7}" -exec rm {} \;
+
+On my case it help me delete 16113 files
+
+Searching for Big Files
+-----------------------
+
+Some problems and codes produce big files. In some cases those files are
+not needed to extract the actual answers for which you run those
+calculations and could be deleted safely. The first step is knowing
+where they are. This command search for files bigger than 2GB
+
+::
+
+    find $SCRATCH -size +2G
+
+You can increase or decrease the value if you are getting too many or
+very few. Once you identify the biggest files you can use the their
+names to target those files for deletion. Imagine that the files called
+"WAVECAR" can be deleted. You can use this command"
+
+::
+
+    find $SCRATCH -size +2G -name "WAVECAR" -exec rm {} \;

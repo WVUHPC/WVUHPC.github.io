@@ -1,0 +1,174 @@
+Environment Modules
+===================
+
+What are Modulefiles
+--------------------
+
+Modulefiles are files written in the Tool Command Language (Tcl) and are
+used by the module command to implement different environments for
+particular applications. Whenever a user on a Unix/Linux based system
+runs applications, compiles code, etc. what the user can succesfully do
+is determined by the current shell environment. The most common
+application of this concept is the Unix/Linux PATH shell environment.
+When a user types a command, that command is either referenced by a full
+path name: e.g. /usr/bin/some\_dir/another\_dir/command\_utility or the
+path needs to be specified in the user's PATH shell environment. Another
+example is when a particular user compiles application code, often
+several libraries need to be accessible and their are Unix shell
+environment variables that direct the compiler where to look (e.g.
+LD\_LIBRARY\_PATH). On a moderately sized or large cluster this becomes
+somewhat complicated to keep track of all the libraries and commands
+available on the system. An example would be compile-time libraries:
+often on a HPC system their are several versions of the same library to
+fullfill all user's needs. If all libraries where available by default
+to all users there is a good chance that application code would access
+the incorrect versions and cause errors. Modulefiles can be loaded and
+unloaded to modify certain shell environment variables to make
+applications available to the user and not interfere with other
+applications.
+
+On RC HPC managed systems we use modulefiles to control shell
+environment for any libraries, compilers, and software that are
+installed locally (not globally located by default). In addition,
+modulefiles contain useful information such as version numbers, URLs for
+webpages and manuals, and MAN page information. Further, modulefiles are
+a great way to see what software, libraries and compilers are available
+on our systems.
+
+Listing available modefiles
+---------------------------
+
+To list the currentely available modulefiles on the system use the
+module command with the available subcommand:
+
+::
+
+    $> module available
+
+    --------------------------------------------- /usr/share/Modules/software ----------------------------------------------
+    chemistry/autodock_vina genomics/clumpp         genomics/muscle         genomics/tabix
+    chemistry/gamess        genomics/cufflinks      genomics/phase          genomics/tablet
+    chemistry/gaussian/g03  genomics/distruct       genomics/phrap          genomics/tophat2
+    chemistry/gromacs       genomics/eigensoft      genomics/picard-tools   genomics/trf
+    data/cdf/3.5.0.2        genomics/emboss         genomics/plink          genomics/trinity
+    data/hdf5/1.8.12        genomics/fasta36        genomics/qiime          genomics/vcftools
+    genomics/abyss          genomics/fastqc         genomics/repeatexplorer gnu/parallel
+    genomics/allpaths       genomics/fastx_toolkit  genomics/rsem           mae/elk/2.3.16
+    genomics/beagle         genomics/gatk           genomics/samtools       statistics/matlab
+    genomics/bedtools       genomics/hmmer          genomics/shapeit
+    genomics/blast          genomics/igv            genomics/soapdenovo
+    genomics/bowtie2        genomics/lastz          genomics/structure
+
+    -------------------------------------------- /usr/share/Modules/development --------------------------------------------
+    compilers/gcc/4.8.2     libraries/DFS/myhadoop  libraries/hdf5/1.8.12   mpi/mpich2/1.2.1
+    compilers/gcc/4.9.0     libraries/bupc/2.2      libraries/mkl/4.1.1.036 mpi/mvapich2/1.9
+    compilers/intel/14.0    libraries/cdf/3.5.0.2   mpi/intel/4.1.1.036     mpi/openmpi/1.6.5
+
+The output of the available subcommand informs the full path where the
+modulefiles are located (e.g. /usr/share/Modules/software) as well as a
+list of modulefiles in that particular location (e.g. gnu/parallel).
+Importantly, all modulefiles are sectioned by categories. For instance,
+all compiler modulefiles start with 'compilers/' (i.e.
+compilers/gcc/4.8.2). The module available command can be given words
+for matching, and will return modulefiles that start with the given
+word. For instance, if you want to list all MPI modulefiles:
+
+::
+
+    $>module available mpi
+
+    -------------------------------------------- /usr/share/Modules/development --------------------------------------------
+    mpi/intel/4.1.1.036 mpi/mpich2/1.2.1    mpi/mvapich2/1.9    mpi/openmpi/1.6.5
+
+Further, you can list all gcc compilers:
+
+::
+
+    $>module available compilers/gcc
+
+    -------------------------------------------- /usr/share/Modules/development --------------------------------------------
+    compilers/gcc/4.8.2 compilers/gcc/4.9.0
+
+Showing what a modulefile does
+------------------------------
+
+Viewing the contents of a modulefile can be done using the module
+command with the show subcommand:
+
+::
+
+    $> module show compilers/intel/14.0
+
+    -------------------------------------------------------------------
+    /usr/share/Modules/development/compilers/intel/14.0:
+
+    module-whatis    Name: Intel Compiler
+    module-whatis    Version: 14.0
+    module-whatis    Category: compiler, runtime support
+    module-whatis    Description: Intel Compiler Family (C/C++/Fortran for x86_64)
+    module-whatis    URL: http://software.intel.com/en-us/articles/intel-compilers/
+    setenv       INTEL_LICENSE_FILE 28519@srih0001.hpc.wvu.edu
+    prepend-path     PATH /shared/software/intel/bin
+    prepend-path     MANPATH /shared/software/intel/man
+    prepend-path     LD_LIBRARY_PATH /shared/software/intel/lib/intel64
+    -------------------------------------------------------------------
+
+the modulefile starts with the location of the modulefile
+(/usr/share/Modules/development/compilers/intel/14.0). The next few
+lines module-whatis gives information about version numbers, categories
+for tools, URLs for more information. If you only want to see these
+first few lines you can use the whatis subcommand:
+
+::
+
+    $> module whatis compilers/intel/14.0
+
+    compilers/intel/14.0 : Name: Intel Compiler
+    compilers/intel/14.0 : Version: 14.0
+    compilers/intel/14.0 : Category: compiler, runtime support
+    compilers/intel/14.0 : Description: Intel Compiler Family (C/C++/Fortran for x86_64)
+    compilers/intel/14.0 : URL: http://software.intel.com/en-us/articles/intel-compilers/
+
+Returning back to the actual modulefile, after the whatis lines you have
+specific Tcl commands that modify the environment. In this example we
+have two types of commands: 1) setenv which creates a shell environment
+variable (INTEL\_LICENSE\_FILE in this case). 2) prepend-path statement
+which modify a current shell environment variable. In this case the
+first prepend-path modifies the PATH environment variable by adding
+/shared/software/intel/bin to make that directory available to the user.
+More information about Tcl commands found in modulefiles can be found in
+the modulefile manpage (man modulefile).
+
+Loading and Unloading modulefiles
+---------------------------------
+
+Loading and unloading modulefiles can be done using the module command
+the subcommands load and unload. In this example, the Intel C compiler
+is named icc:
+
+::
+
+    $> icc
+    -bash: icc: command not found
+
+    $> module load compilers/intel
+    $> icc
+    icc: command line error: no files specified; for help type "icc -help"
+
+    $> module unload compilers/intel
+    $> icc
+    -bash: icc: command not found
+
+As shown in the above command, initially the icc commands could not be
+found. After loading the module, icc could be found (although I gave it
+no input so it gave me an error), and as expected after unloading the
+module icc could not be found anymore. For more information about module
+subcommands see the module manpage (man module)
+
+Using modulefiles through qsub
+------------------------------
+
+Modulefiles can be used through the scheduler just as on the command
+line. In your batch shell script (see `Running Jobs <Running Jobs>`__
+for details) you can place the module load/unload or any other module
+subcommand directly before you executed commands.

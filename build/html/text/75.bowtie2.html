@@ -1,0 +1,487 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Bioinformatics: Using Bowtie2 &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="next" title="Matlab: Running Matlab scripts on a HPC cluster" href="76.Matlab.html" />
+    <link rel="prev" title="Bioinformatics: Conda and BioConda" href="74.Bioconda.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="71.Ansys.html">Engineering: ANSYS Products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="72.ANSYSForte.html">Engineering: ANSYS/Forte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="73.OpenFoam.html">Engineering: Running OpenFOAM simple tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="74.Bioconda.html">Bioinformatics: Conda and BioConda</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Bioinformatics: Using Bowtie2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#transfer-the-files">1. Transfer the files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preparing-folders">2. Preparing folders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#splitting-the-files">3. Splitting the files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-bsseeker2">4. Using BSseeker2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checking-completion-for-all-jobs">4. Checking completion for all jobs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="76.Matlab.html">Matlab: Running Matlab scripts on a HPC cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="77.Visit.html">Visualization: VisIt</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="70.DomainSpecific.html">Domain Specific Details</a> &raquo;</li>
+        
+      <li>Bioinformatics: Using Bowtie2</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/75.bowtie2.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bioinformatics-using-bowtie2">
+<h1>Bioinformatics: Using Bowtie2<a class="headerlink" href="#bioinformatics-using-bowtie2" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial will show how to use Job Arrays to manage the alignment of
+a big pair of sequencing data.</p>
+<p>For the purpose of the tutorial, consider that you receive a pair of
+files like this:</p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">Estrogen_24_1.clean.fq</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">Estrogen_24_2.clean.fq</span></tt></div>
+</div>
+<p>And you have a reference like:</p>
+<p><tt class="docutils literal"><span class="pre">Oncorhynchus_mykiss_chr.fa</span></tt></p>
+<p>This tutorial will show you how to do the alignments concurrently by
+splitting the fq files and use BSseeker and bowtie2 for the alignment.
+When the job is done we use samtools to merge the results in a single
+BAM file.</p>
+<div class="section" id="transfer-the-files">
+<h2>1. Transfer the files<a class="headerlink" href="#transfer-the-files" title="Permalink to this headline">¶</a></h2>
+<p>The files refered above are really big, the first step is to send those
+files to the cluster. The files are too big for store them on your home
+account so you have to use the scratch space. There are two ways of
+sending the files to the cluster. Using command line tools like rsync or
+using the Globus connector to sent those files from your computer to the
+cluster.</p>
+<p>If you are using Linux or Mac on your side, the command to send those
+files will be,</p>
+<p><tt class="docutils literal"><span class="pre">rsync&nbsp;-av&nbsp;Estrogen_24_1.clean.fq&nbsp;&nbsp;Estrogen_24_2.clean.fq&nbsp;Oncorhynchus_mykiss_chr.fa&nbsp;[username]&#64;spruce.hpc.wvu.edu:/scratch/[username]</span></tt></p>
+<p>Globus is another alternative, follow the instructions:
+[Transferring_Files]</p>
+</div>
+<div class="section" id="preparing-folders">
+<h2>2. Preparing folders<a class="headerlink" href="#preparing-folders" title="Permalink to this headline">¶</a></h2>
+<p>It is always good practice to keep some structure on the files that you
+will use on your research. We suggest creating a few directories, for
+the references, for the big sequence fq files, output and temporary
+files.</p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">cd&nbsp;/scratch/[username]</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">mkdir&nbsp;REFS&nbsp;OUTPUT&nbsp;TMP&nbsp;WGBS</span></tt></div>
+</div>
+<p>Now we need to move the big fq files to WGBS and the reference to REFS</p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">mv&nbsp;Estrogen_24_1.clean.fq&nbsp;&nbsp;Estrogen_24_2.clean.fq&nbsp;WGBS</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">mv&nbsp;Oncorhynchus_mykiss_chr.fa&nbsp;REFS</span></tt></div>
+</div>
+</div>
+<div class="section" id="splitting-the-files">
+<h2>3. Splitting the files<a class="headerlink" href="#splitting-the-files" title="Permalink to this headline">¶</a></h2>
+<p>Our first couple of jobs consists on splitting the two big fq files. We
+can get an idea about how big they are by counting the number of lines</p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">$&nbsp;wc&nbsp;-l&nbsp;WGBS/Estrogen_24*.fq</span></tt></div>
+<div class="line">``&nbsp;&nbsp;670407612&nbsp;WGBS/Estrogen_24_1.clean.fq``</div>
+<div class="line">``&nbsp;&nbsp;670407612&nbsp;WGBS/Estrogen_24_2.clean.fq``</div>
+<div class="line">``&nbsp;1340815224&nbsp;total``</div>
+</div>
+<p>They have the same number of lines, more than 670 million lines. It is
+important to realize that you cannot simple cut those files arbitrarily.
+Each 4 lines makes a block of information that cannot be splitted</p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">&#64;ST-E00144:275:HW5VJCCXX:7:1101:2564:1327&nbsp;1:N:0:NTGAGCCA</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">NGAGAATATTTTTGGTTATTTTTTTTAGTTTTTGATTTGGAAGATTTATTAGATAGAGAATATTGTTGGTTATTTTTTTTAGTTTTTGATTTGGAGGATGTAGTAAATAGATAATATTTTTGTTGTGTATTTTTTTTAGTTTTTGTGTTG</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">+</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#AAAAA7-7A</span></tt></div>
+</div>
+<ol class="arabic simple">
+<li>!/bin/bash</li>
+<li>PBS -N SPLIT</li>
+<li>PBS -l nodes=1:ppn=1</li>
+<li>PBS -l walltime=4:00:00</li>
+<li>PBS -m ae</li>
+<li>PBS -q standby</li>
+</ol>
+<p>cd $PBS_O_WORKDIR</p>
+<p>mkdir -p WGBS/split echo $file split -d -a 3 -l 2400000 WGBS/${file}
+WGBS/split/${file}_</p>
+</pre><p>The submission script will create a job called &#8220;SPLIT&#8221; using one node
+(nodes=1) and one process per node (ppn=1). We set a walltime in 4
+hours, the limit for the standby queue. We suppose to submit this job
+from the scratch directory. So the first step is to move into that
+directory using <tt class="docutils literal"><span class="pre">cd</span> <span class="pre">$PBS_O_WORKDIR</span></tt>, we create a folder for the split
+files inside WGBS. The split command:</p>
+<p><tt class="docutils literal"><span class="pre">split&nbsp;-d&nbsp;-a&nbsp;3&nbsp;-l&nbsp;2400000&nbsp;WGBS/${file}&nbsp;WGBS/split/${file}_</span></tt></p>
+<p>The split command will create split files with 3 digits (-a 3), starting
+from 000. It will split every 2.4 million lines, the file indicated
+under the file variable that will will use next. All those split files
+will be stored at WGBS/split using the same name as the original but
+with a suffix being underscored &#8220;_&#8221; and the 3 digits mentioned before.</p>
+<p>We submit the jobs like this:</p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">qsub&nbsp;runjob_split.pbs&nbsp;-v&nbsp;file=Estrogen_24_1.clean.fq</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">qsub&nbsp;runjob_split.pbs&nbsp;-v&nbsp;file=Estrogen_24_2.clean.fq</span></tt></div>
+</div>
+<p>Those two jobs takes around 30 minutes in one of our compute nodes. Once
+that splitting is complete you can see many files populating the
+WGBS/split folder. Those are the files we will use in our next step</p>
+</div>
+<div class="section" id="using-bsseeker2">
+<h2>4. Using BSseeker2<a class="headerlink" href="#using-bsseeker2" title="Permalink to this headline">¶</a></h2>
+<p>The webpage of the project is here:
+<a class="reference external" href="http://pellegrini.mcdb.ucla.edu/BS_Seeker2/">1</a> Copy the link and
+download the software, at the time of writing this (April 2017), the
+latest version was 2.1.0 and the download URL was:</p>
+<p><tt class="docutils literal"><span class="pre">wget&nbsp;``\</span> <span class="pre">```http://pellegrini.mcdb.ucla.edu/BS_Seeker2/BSseeker2_v2.1.0.tar.bz</span></tt> &lt;<a class="reference external" href="http://pellegrini.mcdb.ucla.edu/BS_Seeker2/BSseeker2_v2.1.0.tar.bz">http://pellegrini.mcdb.ucla.edu/BS_Seeker2/BSseeker2_v2.1.0.tar.bz</a>&gt;`__</p>
+<p>Once you have the code, uncompress it with:</p>
+<p><tt class="docutils literal"><span class="pre">tar&nbsp;-jxvf&nbsp;BSseeker2_v2.1.0.tar.bz</span></tt></p>
+<p>The submission script (runjob.pbs) will look like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>#!/bin/sh
+
+#PBS -N ALIGN_${PBS_ARRAYID}
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=04:00:00
+#PBS -l feature=&#39;!smp&#39;
+#PBS -m ae
+#PBS -q standby
+#PBS -t 0-279
+
+module load compilers/python/2.7.13
+module load genomics/bowtie2
+
+if [ ${PBS_ARRAYID} -lt 10 ]
+then
+    JAID=00${PBS_ARRAYID}
+elif [ ${PBS_ARRAYID} -lt 100 ]
+then
+    JAID=0${PBS_ARRAYID}
+else
+    JAID=${PBS_ARRAYID}
+fi
+
+SCRATCH=/scratch/[username]
+REFS=${SCRATCH}/REFS
+WGBS=${SCRATCH}/WGBS
+TEMP=${SCRATCH}/TMP
+OUTP=${SCRATCH}/OUTPUT
+FQ1=${WGBS}/split/Estrogen_24_1.clean.fq_$JAID
+FQ2=${WGBS}/split/Estrogen_24_2.clean.fq_$JAID
+FA=${REFS}/Oncorhynchus_mykiss_chr.fa
+
+echo &#39;Job start: &#39;`date`
+cd $PBS_O_WORKDIR
+cd BSseeker2_v2.1.0
+
+mkdir -p ${TEMP}
+
+python bs_seeker2-align.py -1 $FQ1 -2 $FQ2 -m 3 --aligner=bowtie2 -o ${OUTP}/Estrogen_24.${JAID}.align -f sam -g $FA --temp_dir=${TEMP}
+
+echo &#39;Job complete: &#39;`date`
+</pre></div>
+</div>
+<p>There a number of details to mention here. We cut the fq files in 2.4
+million lines in order to be sure we can process them in our 4 hour
+walltime. The Job Array start with 0 and ends at 279. This piece of code
+ensures 3 digit numbers filling with leading zeros as needed:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>if [ ${PBS_ARRAYID} -lt 10 ]
+then
+    JAID=00${PBS_ARRAYID}
+elif [ ${PBS_ARRAYID} -lt 100 ]
+then
+    JAID=0${PBS_ARRAYID}
+else
+    JAID=${PBS_ARRAYID}
+fi
+</pre></div>
+</div>
+<p>The rest of the script defines locations for references, the split files
+and output. Finally it launches BSseeker2. Remember to replace
+[username] with your username.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>SCRATCH=/scratch/[username]
+REFS=${SCRATCH}/REFS
+WGBS=${SCRATCH}/WGBS
+TEMP=${SCRATCH}/TMP
+OUTP=${SCRATCH}/OUTPUT
+FQ1=${WGBS}/split/Estrogen_24_1.clean.fq_$JAID
+FQ2=${WGBS}/split/Estrogen_24_2.clean.fq_$JAID
+FA=${REFS}/Oncorhynchus_mykiss_chr.fa
+
+echo &#39;Job start: &#39;`date`
+cd $PBS_O_WORKDIR
+cd BSseeker2_v2.1.0
+
+mkdir -p ${TEMP}
+
+python bs_seeker2-align.py -1 $FQ1 -2 $FQ2 -m 3 --aligner=bowtie2 -o ${OUTP}/Estrogen_24.${JAID}.align -f sam -g $FA --temp_dir=${TEMP}
+
+echo &#39;Job complete: &#39;`date`
+</pre></div>
+</div>
+<p>The command bowtie creates several threads, to ensure enough cores we
+set ppn=4.</p>
+</div>
+<div class="section" id="checking-completion-for-all-jobs">
+<h2>4. Checking completion for all jobs<a class="headerlink" href="#checking-completion-for-all-jobs" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes jobs failed for one reason or another. It could be hard to
+check the output one by one to see if some job needs to be executed
+again. This small python script could help you with that task
+(BSresubmit.py)</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Process some integers.&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-output_directory&#39;</span><span class="p">,</span> <span class="s1">&#39;-d&#39;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;PATH&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Directory for search output files&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-prefix&#39;</span><span class="p">,</span> <span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;PREFIX&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Filenames must be prefix+NUM+suffix&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-suffix&#39;</span><span class="p">,</span> <span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;SUFFIX&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Filenames must be prefix+NUM+suffix&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-min_split_number&#39;</span><span class="p">,</span> <span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;min number of split&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-max_split_number&#39;</span><span class="p">,</span> <span class="s1">&#39;-n&#39;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;max number of split&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+    <span class="n">failures</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">min_split_number</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">max_split_number</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s%s%s%03d%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">output_directory</span><span class="p">,</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">prefix</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">suffix</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+            <span class="n">failures</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="n">rf</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">rf</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="s1">&#39;END&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">failures</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">failures</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;All the jobs are complete in the range&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Some jobs need to be resubmitted:&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">failures</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In order to check if all the jobs are complete execute:</p>
+<p>``&nbsp;./BSresubmit.py&nbsp;-d&nbsp;OUTPUT&nbsp;-p&nbsp;Estrogen_24.&nbsp;-s&nbsp;.align.bs_seeker2_log&nbsp;-n&nbsp;279``</p>
+<p>Once you have all the data you can move forward and merge the files
+using samtools:</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="76.Matlab.html" class="btn btn-neutral float-right" title="Matlab: Running Matlab scripts on a HPC cluster" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="74.Bioconda.html" class="btn btn-neutral" title="Bioinformatics: Conda and BioConda" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Guillermo Avendano-Franco
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

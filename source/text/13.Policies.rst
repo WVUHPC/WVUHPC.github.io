@@ -1,0 +1,90 @@
+.. _int-policies:
+
+Policies
+========
+
+Running Jobs on Login Node
+--------------------------
+
+Running jobs/tasks on the login node is not permitted. When the RC admin
+team notices this occurring, the processes will be killed immediately to
+ensure system stability. If you are having trouble submitting jobs
+through the scheduler, please follow instructions on :ref:`int-getting-help` and we would he happy to help.
+
+Data storage
+------------
+
+Current storage limits are specific to each cluster and directories
+(Home and Scratch). For information about where these directories are
+located and storage quotas please visit the `Disk
+Storage <Disk Storage>`__ page.
+
+Sharing User Directories
+------------------------
+
+Initially sharing user directories or scratch space is not permitted.
+This is for tracking user purposes. However, we recognize that research
+is collaborative in nature, and therefore we are attentive for request
+for sharing resources across user spaces for temporary or fixed time
+limits to get jobs completed. Please follow instructions on :ref:`int-getting-help` and the WVU-RC team with these requests.
+
+Users also have the option of using group storage for sharing of files.
+A Principal Investigator (PI) may request up to 10 GB of group storage for free. Additional storage may be purchased if desired. For more information, please visit `Persistent Group
+Storage <Disk_Storage_Spruce#Persistent_Group_Storage>`__.
+
+Getting Software Installed On the Cluster
+-----------------------------------------
+
+Software needed on the cluster for research work can be installed at
+user requests. However, we initially recommend that software, scripts,
+and programming libraries be installed locally in user directories as
+opposed to system-wide. This is generally because system-wide installs
+of software/libraries not supported directly by Red Hat Enterprise Linux
+(RHEL) may get broken during system-wide updates. If the
+software/library has a large enough appeals (multiple users/multiple
+research teams) we can and will assist in installing a system-wide
+version. If assistance is needed for installing software/libraries
+locally in your user directory please follow instructions at :ref:`int-getting-help`, the WVU-RC team we will gladly assist.
+
+User Priority for Job Submission
+--------------------------------
+
+Depending on what hostname your submitting jobs on, different priority
+defaults are assigned to your job submission. On Mountaineer priority
+for queues are set by fair share queueing. This means that user priority
+is assigned based on a combination of the size of the job and how much
+system resources you have used during the given week, with higher
+priority assigned to larger jobs and/or user jobs that have used less
+system resources in the week. On Spruce knob, the research team nodes
+are first come first serve priority, with jobs submitted before other
+jobs having higher priority. For specifications associated with the
+standby queue and community node queues on Spruce Knob, please see the
+`Spruce Knob Queue <Spruce_Batch_Queues>`__ page. If you would like to
+have different priority settings for your research teams queue please
+follow instructions at :ref:`int-getting-help` for the WVU-RC team
+attend your request.
+
+Database Management on Clusters
+-------------------------------
+
+The current set-up for the HPC clusters is for common HPC use. This
+means that the compute nodes where set-up with the idea that data will
+be transferred to the system, computed, and then transferred off.
+Database management systems are not currently supported on the cluster
+because the compute nodes where never initially set-up to handle the
+data storage required. However, if your research team has a need for
+Managed Database systems that have large storage needs with a database
+management system back-end (i.e. MySQL, Oracle, etc) please
+:ref:`int-getting-help` the RC HPC team and we can come up with
+solutions to handle these data requests.
+
+X11 Forwarding - Running visualization software
+-----------------------------------------------
+
+Non compute intensive processes for visualization purposes can be run on
+the login node. These processes include "could" gnuplot, R and Matlab.
+However, if your visualization job requires computing data before
+producing graphs and figures, it is best to run these jobs through the
+scheduler in batch mode. Compute intensive jobs, visualization or not,
+are not permitted to run on the head-node. If you have any questions
+about the best way to accomplish your computing goal, please follow instructions on :ref:`int-getting-help` through the help desk and we will provide any assistance needed to fulfill your requirements.

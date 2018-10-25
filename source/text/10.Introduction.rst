@@ -1,0 +1,34 @@
+.. _chap-introduction:
+
+Introduction
+############
+
+Despite the fact that this documentation is mostly about our High Performance Computing (HPC) Clusters, West Virginia University Research Computing (WVU-RC) offers a variety of technologies and services beyond HPC, the :ref:`chap-introduction` chapter summarizes those services and the policies regarding its usage.
+
+First time users should go to :ref:`chap-quick-start`. This chapter is presented as a tutorial where the basic elements of using a computer cluster are presented and guide the user step by step from getting an account to submit a job and take the results back to his/her own desktop computer.
+
+Once you have followed the :ref:`chap-quick-start` we move into :ref:`chap-basic-user`, this chapter assumes that user knows at least how to enter into the cluster and submit a basic job.
+The chapter provides basic information that was not covered in the :ref:`chap-quick-start` tutorial. We include more information about command line interface, the various text-based editors, environment modules and more details on the various elements that were skipped before.
+
+The next chapter :ref:`chap-advanced-user` is intended for users who feel comfortable with the Command Line Interface. Advanced users are supposed to know how to create scripts using Shell Scripting or any other interpreted language. Advanced users could want to install their own software, using containers, or Conda environments.
+
+The chapter :ref:`chap-developers` is intended for users with interest on using their own programs on the clusters. We introduce the basics of using compilers,
+build systems, parallel programming, debugging, profiling and optimization.
+A developers can be considered as an advanced user who program their own codes, or integrate other codes in more than a simple linear work flow.
+
+The chapter :ref:`chap-administrators` we make reference to the various tools that can be used to monitor the global health of the clusters. In general users does not need to have that global view, but knowing how the entire cluster works can give them insights about their own role in having an effective usage of the cluster.
+
+The next chapter, :ref:`chap-domain-specific` collects sections for various packages that are relevant for a restrict number of researchers.
+
+Chapter :ref:`chap-cluster-specific` should serve as a reference about the current configuration of the clusters, in terms of hardware, software, modules, and queues.
+
+The final chapter :ref:`chap-references` is also referential, it is collects tables about Unix commands, PBS options, variables, it should be of good use when you know exactly what you are looking for.
+
+
+.. toctree::
+   :maxdepth: 2
+
+   11.WhatWeOffer.rst
+   12.GettingHelp.rst
+   13.Policies.rst
+   

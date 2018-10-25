@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Executing HADOOP jobs &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="next" title="Python Modules" href="47.Python.html" />
+    <link rel="prev" title="Using MPI on RC HPC Clusters" href="45.MPIUser.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="41.Conda.html">Conda and BioConda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42.Singularity.html">Singularity Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42.SingularityContainers.html">Singularity Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="43.UserInstallation.html">Installing Packages in User Locations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="44.Miniconda.html">Miniconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="45.MPIUser.html">Using MPI on RC HPC Clusters</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Executing HADOOP jobs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-hadoop">What is Hadoop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-hadoop-on-the-cluster">Using Hadoop on the cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#r-interface-with-hadoop-rhipe">R Interface with Hadoop - Rhipe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#further-information">Further Information</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#useful-webpages">Useful Webpages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#useful-books">Useful Books</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="47.Python.html">Python Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="48.Python.html">Python and scientific libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="48.Pythonvenv.html">Python Virtual Environments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="40.AdvancedUser.html">For Advanced Users</a> &raquo;</li>
+        
+      <li>Executing HADOOP jobs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/46.Hadoop.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="executing-hadoop-jobs">
+<h1>Executing HADOOP jobs<a class="headerlink" href="#executing-hadoop-jobs" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-hadoop">
+<h2>What is Hadoop<a class="headerlink" href="#what-is-hadoop" title="Permalink to this headline">¶</a></h2>
+<p>Hadoop is an open-source software package that utilizes large scale data
+processing by using the Hadoop Distributed File System (HDFS) to provide
+fast bandwidth of large data across clusters. Using the Hadoop
+interface, it is possible to split large data across both nodes and
+processors to increase data processing time. Hadoop&#8217;s advantage is
+processing large data files (gigabytes to terabyte range), in a
+non-POSIX compliant filesystem to increase throughput performance.
+Hadoop is currently installed on the Spruce Knob cluster.</p>
+</div>
+<div class="section" id="using-hadoop-on-the-cluster">
+<h2>Using Hadoop on the cluster<a class="headerlink" href="#using-hadoop-on-the-cluster" title="Permalink to this headline">¶</a></h2>
+<p>Running Hadoop jobs are very similar to <a class="reference external" href="Running_Jobs">running other jobs on the
+cluster</a>. You will run all of your commands within a
+PBS job script. However, before you run Hadoop commands, you need to
+start the Hadoop datanode. To do this, you need to load a few module
+files and run a few start-up scripts. In addition a specific PBS
+directive (PBS -W) needs to be specified so Hadoop runs properly:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>#PBS -W x=nmatchpolicy:exactnode
+
+module load compilers/java/jre1.8.0
+module load libraries/DFS/myhadoop
+
+source $MH_HOME/etc/spruce_default.conf
+myhadoop-configure.sh
+
+start-all.sh
+</pre></div>
+</div>
+<p>Below these lines, you can place your intended hadoop commands. At the
+end of your script, you need to stop the hadoop datanode:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">stop</span><span class="o">-</span><span class="nb">all</span><span class="o">.</span><span class="n">sh</span>
+
+<span class="n">myhadoop</span><span class="o">-</span><span class="n">cleanup</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Both of these commands will end the Hadoop backend. Hadoop commands
+after the cleanup scripts will result in errors. Here is an example
+Hadoop script that will run on 3 nodes with 1 processor a node. The
+example is a wordcount program that is distributed with Hadoop that
+counts the presence of all words in small sample of Shakespeare
+playwrights taken from Project Gutenberg.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>#!/bin/bash
+
+#PBS -q standby
+#PBS -N hadoop_job
+#PBS -l nodes=3:ppn=1
+#PBS -o hadoop_run.out
+#PBS -e hadoop_run.err
+#PBS -W x=nmatchpolicy:exactnode
+#PBS -V
+
+module load compilers/java/jre1.8.0
+module load libraries/DFS/myhadoop
+
+# Configure myHadoop environment
+source $MH_HOME/etc/spruce_default.conf
+myhadoop-configure.sh
+
+# Start Hadoop Cluster
+start-all.sh
+
+
+#### Run your jobs here
+echo &quot;Run some test Hadoop jobs&quot;
+hadoop dfs -mkdir Data
+hadoop dfs -copyFromLocal $HADOOP_HOME/data/gutenberg Data
+hadoop dfs -ls Data/gutenberg
+hadoop jar /shared/software/myhadoop/hadoop-1.2.1/hadoop-examples-1.2.1.jar wordcount Data/gutenberg Outputs
+hadoop dfs -ls Outputs
+echo
+
+#### Stop the Hadoop cluster
+stop-all.sh
+
+#### Cleanup myHadoop configurations
+myhadoop-cleanup.sh
+
+exit 0
+</pre></div>
+</div>
+</div>
+<div class="section" id="r-interface-with-hadoop-rhipe">
+<h2>R Interface with Hadoop - Rhipe<a class="headerlink" href="#r-interface-with-hadoop-rhipe" title="Permalink to this headline">¶</a></h2>
+<p>Running large datasets within R is difficult since R loads all data into
+memory. However, using Hadoop with R can overcome that limitation. To
+use the R package Rhipe, after setting up the hadoop datanode, you can
+load the two modules for the dynamically shared R binary and the Rhipe R
+package:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>module load compilers/R/3.1.0
+module load libraries/R/Rhipe
+</pre></div>
+</div>
+<p>Note: Rhipe must be loaded after the R module - otherwise you will get a
+pre-requisite error.</p>
+</div>
+<div class="section" id="further-information">
+<h2>Further Information<a class="headerlink" href="#further-information" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="useful-webpages">
+<h3>Useful Webpages<a class="headerlink" href="#useful-webpages" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://hadoop.apache.org">Apache Hadoop</a></li>
+<li><a class="reference external" href="http://sourceforge.net/projects/myhadoop">Myhadoop Sourceforge</a></li>
+<li><a class="reference external" href="https://www.datadr.org">Rhipe</a></li>
+</ul>
+</div>
+<div class="section" id="useful-books">
+<h3>Useful Books<a class="headerlink" href="#useful-books" title="Permalink to this headline">¶</a></h3>
+<p>Hadoop: The Definitive Guide. Tom White. ISBN: 978-1-4493-1152-0</p>
+<p>Parallel R. Q.E. McCallum and S. Watson. ISBN: 978-1-4493-0992-3</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="47.Python.html" class="btn btn-neutral float-right" title="Python Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="45.MPIUser.html" class="btn btn-neutral" title="Using MPI on RC HPC Clusters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Guillermo Avendano-Franco
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

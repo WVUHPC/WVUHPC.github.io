@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Storage &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="next" title="Job Submission" href="26.JobSubmission.html" />
+    <link rel="prev" title="Editing files" href="24.EditFiles.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="20.QuickStart.html">Quick Start</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="21.GettingAccess.html">Getting Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22.Connect.html">Connect to the cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="23.CommandLine.html">Command Line Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="24.EditFiles.html">Editing files</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Storage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#home-directory">Home Directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scratch-directory">Scratch Directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#persistent-group-storage">Persistent Group Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#archival-storage">Archival Storage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="26.JobSubmission.html">Job Submission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="27.TransferFiles.html">Transferring Files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="20.QuickStart.html">Quick Start</a> &raquo;</li>
+        
+      <li>Storage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/25.Storage.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="storage">
+<span id="qs-storage"></span><h1>Storage<a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="home-directory">
+<h2>Home Directory<a class="headerlink" href="#home-directory" title="Permalink to this headline">¶</a></h2>
+<p>Home directories on Spruce Knob are located in /users directory and is
+the default login location for users. The default disk quota for each
+user is 10 Gb. As such, we recommend that home directories use should be
+primarily to store scripts, binary executables and other small data file
+types. For research data, users should use Spruce Knobs Scratch space.</p>
+<p>This data is backed up on a daily basis via snapshots and tape. Users
+can retrieve up to 4 weeks of older files from
+/users/.snapshots/{date}/$USER if needed. If files are not available in
+the snapshot, please contact <a class="reference external" href="mailto:helpdesk&#37;&#52;&#48;hpc&#46;wvu&#46;edu">helpdesk<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a> and the HPC team will
+attempt to retrieve the data from tape.</p>
+<p>Note: Users may check their storage quota via the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">quota</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="scratch-directory">
+<h2>Scratch Directory<a class="headerlink" href="#scratch-directory" title="Permalink to this headline">¶</a></h2>
+<p>Scratch directories are located in /scratch directory, and can be easily
+moved to using the $SCRATCH environment variable set-up by default for
+each user.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>cd $SCRATCH
+</pre></div>
+</div>
+<p>Scratch directories on Spruce Knob are treated as true scratch space:
+There is no user defined quota for space. All users scratch directories
+share the same file space, which is set at 130 Tb. When the scratch
+directory becomes full, files are automatically deleted by date. To
+facilitate this, all users should use their scratch space as true
+temporary storage. However, we will notify users well in advanced for
+schedule file deletions to give users ample time to remove data to
+prevent data loss.</p>
+<p><strong>Note: Scratch data is NOT backed up.</strong></p>
+</div>
+<div class="section" id="persistent-group-storage">
+<h2>Persistent Group Storage<a class="headerlink" href="#persistent-group-storage" title="Permalink to this headline">¶</a></h2>
+<p>Research groups may purchase long term persistent storage from the RC
+HPC. This storage allows users to keep data on the cluster that will not
+be removed. In addition, this storage utilizes the same GPFS file system
+so files can be written directly to this storage from jobs executing on
+the cluster.</p>
+<p>Persistent storage must be purchased in 1 TB chunks. To purchase this
+storage, go to <a class="reference external" href="https://helpdesk.hpc.wvu.edu">https://helpdesk.hpc.wvu.edu</a> ,select &#8220;Open a New Ticket&#8221;,
+and select &#8220;Dedicated Storage Order&#8221; from Help Topic. For more
+information, please contact <a class="reference external" href="mailto:helpdesk&#37;&#52;&#48;hpc&#46;wvu&#46;edu">helpdesk<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a>.</p>
+<p>For groups who have purchased this storage, it can be accessed here:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">group</span><span class="o">/</span><span class="p">{</span><span class="n">group_name</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Note: Persistent group storage is NOT backed up.</strong></p>
+<p><strong>Note: Persistent Group storage has been replaced by a the new
+`Research Data Depot
+Service &lt;https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=35328&gt;`__.</strong></p>
+</div>
+<div class="section" id="archival-storage">
+<h2>Archival Storage<a class="headerlink" href="#archival-storage" title="Permalink to this headline">¶</a></h2>
+<p>Please see the <a class="reference external" href="https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=35328">Research Data Depot
+Service</a>
+for archival storage options.</p>
+<p>For additional information please contact <a class="reference external" href="mailto:helpdesk&#37;&#52;&#48;hpc&#46;wvu&#46;edu">helpdesk<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="26.JobSubmission.html" class="btn btn-neutral float-right" title="Job Submission" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="24.EditFiles.html" class="btn btn-neutral" title="Editing files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Guillermo Avendano-Franco
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

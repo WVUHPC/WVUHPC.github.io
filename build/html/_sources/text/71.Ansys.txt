@@ -1,0 +1,111 @@
+Engineering: ANSYS Products
+===========================
+
+Log in to Spruce
+----------------
+
+Enter on Spruce with X11 forwarding, at least on Linux it is with
+
+::
+
+    ssh -X <USERNAME>@spruce.hpc.wvu.edu
+
+On Windows you can MobaXTerm and the program will give you X11
+forwarding too
+
+You can test the X11 forwarding with:
+
+::
+
+    xeyes
+
+A small window with two eyes will pop up on your screen, execute CTRL-C
+to exit The test will just prove that a window can be created on your
+client machine.
+
+Create an interactive job
+-------------------------
+
+Ask for an interactive job with X11 Forwarding enabled, I am using
+"debug" queue, change accordingly
+
+::
+
+    qsub -X -I -q debug
+
+Wait around 2 minutes to get a compute node allocated for you Different
+queues could have different response times before a compute node can be
+allocated to you. In general use "standby" on Spruce for Interactive
+jobs to run during a 4-hour timeframe.
+
+Load the module for ANSYS Fluids or Structures
+----------------------------------------------
+
+There are two modules corresponding to equal number of ANSYS Suites of
+packages
+
+::
+
+    module load ansys/fluids_18.1
+
+and
+
+::
+
+    module load ansys/structures_18.1
+
+You can load one or another or both, they use the same MPI Runtime
+Libraries so they are compatible to each other.
+
+Executing the ANSYS package of your choice
+------------------------------------------
+
+Most commands will be directly accessible to you, you do not need to
+enter the full path
+
+::
+
+    fluent
+
+The fluent window opens and on the lower right corner you will see:
+
+::
+
+    /shared/software/ansys/fluids_181/ansys_inc/v181/fluent/fluent18.1.0/bin/fluent -r18.1.0 3d -alnamd64 -path/shared/software/ansys/fluids_181/ansys_inc/v181/fluent -ssh -cx sllc0001.hpc.wvu.edu:41717:33691
+    Starting /shared/software/ansys/fluids_181/ansys_inc/v181/fluent/fluent18.1.0/lnamd64/3d/fluent.18.1.0 -cx sllc0001.hpc.wvu.edu:41717:33691
+
+                  Welcome to ANSYS Fluent Release 18.1
+
+                  Copyright 2017 SAS IP, Inc. All Rights Reserved.
+                  Unauthorized use, distribution or duplication is prohibited.
+                  This product is subject to U.S. laws governing export and re-export.
+                  For full Legal Notice, see documentation.
+
+    Build Time: Apr 11 2017 14:22:58 EDT  Build Id: 10162
+
+
+         --------------------------------------------------------------
+         This is an academic version of ANSYS FLUENT. Usage of this product
+         license is limited to the terms and conditions specified in your ANSYS
+         license form, additional terms section.
+         --------------------------------------------------------------
+
+
+    Cleanup script file is /gpfs/home/gufranco/cleanup-fluent-sllc0001.hpc.wvu.edu-48370.sh
+
+You can try also ANSYS/Forte
+
+::
+
+    forte.sh
+
+A window with 3 big buttons appear, click Simulate
+
+The Full Window for Forte appears.
+
+In the case of ANSYS Structures 18.1 all that you have to do after
+loading the module is to open the Workbench:
+
+::
+
+    runwb2

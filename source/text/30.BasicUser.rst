@@ -1,0 +1,15 @@
+.. _chap-basic-user:
+
+For Basic Users
+###############
+
+.. toctree::
+   :maxdepth: 2
+
+   31.Editors.rst
+   32.editors.rst
+   33.GlobusOnline.rst
+   33.job_samples.rst
+   34.EnvModules.rst
+   35.Scratch.rst
+   36.XWindow.rst

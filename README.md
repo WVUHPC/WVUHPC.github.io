@@ -1,3 +1,7 @@
+---
+redirect_from: "/build/html/"
+---
+
 # West Virginia University - High Performance Computing
 
 ## Current Workshop

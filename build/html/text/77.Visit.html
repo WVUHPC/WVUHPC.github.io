@@ -1,0 +1,409 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Visualization: VisIt &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="next" title="Clusters Specifications" href="80.ClusterSpecific.html" />
+    <link rel="prev" title="Matlab: Running Matlab scripts on a HPC cluster" href="76.Matlab.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="71.Ansys.html">Engineering: ANSYS Products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="72.ANSYSForte.html">Engineering: ANSYS/Forte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="73.OpenFoam.html">Engineering: Running OpenFOAM simple tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="74.Bioconda.html">Bioinformatics: Conda and BioConda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="75.bowtie2.html">Bioinformatics: Using Bowtie2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="76.Matlab.html">Matlab: Running Matlab scripts on a HPC cluster</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Visualization: VisIt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#client-installation">Client Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-visit-in-the-client-server-model">Running VisIt in the Client/Server Model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-client-to-use-spruce-knob-as-a-server">Configuring Client to use Spruce Knob as a Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#connect-your-client-to-spruce-knob">Connect your client to Spruce Knob</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#visualize-an-example-visit-dataset">Visualize an Example VisIt Dataset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="70.DomainSpecific.html">Domain Specific Details</a> &raquo;</li>
+        
+      <li>Visualization: VisIt</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/77.Visit.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="visualization-visit">
+<h1>Visualization: VisIt<a class="headerlink" href="#visualization-visit" title="Permalink to this headline">¶</a></h1>
+<p>From: <a class="reference external" href="https://wci.llnl.gov/simulation/computer-codes/visit">https://wci.llnl.gov/simulation/computer-codes/visit</a></p>
+<p>VisIt is an Open Source, interactive, scalable, visualization, animation
+and analysis tool. From Unix, Windows or Mac workstations, users can
+interactively visualize and analyze data ranging in scale from small
+(&lt;101 core) desktop-sized projects to large (&gt;105 core) leadership-class
+computing facility simulation campaigns. Users can quickly generate
+visualizations, animate them through time, manipulate them with a
+variety of operators and mathematical expressions, and save the
+resulting images and animations for presentations. VisIt contains a rich
+set of visualization features to enable users to view a wide variety of
+data including scalar and vector fields defined on two- and
+three-dimensional (2D and 3D) structured, adaptive and unstructured
+meshes. Owing to its customizeable plugin design, VisIt is capabable of
+visualizing data from over 120 different scientific data formats <a class="reference external" href="http://www.visitusers.org/index.php?title=Detailed_list_of_file_formats_VisIt_supports">(see
+this partial
+list)</a>.</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>VisIt is available on Spruce Knob in a client server model. In order to
+utilize Visit, you will need to install a local (client) copy of VisIt
+on your workstation/laptop. This will allow you to visualize your data
+on your workstation but but be able to run VisIt against data stored in
+Spruce Knob filesystems. For any back-end processing that VisIt might
+need, it can also take advantage of Spruce Knob&#8217;s processing power.</p>
+</div>
+<div class="section" id="client-installation">
+<h2>Client Installation<a class="headerlink" href="#client-installation" title="Permalink to this headline">¶</a></h2>
+<p>By the time this wikipage was reviewed (July 19, 2017) the latest
+version available was 2.12.3 released on June, 2017. Client executables
+are available from
+<a class="reference external" href="https://wci.llnl.gov/simulation/computer-codes/visit/executables">1</a>.
+Be sure to read the install notes for your particular installation need.
+In most cases you will use the 64 bit version appropriated for your OS
+(Windows, Mac or Linux)</p>
+<p><strong>Note:</strong> You will need to download a version that matches an available
+version on Spruce Knob. Currently we have 2.12.2 released on April 2017.
+If both client and server are 2.12.x they should work correctly</p>
+</div>
+<div class="section" id="running-visit-in-the-client-server-model">
+<h2>Running VisIt in the Client/Server Model<a class="headerlink" href="#running-visit-in-the-client-server-model" title="Permalink to this headline">¶</a></h2>
+<p>After successfully installing VisIt on your workstation, you can run
+through the following steps to start using it on in connection with
+Spruce Knob. <strong>Note:</strong> The following setups up VisIt to run in Parallel
+Mode but the same instructions apply for a serial run. When you enter
+the number of processors you need during the submission process, just
+select 1.</p>
+<div class="section" id="configuring-client-to-use-spruce-knob-as-a-server">
+<h3>Configuring Client to use Spruce Knob as a Server<a class="headerlink" href="#configuring-client-to-use-spruce-knob-as-a-server" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Execute &#8216;visit&#8217;:</li>
+</ul>
+<p>You can just use the icon or the command line. The command line is
+useful to identify problems during the first configuration of Visit to
+use Spruce as server. On MacOS the command line is accesible with:</p>
+<p>``&nbsp;&nbsp;/Applications/VisIt.app/Contents/Resources/bin/visit``</p>
+<ul class="simple">
+<li>Go-to <strong>Options</strong> menu and select <strong>Host Profiles ...</strong>.</li>
+<li>In the Host profiles window, select <strong>New</strong> and enter the following
+information on the <strong>Host Settings</strong> tab.</li>
+</ul>
+<div class="figure">
+<img alt="host_settings.png" src="../_images/host_settings.png" />
+<p class="caption">host_settings.png</p>
+</div>
+<ul class="simple">
+<li>Select the <strong>Launch Profile</strong> tab and select <strong>New Profile</strong> and
+enter the following information in the <strong>Settings</strong> sub tab.</li>
+</ul>
+<div class="figure">
+<img alt="launch_profiles.png" src="../_images/launch_profiles.png" />
+<p class="caption">launch_profiles.png</p>
+</div>
+<ul class="simple">
+<li>Select the <strong>Parallel</strong> sub tab and enter the following information.
+Note, you can use a different <strong>Queue</strong> setting but in most cases
+standby should be sufficient unless you suspect your task will last
+longer than 4 hours.</li>
+</ul>
+<div class="figure">
+<img alt="parallel_options.png" src="../_images/parallel_options.png" />
+<p class="caption">parallel_options.png</p>
+</div>
+<ul class="simple">
+<li>Within the <strong>Parallel</strong> sub tab, select the <strong>Advanced</strong> sub tab, and
+enter <strong>module load visualization/visit/2.10.2</strong> in the <strong>Sublauncher
+pre-mpi command</strong> field. Screen should look as follows:</li>
+</ul>
+<div class="figure">
+<img alt="parallel_advanced.png" src="../_images/parallel_advanced.png" />
+<p class="caption">parallel_advanced.png</p>
+</div>
+<ul class="simple">
+<li>Select <strong>Apply</strong> in the lower left corner.</li>
+<li>Select <strong>Options</strong> and <strong>Save Settings</strong> from the menu on the main
+VisIt user interface.</li>
+</ul>
+</div>
+<div class="section" id="connect-your-client-to-spruce-knob">
+<h3>Connect your client to Spruce Knob<a class="headerlink" href="#connect-your-client-to-spruce-knob" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>If VisIt is not already running on your workstation, start it by
+executing <strong>visit</strong> on the command line.</li>
+<li>Select <strong>Open</strong> under the <strong>Sources</strong> section.</li>
+<li>Select <strong>spruce.hpc.wvu.edu</strong> in the Host Section and enter your
+password when prompt. You should see screen similar to the following.</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/file_open.png"><img alt="../_images/file_open.png" src="../_images/file_open.png" style="width: 30%;" /></a>
+<a class="reference internal image-reference" href="../_images/enter_password.png"><img alt="../_images/enter_password.png" src="../_images/enter_password.png" style="width: 30%;" /></a>
+<ul class="simple">
+<li>You should now see the contents of your home directory and ready to
+use VisIt on your local data.</li>
+</ul>
+</div>
+<div class="section" id="visualize-an-example-visit-dataset">
+<h3>Visualize an Example VisIt Dataset<a class="headerlink" href="#visualize-an-example-visit-dataset" title="Permalink to this headline">¶</a></h3>
+<p>Note: This assumes you have already connected to Spruce Knob from your
+client workstation following the instructions from the previous section.</p>
+<ul class="simple">
+<li>Change <strong>Path</strong> to <strong>/shared/software/visit/latest/data</strong> and select
+<strong>globe.silo</strong>.</li>
+</ul>
+<div class="figure">
+<img alt="example_data.png" src="../_images/example_data.png" />
+<p class="caption">example_data.png</p>
+</div>
+<ul class="simple">
+<li>If necessary, change the options for job submission and select
+<strong>OK</strong>.</li>
+</ul>
+<div class="figure">
+<img alt="select_options.png" src="../_images/select_options.png" />
+<p class="caption">select_options.png</p>
+</div>
+<ul class="simple">
+<li>The following dialog box will appear until a spot is open on the
+cluster for your job to run. When using the standby queue, this
+should be less than 60 seconds assuming the cluster is not completely
+busy.</li>
+</ul>
+<div class="figure">
+<img alt="compute_engine.png" src="../_images/compute_engine.png" />
+<p class="caption">compute_engine.png</p>
+</div>
+<ul class="simple">
+<li>In <strong>Plots</strong> select <strong>Pseudocolor</strong> and <strong>disp_magnitude</strong>.</li>
+<li>Select <strong>Draw</strong> and you should see an output similar to the
+following.</li>
+</ul>
+<div class="figure">
+<img alt="visit_output.png" src="../_images/visit_output.png" />
+<p class="caption">visit_output.png</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="80.ClusterSpecific.html" class="btn btn-neutral float-right" title="Clusters Specifications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="76.Matlab.html" class="btn btn-neutral" title="Matlab: Running Matlab scripts on a HPC cluster" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Guillermo Avendano-Franco
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

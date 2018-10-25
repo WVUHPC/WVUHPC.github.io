@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Managing Scratch Contents &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="next" title="XWindow" href="36.XWindow.html" />
+    <link rel="prev" title="Environment Modules" href="34.EnvModules.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="31.Editors.html">Terminal-based Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="32.editors.html">Terminal-based Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="33.GlobusOnline.html">Globus Online</a></li>
+<li class="toctree-l2"><a class="reference internal" href="33.job_samples.html">Samples of Job Submission scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="34.EnvModules.html">Environment Modules</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Managing Scratch Contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#knowing-my-current-usage">Knowing my current usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#searching-for-empty-files">Searching for empty files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#searching-for-big-files">Searching for Big Files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="36.XWindow.html">XWindow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="30.BasicUser.html">For Basic Users</a> &raquo;</li>
+        
+      <li>Managing Scratch Contents</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/35.Scratch.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="managing-scratch-contents">
+<h1>Managing Scratch Contents<a class="headerlink" href="#managing-scratch-contents" title="Permalink to this headline">¶</a></h1>
+<p>Scratch is designed to be a high-performance, low-latency, parallel file
+system and it is uniquely built for HPC systems. That means that data is
+allocated in parallel on several virtual disks intended to be read and
+write in parallel from several computers. In order for the scratch
+system to perform its best the files should be balanced across all disks
+and frequently used files should also being balanced.</p>
+<p>In the page we will offer some tricks that will help you regain control
+of your scratch space in preparation to transferring your files to other
+locations.</p>
+<div class="section" id="knowing-my-current-usage">
+<h2>Knowing my current usage<a class="headerlink" href="#knowing-my-current-usage" title="Permalink to this headline">¶</a></h2>
+<p>First we should know what we have in terms of used space and number of
+files</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$ /usr/lpp/mmfs/bin/mmlsquota --block-size M gpfs01:scratch
+                         Block Limits                                               |     File Limits
+Filesystem Fileset    type             MB      quota      limit   in_doubt    grace |    files   quota    limit in_doubt    grace  Remarks
+gpfs01     scratch    USR         1943448   62914560   68157440        235     none |   557657 24000000 25000000      172     none
+</pre></div>
+</div>
+<p>You can also get this information in GigaBytes</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$ /usr/lpp/mmfs/bin/mmlsquota --block-size G gpfs01:scratch
+                         Block Limits                                               |     File Limits
+Filesystem Fileset    type             GB      quota      limit   in_doubt    grace |    files   quota    limit in_doubt    grace  Remarks
+gpfs01     scratch    USR            1898      61440      66560          1     none |   557657 24000000 25000000      172     none
+</pre></div>
+</div>
+<p>On this case I am using almos 1900 GB of data in half million files. I
+would like to reduce as much as possible before trying to move my data
+out of Scratch. We will focus on command line tricks that will help you
+search for Big files, search for small and numerous files. The idea is
+to attack first the biggest contributors to my usage. This examples will
+be as generic as possible. At the end of the day its up to you to decide
+which data is not longer needed and can be safely deleted.</p>
+<p>Consider delete a irreversible procedure, there is a way to recover
+files that have been deleted very recently but do not count on it. Being
+sure that you delete what you actually want to delete. The commands
+below are powerful and with that power comes a danger too.</p>
+</div>
+<div class="section" id="searching-for-empty-files">
+<h2>Searching for empty files<a class="headerlink" href="#searching-for-empty-files" title="Permalink to this headline">¶</a></h2>
+<p>An empty file is still a file. Even if apparently not using space its
+metadata still exists and any transfer of that file is also a file
+operation. This is something that in most cases is harmless. Be careful,
+in some cases empty files are used for some codes to indicate run
+conditions. Their sole existence carries a meaning.</p>
+<p>On Spruce every user has an environmental variable pointing to their
+personal Scratch folder. You can see that variable with:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$ echo $SCRATCH
+/scratch/&lt;USERNAME&gt;
+</pre></div>
+</div>
+<p>On this examples we will use this variable to allow you to copy and
+paste this commands in total generality</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>find $SCRATCH -size 0
+</pre></div>
+</div>
+<p>I got thousands of files. Some of them I do not want to remove, but
+there are quite a number of files like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>./OrbitalGAF/58d36a1374d8b558e47f9623/58d36a1374d8b558e47f9623.e1165669
+./OrbitalGAF/58d46c6d74d8b558e47f9cf7/58d46c6d74d8b558e47f9cf7.o1172814
+./OrbitalGAF/58d46c6d74d8b558e47f9cf7/58d46c6d74d8b558e47f9cf7.e1172814
+./OrbitalGAF/58d36a1374d8b558e47f9629/58d36a1374d8b558e47f9629.o1165671
+./OrbitalGAF/58d36a1374d8b558e47f9629/58d36a1374d8b558e47f9629.e1165671
+./OrbitalGAF/58d46c6d74d8b558e47f9cc7/58d46c6d74d8b558e47f9cc7.o1172802
+./OrbitalGAF/58d46c6d74d8b558e47f9cc7/58d46c6d74d8b558e47f9cc7.e1172802
+./OrbitalGAF/58d46c6d74d8b558e47f9cca/58d46c6d74d8b558e47f9cca.o1172803
+./OrbitalGAF/58d46c6d74d8b558e47f9cca/58d46c6d74d8b558e47f9cca.e1172803
+./OrbitalGAF/58d46c6d74d8b558e47f9cd3/58d46c6d74d8b558e47f9cd3.o1172806
+./OrbitalGAF/58d46c6d74d8b558e47f9cd3/58d46c6d74d8b558e47f9cd3.e1172806
+./OrbitalGAF/58d46c6d74d8b558e47f9cd6/58d46c6d74d8b558e47f9cd6.o1172807
+./OrbitalGAF/58d46c6d74d8b558e47f9cd6/58d46c6d74d8b558e47f9cd6.e1172807
+./OrbitalGAF/58d46c6d74d8b558e47f9cd9/58d46c6d74d8b558e47f9cd9.o1172808
+./OrbitalGAF/58d46c6d74d8b558e47f9cd9/58d46c6d74d8b558e47f9cd9.e1172808
+./OrbitalGAF/58d46c6d74d8b558e47f9cf4/58d46c6d74d8b558e47f9cf4.o1172813
+./OrbitalGAF/58d46c6d74d8b558e47f9cf4/58d46c6d74d8b558e47f9cf4.e1172813
+./OrbitalGAF/58d36a1374d8b558e47f963e/58d36a1374d8b558e47f963e.o1165678
+./OrbitalGAF/58d36a1374d8b558e47f963e/58d36a1374d8b558e47f963e.e1165678
+./OrbitalGAF/58d46c6d74d8b558e47f9cb5/58d46c6d74d8b558e47f9cb5.o1172796
+./OrbitalGAF/58d46c6d74d8b558e47f9cb5/58d46c6d74d8b558e47f9cb5.e1172796
+./OrbitalGAF/58d46c6d74d8b558e47f9cbe/58d46c6d74d8b558e47f9cbe.o1172799
+./OrbitalGAF/58d46c6d74d8b558e47f9cbe/58d46c6d74d8b558e47f9cbe.e1172799
+./OrbitalGAF/58d46c6d74d8b558e47f9cc1/58d46c6d74d8b558e47f9cc1.o1172800
+./OrbitalGAF/58d46c6d74d8b558e47f9cc1/58d46c6d74d8b558e47f9cc1.e1172800
+./OrbitalGAF/58d46c6d74d8b558e47f9cc4/58d46c6d74d8b558e47f9cc4.o1172801
+./OrbitalGAF/58d46c6d74d8b558e47f9cc4/58d46c6d74d8b558e47f9cc4.e1172801
+./OrbitalGAF/58d36a1374d8b558e47f9653/58d36a1374d8b558e47f9653.o1165683
+</pre></div>
+</div>
+<p>All those are empty files created by Torque/Moab from simulations that I
+have carried out in the past. Those files in the format:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;JOB_NAME&gt;.o&lt;JOB_ID_NUMBER&gt;
+&lt;JOB_NAME&gt;.e&lt;JOB_ID_NUMBER&gt;
+</pre></div>
+</div>
+<p>Those files contain the standard Output (o) and Standard Error (e) from
+the jobs that run on Spruce. Many of those files are empty because on my
+executions I usually send the output of the command to some other file
+and because the codes that I use do not write anything on the standard
+error. Deleting those empty files will not help me with my storage usage
+by it will reduce the number of files that I will have to move later on.</p>
+<p>I can target those files with a more specific command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>find $SCRATCH -size 0 -regextype posix-egrep  -regex &quot;.*\.[o,e][0-9]{5,7}&quot;
+</pre></div>
+</div>
+<p>The command above search for all empty files on Scratch that contains.
+On my account I found thousands of cases that I can safely delete. In
+most cases those files are not important to you to keep. They are empty
+and not used at all other than telling you the JOB_ID that you probably
+do not need for old jobs. If you feel confortable deleting those files
+you can execute:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>find $SCRATCH -size 0 -regextype posix-egrep  -regex &quot;.*\.[o,e][0-9]{5,7}&quot; -exec rm {} \;
+</pre></div>
+</div>
+<p>On my case it help me delete 16113 files</p>
+</div>
+<div class="section" id="searching-for-big-files">
+<h2>Searching for Big Files<a class="headerlink" href="#searching-for-big-files" title="Permalink to this headline">¶</a></h2>
+<p>Some problems and codes produce big files. In some cases those files are
+not needed to extract the actual answers for which you run those
+calculations and could be deleted safely. The first step is knowing
+where they are. This command search for files bigger than 2GB</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>find $SCRATCH -size +2G
+</pre></div>
+</div>
+<p>You can increase or decrease the value if you are getting too many or
+very few. Once you identify the biggest files you can use the their
+names to target those files for deletion. Imagine that the files called
+&#8220;WAVECAR&#8221; can be deleted. You can use this command&#8221;</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>find $SCRATCH -size +2G -name &quot;WAVECAR&quot; -exec rm {} \;
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="36.XWindow.html" class="btn btn-neutral float-right" title="XWindow" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="34.EnvModules.html" class="btn btn-neutral" title="Environment Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Guillermo Avendano-Franco
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

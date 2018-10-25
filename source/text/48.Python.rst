@@ -1,0 +1,123 @@
+Python and scientific libraries
+===============================
+
+**Module:** languages/python/2.7.13
+
+**Module:** languages/python/3.6.0
+
+**Path** /shared/software/languages/python/2.7.13
+
+**Path** /shared/software/languages/python/3.6.0
+
+**Date** January 24, 2017
+
+Python currently has two active versions, there are some important
+differences that prevent python code from running with python 3. That
+means that some packages are currently no python 3 ready and some of
+them will never be. Python 2 will stop being supported on 2020, so until
+that happens python 2 and 3 will coexist and that is the reason why we
+keep both on our cluster.
+
+Packages included
+-----------------
+::
+
+    * Python-2.7.13
+    * Python-3.6.0
+
+Libraries included
+------------------
+
+We provide a comprehensive collection of scientific libraries for
+python:
+
+Python 2.7 and 3.6
+~~~~~~~~~~~~~~~~~~
+
+::
+    coverage (4.3.4)
+    cycler (0.10.0)
+    Cython (0.25.2)
+    dask (0.13.0)
+    decorator (4.0.11)
+    future (0.16.0)
+    h5py (2.6.0)
+    ipython (5.1.0)
+    ipython-genutils (0.1.0)
+    matplotlib (2.0.0)
+    mpmath (0.19)
+    networkx (1.11)
+    nose (1.3.7)
+    numpy (1.12.0)
+    olefile (0.44)
+    pandas (0.19.2)
+    pexpect (4.2.1)
+    performance (0.5.1)
+    pickleshare (0.7.4)
+    Pillow (4.0.0)
+    pip (9.0.1)
+    prompt-toolkit (1.0.9)
+    ptyprocess (0.5.1)
+    Pygments (2.2.0)
+    pymongo (3.4.0)
+    pyparsing (2.1.10)
+    python-dateutil (2.6.0)
+    pytz (2016.10)
+    scikit-image (0.12.3)
+    scikit-learn (0.18.1)
+    scipy (0.18.1)
+    simplegeneric (0.8.1)
+    six (1.10.0)
+    sympy (1.0)
+    toolz (0.8.2)
+    traitlets (4.3.1)
+    virtualenv (15.1.0)
+    wcwidth (0.1.7)
+
+Python 2.7 only
+~~~~~~~~~~~~~~~
+
+::
+    appdirs (1.4.0)
+    backports.shutil-get-terminal-size (1.0.0)
+    enum34 (1.1.6)
+    functools32 (3.2.3.post2)
+    packaging (16.8)
+    pathlib2 (2.2.1)
+    scandir (1.4)
+    setuptools (34.0.2)
+    subprocess32 (3.2.7)
+    wheel (0.29.0)
+
+Python 3.6 only
+~~~~~~~~~~~~~~~
+
+::
+    CacheControl (0.11.7)
+    lockfile (0.12.2)
+    natsort (5.0.1)
+    requests (2.13.0)
+    scikit-bio (0.5.1)
+    setuptools (28.8.0)
+
+Notes from building
+-------------------
+
+Python 2 and 3 where compiled with \`sqlite\` support and python 3 with
+\`lzma\`. SqLite is used by IPython to record history of commands and
+LZMA is a newer compression algorithm that Python 3 is linked to.
+
+Both version were compiled with GCC 6.3.0 with Link-time optimization
+(LTO) and Profile-guided optimization (PGO) to maximize performance in
+production runs.
+
+Compilation proceed with (similar for 6.3.0)::
+
+     ../configure --prefix=/shared/software/languages/python/2.7.13
+     make profile-opt
+     make install
+
+The Makefile was modified to remove the command option
+``-fuse-linker-plugin``
+
+.. literalinclude:: /_static/python.patch

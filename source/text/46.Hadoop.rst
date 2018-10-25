@@ -1,0 +1,127 @@
+Executing HADOOP jobs
+=====================
+
+What is Hadoop
+--------------
+
+Hadoop is an open-source software package that utilizes large scale data
+processing by using the Hadoop Distributed File System (HDFS) to provide
+fast bandwidth of large data across clusters. Using the Hadoop
+interface, it is possible to split large data across both nodes and
+processors to increase data processing time. Hadoop's advantage is
+processing large data files (gigabytes to terabyte range), in a
+non-POSIX compliant filesystem to increase throughput performance.
+Hadoop is currently installed on the Spruce Knob cluster.
+
+Using Hadoop on the cluster
+---------------------------
+
+Running Hadoop jobs are very similar to `running other jobs on the
+cluster <Running_Jobs>`__. You will run all of your commands within a
+PBS job script. However, before you run Hadoop commands, you need to
+start the Hadoop datanode. To do this, you need to load a few module
+files and run a few start-up scripts. In addition a specific PBS
+directive (PBS -W) needs to be specified so Hadoop runs properly:
+
+::
+
+    #PBS -W x=nmatchpolicy:exactnode
+
+    module load compilers/java/jre1.8.0
+    module load libraries/DFS/myhadoop
+
+    source $MH_HOME/etc/spruce_default.conf
+    myhadoop-configure.sh
+
+    start-all.sh
+
+Below these lines, you can place your intended hadoop commands. At the
+end of your script, you need to stop the hadoop datanode:
+
+::
+
+
+    stop-all.sh
+
+    myhadoop-cleanup.sh
+
+Both of these commands will end the Hadoop backend. Hadoop commands
+after the cleanup scripts will result in errors. Here is an example
+Hadoop script that will run on 3 nodes with 1 processor a node. The
+example is a wordcount program that is distributed with Hadoop that
+counts the presence of all words in small sample of Shakespeare
+playwrights taken from Project Gutenberg.
+
+::
+
+    #!/bin/bash
+
+    #PBS -q standby
+    #PBS -N hadoop_job
+    #PBS -l nodes=3:ppn=1
+    #PBS -o hadoop_run.out
+    #PBS -e hadoop_run.err
+    #PBS -W x=nmatchpolicy:exactnode
+    #PBS -V
+
+    module load compilers/java/jre1.8.0
+    module load libraries/DFS/myhadoop
+
+    # Configure myHadoop environment
+    source $MH_HOME/etc/spruce_default.conf
+    myhadoop-configure.sh
+
+    # Start Hadoop Cluster
+    start-all.sh
+
+
+    #### Run your jobs here
+    echo "Run some test Hadoop jobs"
+    hadoop dfs -mkdir Data
+    hadoop dfs -copyFromLocal $HADOOP_HOME/data/gutenberg Data
+    hadoop dfs -ls Data/gutenberg
+    hadoop jar /shared/software/myhadoop/hadoop-1.2.1/hadoop-examples-1.2.1.jar wordcount Data/gutenberg Outputs
+    hadoop dfs -ls Outputs
+    echo
+
+    #### Stop the Hadoop cluster
+    stop-all.sh
+
+    #### Cleanup myHadoop configurations
+    myhadoop-cleanup.sh
+
+    exit 0
+
+R Interface with Hadoop - Rhipe
+-------------------------------
+
+Running large datasets within R is difficult since R loads all data into
+memory. However, using Hadoop with R can overcome that limitation. To
+use the R package Rhipe, after setting up the hadoop datanode, you can
+load the two modules for the dynamically shared R binary and the Rhipe R
+package:
+
+::
+
+    module load compilers/R/3.1.0
+    module load libraries/R/Rhipe
+
+Note: Rhipe must be loaded after the R module - otherwise you will get a
+pre-requisite error.
+
+Further Information
+-------------------
+
+Useful Webpages
+~~~~~~~~~~~~~~~
+
+-  `Apache Hadoop <http://hadoop.apache.org>`__
+-  `Myhadoop Sourceforge <http://sourceforge.net/projects/myhadoop>`__
+-  `Rhipe <https://www.datadr.org>`__
+
+Useful Books
+~~~~~~~~~~~~
+
+Hadoop: The Definitive Guide. Tom White. ISBN: 978-1-4493-1152-0
+
+Parallel R. Q.E. McCallum and S. Watson. ISBN: 978-1-4493-0992-3

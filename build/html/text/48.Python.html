@@ -1,0 +1,401 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python and scientific libraries &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="next" title="Python Virtual Environments" href="48.Pythonvenv.html" />
+    <link rel="prev" title="Python Modules" href="47.Python.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="41.Conda.html">Conda and BioConda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42.Singularity.html">Singularity Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42.SingularityContainers.html">Singularity Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="43.UserInstallation.html">Installing Packages in User Locations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="44.Miniconda.html">Miniconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="45.MPIUser.html">Using MPI on RC HPC Clusters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="46.Hadoop.html">Executing HADOOP jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="47.Python.html">Python Modules</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Python and scientific libraries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#packages-included">Packages included</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#libraries-included">Libraries included</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#python-2-7-and-3-6">Python 2.7 and 3.6</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#python-2-7-only">Python 2.7 only</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#python-3-6-only">Python 3.6 only</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#notes-from-building">Notes from building</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="48.Pythonvenv.html">Python Virtual Environments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="40.AdvancedUser.html">For Advanced Users</a> &raquo;</li>
+        
+      <li>Python and scientific libraries</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/48.Python.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python-and-scientific-libraries">
+<h1>Python and scientific libraries<a class="headerlink" href="#python-and-scientific-libraries" title="Permalink to this headline">¶</a></h1>
+<p><strong>Module:</strong> languages/python/2.7.13</p>
+<p><strong>Module:</strong> languages/python/3.6.0</p>
+<p><strong>Path</strong> /shared/software/languages/python/2.7.13</p>
+<p><strong>Path</strong> /shared/software/languages/python/3.6.0</p>
+<p><strong>Date</strong> January 24, 2017</p>
+<p>Python currently has two active versions, there are some important
+differences that prevent python code from running with python 3. That
+means that some packages are currently no python 3 ready and some of
+them will never be. Python 2 will stop being supported on 2020, so until
+that happens python 2 and 3 will coexist and that is the reason why we
+keep both on our cluster.</p>
+<div class="section" id="packages-included">
+<h2>Packages included<a class="headerlink" href="#packages-included" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span>* Python-2.7.13
+* Python-3.6.0
+</pre></div>
+</div>
+</div>
+<div class="section" id="libraries-included">
+<h2>Libraries included<a class="headerlink" href="#libraries-included" title="Permalink to this headline">¶</a></h2>
+<p>We provide a comprehensive collection of scientific libraries for
+python:</p>
+<div class="section" id="python-2-7-and-3-6">
+<h3>Python 2.7 and 3.6<a class="headerlink" href="#python-2-7-and-3-6" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>::</dt>
+<dd>coverage&nbsp;(4.3.4)
+cycler&nbsp;(0.10.0)
+Cython&nbsp;(0.25.2)
+dask&nbsp;(0.13.0)
+decorator&nbsp;(4.0.11)
+future&nbsp;(0.16.0)
+h5py&nbsp;(2.6.0)
+ipython&nbsp;(5.1.0)
+ipython-genutils&nbsp;(0.1.0)
+matplotlib&nbsp;(2.0.0)
+mpmath&nbsp;(0.19)
+networkx&nbsp;(1.11)
+nose&nbsp;(1.3.7)
+numpy&nbsp;(1.12.0)
+olefile&nbsp;(0.44)
+pandas&nbsp;(0.19.2)
+pexpect&nbsp;(4.2.1)
+performance&nbsp;(0.5.1)
+pickleshare&nbsp;(0.7.4)
+Pillow&nbsp;(4.0.0)
+pip&nbsp;(9.0.1)
+prompt-toolkit&nbsp;(1.0.9)
+ptyprocess&nbsp;(0.5.1)
+Pygments&nbsp;(2.2.0)
+pymongo&nbsp;(3.4.0)
+pyparsing&nbsp;(2.1.10)
+python-dateutil&nbsp;(2.6.0)
+pytz&nbsp;(2016.10)
+scikit-image&nbsp;(0.12.3)
+scikit-learn&nbsp;(0.18.1)
+scipy&nbsp;(0.18.1)
+simplegeneric&nbsp;(0.8.1)
+six&nbsp;(1.10.0)
+sympy&nbsp;(1.0)
+toolz&nbsp;(0.8.2)
+traitlets&nbsp;(4.3.1)
+virtualenv&nbsp;(15.1.0)
+wcwidth&nbsp;(0.1.7)</dd>
+</dl>
+</div>
+<div class="section" id="python-2-7-only">
+<h3>Python 2.7 only<a class="headerlink" href="#python-2-7-only" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>::</dt>
+<dd>appdirs&nbsp;(1.4.0)
+backports.shutil-get-terminal-size&nbsp;(1.0.0)
+enum34&nbsp;(1.1.6)
+functools32&nbsp;(3.2.3.post2)
+packaging&nbsp;(16.8)
+pathlib2&nbsp;(2.2.1)
+scandir&nbsp;(1.4)
+setuptools&nbsp;(34.0.2)
+subprocess32&nbsp;(3.2.7)
+wheel&nbsp;(0.29.0)</dd>
+</dl>
+</div>
+<div class="section" id="python-3-6-only">
+<h3>Python 3.6 only<a class="headerlink" href="#python-3-6-only" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>::</dt>
+<dd>CacheControl&nbsp;(0.11.7)
+lockfile&nbsp;(0.12.2)
+natsort&nbsp;(5.0.1)
+requests&nbsp;(2.13.0)
+scikit-bio&nbsp;(0.5.1)
+setuptools&nbsp;(28.8.0)</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="notes-from-building">
+<h2>Notes from building<a class="headerlink" href="#notes-from-building" title="Permalink to this headline">¶</a></h2>
+<p>Python 2 and 3 where compiled with `sqlite` support and python 3 with
+`lzma`. SqLite is used by IPython to record history of commands and
+LZMA is a newer compression algorithm that Python 3 is linked to.</p>
+<p>Both version were compiled with GCC 6.3.0 with Link-time optimization
+(LTO) and Profile-guided optimization (PGO) to maximize performance in
+production runs.</p>
+<p>Compilation proceed with (similar for 6.3.0):</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>../configure --prefix=/shared/software/languages/python/2.7.13
+make profile-opt
+make install
+</pre></div>
+</div>
+<p>The Makefile was modified to remove the command option
+<tt class="docutils literal"><span class="pre">-fuse-linker-plugin</span></tt></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>--- Makefile.orig	2017-01-24 09:52:54.597959711 -0500
++++ Makefile	        2017-01-24 10:27:24.152893000 -0500
+@@ -469,7 +469,7 @@
+ 	$(MAKE) profile-removal
+
+ build_all_generate_profile:
+-	$(MAKE) build_all CFLAGS=&quot;$(CFLAGS) $(PGO_PROF_GEN_FLAG) -flto -fuse-linker-plugin -ffat-lto-objects -flto-partition=none&quot; LDFLAGS=&quot;$(LDFLAGS) $(PGO_PROF_GEN_FLAG) -flto -fuse-linker-plugin -ffat-lto-objects -flto-partition=none&quot; LIBS=&quot;$(LIBS)&quot;
++	$(MAKE) build_all CFLAGS=&quot;$(CFLAGS) $(PGO_PROF_GEN_FLAG) -flto -ffat-lto-objects -flto-partition=none&quot; LDFLAGS=&quot;$(LDFLAGS) $(PGO_PROF_GEN_FLAG) -flto -ffat-lto-objects -flto-partition=none&quot; LIBS=&quot;$(LIBS)&quot;
+
+ run_profile_task:
+ 	: # FIXME: can&#39;t run for a cross build
+@@ -479,7 +479,7 @@
+ 	$(LLVM_PROF_MERGER)
+
+ build_all_use_profile:
+-	$(MAKE) build_all CFLAGS=&quot;$(CFLAGS) $(PGO_PROF_USE_FLAG) -flto -fuse-linker-plugin -ffat-lto-objects -flto-partition=none&quot; LDFLAGS=&quot;$(LDFLAGS) -flto -fuse-linker-plugin -ffat-lto-objects -flto-partition=none&quot;
++	$(MAKE) build_all CFLAGS=&quot;$(CFLAGS) $(PGO_PROF_USE_FLAG) -flto -ffat-lto-objects -flto-partition=none&quot; LDFLAGS=&quot;$(LDFLAGS) -flto -ffat-lto-objects -flto-partition=none&quot;
+
+ # Compile and run with gcov
+ .PHONY=coverage coverage-lcov coverage-report
+@@ -947,7 +947,7 @@
+ commoninstall:	 \
+ 		altbininstall libinstall inclinstall libainstall \
+ 		sharedinstall oldsharedinstall altmaninstall \
+-
++
+
+ # Install shared libraries enabled by Setup
+ DESTDIRS=	$(exec_prefix) $(LIBDIR) $(BINLIBDEST) $(DESTSHARED)
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="48.Pythonvenv.html" class="btn btn-neutral float-right" title="Python Virtual Environments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="47.Python.html" class="btn btn-neutral" title="Python Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Guillermo Avendano-Franco
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

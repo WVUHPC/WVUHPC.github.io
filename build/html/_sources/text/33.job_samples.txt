@@ -1,0 +1,105 @@
+Samples of Job Submission scripts
+=================================
+
+Below are bash scripts that can be modified and submitted to the qsub
+command for job submission. For details about the different parts of the
+scripts please visit the `Running Jobs <Running Jobs>`__ page. These
+scripts can be copied and pasted in the terminal using any number of
+text editors (i.e. vi, emacs, etc...)
+
+Script for running a non-array batch queue
+------------------------------------------
+
+The below script has PBS directives to set-up commonly used variables
+such as job name, resources needed, e-mail address upon job completion
+and abnormal termination and specify a queue to run on
+
+::
+
+    #!/bin/sh
+
+    #This is an example script for executing generic jobs with
+    # the use of the command 'qsub <name of this script>'
+
+
+    #These commands set up the Grid Environment for your job.  Words surrounding by a backet ('<','>') should be changed
+    #Any of the PBS directives can be commented out by placing another pound sign in front
+    #example
+    ##PBS -N name
+    #The above line will be skipped by qsub because of the two consecutive # signs
+
+    # Specify job name
+    #PBS -N <name>
+
+    # Specify the resources need for the job
+    # Walltime is specified as hh:mm:ss (hours:minutes:seconds)
+    #PBS -l nodes=<number_of_nodes>:ppn=<number_of_processors_per_node,walltime=<time_needed_by_job>
+
+
+    # Specify when Moab should send e-mails 'ae' below user will
+    # receive e-mail for any errors with the job and/or upon completion
+    # If you don't want e-mails just comment out these next two PBS lines
+    #PBS -m ae
+
+    # Specify the e-mail address to receive above mentioned e-mails
+    #PBS -M <email_address>
+
+    # Specify the queue to execute task in. Current options can be found by excuting the command qstat -q at the terminal
+    #PBS -q <queue_name>
+
+    # Enter your command below with arguments just as if you where going to execute on the command line
+    # It is generally good practice to issue a 'cd' command into the directory that contains the files
+    # you want to use or use full path names
+
+Script for running an array batch queue
+---------------------------------------
+
+Script is the same as above, but adds PBS -t to execute array request
+job submissions.
+
+::
+
+    #!/bin/sh
+
+    #This is an example script for executing genetic jobs with
+    # the use of the command 'qsub <name of this script>'
+
+
+    #These commands set up the Grid Environment for your job.  Words surrounding by a backet ('<','>') should be changed
+    #Any of the PBS directives can be commented out by placing another pound sign in front
+    #example
+    ##PBS -N name
+    #The above line will be skipped by qsub because of the two consecutive # signs
+
+    # Specify job name, use ${PBS_ARRAYID} to ensure names and output/error files have different names
+    #PBS -N <name_${PBS_ARRAYID}
+
+    # Specify the range for the PBS_ARRAYID environment variable
+    # <num_range> can be a continous range like 1-200 or 5-20
+    # or <num_range> can be a comma seperated list of numbers like 5,15,20,55
+    # You can also specify the maximum number of jobs queued at one time with the percent sign
+    # so a <num_range> specified as 5-45%8 would launch forty jobs with a range from 5-45, but only queue 8 at a time until
+    # all jobs are completed.
+    # Further, you can mix and match continous range and list like 1-10,15,25-40%10
+    #PBS -t <num_range>
+
+    # Specify the resources need for the job
+    # Walltime is specified as hh:mm:ss (hours:minutes:seconds)
+    #PBS -l nodes=<number_of_nodes>:ppn=<number_of_processors_per_node,walltime=<time_needed_by_job>
+
+
+    # Specify when Moab should send e-mails 'ae' below user will
+    # receive e-mail for any errors with the job and/or upon completion
+    # If you don't want e-mails just comment out these next two PBS lines
+    #PBS -m ae
+
+    # Specify the e-mail address to receive above mentioned e-mails
+    #PBS -M <email_address>
+
+    # Specify the queue to execute task in. Current options can be found by excuting the command qstat -q at the terminal
+    #PBS -q <queue_name>
+
+    # Enter your command below with arguments just as if you where going to execute on the command line
+    # It is generally good practice to issue a 'cd' command into the directory that contains the files
+    # you want to use or use full path names
+    # Any parameter or filename that needs to use the current job number of the array number range use ${PBS_ARRAYID}

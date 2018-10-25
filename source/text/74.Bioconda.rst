@@ -1,0 +1,217 @@
+Bioinformatics: Conda and BioConda
+==================================
+
+**Conda** is an open source package management system and environment
+management system that runs on Windows, macOS and Linux. Conda quickly
+installs, runs and updates packages and their dependencies. Conda easily
+creates, saves, loads and switches between environments.
+
+We have Conda installed on Spruce, all that you have to do to enable the
+conda environment is to execute:
+
+::
+
+    source /shared/software/miniconda3/etc/profile.d/conda.sh
+
+**Bioconda** is a channel for the conda package manager specializing in
+bioinformatics software. Bioconda offers a repository of more than 4000
+bioinformatics packages
+
+In the future most packages in bioinformatics will be offered via
+Bioconda instead of independent modules. That allow us to keep packages
+consistent and updated.
+
+To get a better idea about using bioconda and the packages provided here
+we prepare a basic tutorial on its usage on Spruce.
+
+Preparing the environment
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+On spruce:
+
+You can load the module, but it only remembers you the script that needs
+to be sourced to operate with Bioconda
+
+::
+
+    module load genomics/bioconda
+
+In fact the conda environment is enable only when you actually source
+the script
+
+::
+
+    source /shared/software/miniconda3/etc/profile.d/conda.sh
+
+Knowing which environments are available
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+By the time of writting this tutorial Spruce offers three environments
+centrally installed:
+
+::
+
+    $ conda info --envs
+    # conda environments:
+    #
+                             /scratch/gufranco/bowtie2
+    base                  *  /shared/software/miniconda3
+    qiime2-2018.8            /shared/software/miniconda3/envs/qiime2-2018.8
+    tpd0001                  /shared/software/miniconda3/envs/tpd0001
+
+Activating an existing environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Suppose that you want to use the environment called "tpd0001", to
+achieve that execute
+
+::
+
+    conda activate tpd0001
+
+Deactivating the current environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    conda deactivate
+
+Creating a new environment from a YML file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can create your own environment, one easy way of doing that is via a
+YML file that describes the channels and packages that you want on your
+environment. The YML file will look like this, for a simple case when
+you want one env for bowtie2 (bowtie2.yml)
+
+::
+
+    name: spruce-bowtie2
+    channels:
+      - bioconda
+      - conda-forge
+      - defaults
+    dependencies:
+      - bowtie2
+
+Another example is this YML file for installing a curated set of basic
+genomics codes that requires just a few dependencies. (biocore.yml)
+
+::
+
+    name: biocode
+    channels:
+      - bioconda
+      - conda-forge
+      - defaults
+    dependencies:
+      - bamtools
+      - bcftools
+      - bedtools
+      - hmmer
+      - muscle
+      - raxml
+      - samtools
+      - sga
+      - soapdenovo-trans
+      - soapdenovo2
+      - sra-tools
+      - vcftools
+      - velvet
+
+To create an environment from those YML files you can select one
+location on your scratch folder
+
+::
+
+    conda env create -p $SCRATCH/bowtie2 -f bowtie2.yml
+
+or for the biocore.yml
+
+::
+
+    conda env create -p $SCRATCH/biocore -f biocore.yml
+
+By default, new environments are created inside your $HOME folder on
+$HOME/.conda
+
+Listing the packages inside one environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Bowtie2 has a number of dependencies (19 dependencies for 1 package)
+Notice that only bowtie2 comes from bioconda channel. All other packages
+are part of conda-forge, a lower level channel.
+
+::
+
+    $ conda activate $SCRATCH/bowtie2
+    $ conda list
+    # packages in environment at /scratch/gufranco/bowtie2:
+    #
+    # Name                    Version                   Build  Channel
+    bowtie2                   2.3.4.2          py36h2d50403_0    bioconda
+    bzip2                     1.0.6                h470a237_2    conda-forge
+    ca-certificates           2018.8.24            ha4d7672_0    conda-forge
+    certifi                   2018.8.24                py36_1    conda-forge
+    libffi                    3.2.1                hfc679d8_5    conda-forge
+    libgcc-ng                 7.2.0                hdf63c60_3    conda-forge
+    libstdcxx-ng              7.2.0                hdf63c60_3    conda-forge
+    ncurses                   6.1                  hfc679d8_1    conda-forge
+    openssl                   1.0.2p               h470a237_0    conda-forge
+    perl                      5.26.2               h470a237_0    conda-forge
+    pip                       18.0                     py36_1    conda-forge
+    python                    3.6.6                h5001a0f_0    conda-forge
+    readline                  7.0                  haf1bffa_1    conda-forge
+    setuptools                40.2.0                   py36_0    conda-forge
+    sqlite                    3.24.0               h2f33b56_1    conda-forge
+    tk                        8.6.8                         0    conda-forge
+    wheel                     0.31.1                   py36_1    conda-forge
+    xz                        5.2.4                h470a237_1    conda-forge
+    zlib                      1.2.11               h470a237_3    conda-forge
+
+Using a conda environment in a submission script
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To execute software in a non-interactive job you need to source the main
+script, activate the environment that contains the software you need,
+execute the the scientific code and deactivate the environment. This is
+a simple example showing that for bowtie2
+
+::
+
+    #!/bin/bash
+
+    #PBS -N MY_JOB
+    #PBS -q standby
+    #PBS -j oe
+    #PBS -l nodes=1:ppn=2
+
+    source /shared/software/miniconda3/etc/profile.d/conda.sh
+    conda activate $SCRATCH/bowtie2
+
+    bowtie2 .....
+
+    conda deactivate
+
+Deleting a environment
+~~~~~~~~~~~~~~~~~~~~~~
+
+To remove an environment you can just execute this command.
+
+::
+
+    conda remove --all -p $SCRATCH/bowtie2
+
+More documentation
+~~~~~~~~~~~~~~~~~~
+
+`Conda Documentation <https://conda.io/docs/index.html>`__
+
+[https://conda.io/docs/user-guide/tasks/manage-environments.html\ #
+Managing environments]
+
+`Using Bioconda — Bioconda
+documentation <https://bioconda.github.io/>`__
+
+`Available packages — Bioconda
+documentation <https://bioconda.github.io/recipes.html>`__

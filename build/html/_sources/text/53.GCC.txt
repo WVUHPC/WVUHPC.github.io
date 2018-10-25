@@ -1,0 +1,52 @@
+GCC: The GNU Compiler Collection
+================================
+
+**Module:** languages/gcc/6.3.0
+
+**Path** /shared/software/languages/gcc/6.3.0
+
+**Date** January 24, 2017
+
+Packages included
+-----------------
+
+**Main Package**
+
+     * gcc-6.3.0
+
+**Dependencies for GCC**
+
+     * gmp-4.3.2
+     * isl-0.15
+     * mpc-0.8.1
+     * mpfr-2.4.2
+
+**Dependencies to test GCC**
+
+     * autogen-5.18.7
+     * libunistring-0.9.7
+     * libffi-3.2.1
+     * gc-7.2
+     * guile-2.0.13
+
+**Development tools for build packages**
+
+     * autoconf-2.69
+     * automake-1.15
+     * m4-1.4.18
+     * libtool-2.4.6
+
+**Convenience libraries included**
+
+     * gsl-2.3 (GNU Scientific Library)
+     * sqlite-autoconf-3160200 (SQLite is a self-contained SQL database engine)
+     * xz-5.2.3 (LZMA compression)
+
+Older Modules it obsoletes
+--------------------------
+
+     * compilers/gcc/4.8.2
+     * compilers/gcc/4.9.0
+     * compilers/gcc/5.3.0
+     * libraries/gsl/2.1 (Integrated for convenience)
+     * libraries/sqlite/3.9.2

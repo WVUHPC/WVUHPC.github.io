@@ -1,0 +1,18 @@
+.. _chap-advanced-user:
+
+For Advanced Users
+##################
+
+.. toctree::
+  :maxdepth: 2
+
+  41.Conda.rst
+  42.Singularity.rst
+  42.SingularityContainers.rst
+  43.UserInstallation.rst
+  44.Miniconda.rst
+  45.MPIUser.rst
+  46.Hadoop.rst
+  47.Python.rst
+  48.Python.rst
+  48.Pythonvenv.rst

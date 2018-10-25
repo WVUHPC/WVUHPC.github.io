@@ -1,0 +1,108 @@
+Python Virtual Environments
+===========================
+
+Python virtual environments are used to build completely isolated python
+workflows. Primarily they are used to solve the need for multiple
+versions within python modules. Often, you might have the need to use
+pkgA which needs pkgC version 1.24, but you also need pkgB which needs
+pkgC version 2.1. If you use setuptools to install the packages (i.e.
+pip or easy\_install), you will create a dependency issue since both
+versions of pkbC will be installed to the same location.
+
+To resolve this, you can create python virtual environments that all
+isolation of package dependencies, so you can successfully have
+different versions of packages installed and tied to seperate python
+interpreters. Setting up python virtual environments is easy, and using
+them is no different than using python it's self.
+
+Using Virtual Environments with python2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+First, load which version of python2 you would like to use as your base
+python interpreter. For instance, if you want python 2.7.10, then load
+the 2.7.10 python modefule. If you want to use the default system python
+(v. 2.6), then you do not need to load a python modulefile. However, you
+do need to load the virtualenv modulefile.
+
+::
+
+    module load compilers/python/2.7.10 compilers/python/virtualenv
+
+Then create a virtualenv directory with the 'virtualenv' command.
+
+::
+
+    virtualenv workflow1
+
+You should now have a directory called 'workflow1'. You can use whatever
+name you want for the virtualenv, so long as you remember what directory
+corresponds with what environment. You now need to simply activate the
+virtualenv.
+
+::
+
+    source workflow1/bin/activate
+
+Your command prompt will now be pre-emptied by (workflow1) to remind you
+that you have an activate virtualenv. You can now proceed to use python,
+pip, and easy\_install just as you would regularly.
+
+Using Virtual Environments with python3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+First, load the python3 modulefile. The python3 modulefile comes with
+it's own virtual environment utility, so you do not need to load the
+virtualenv modulefile.
+
+::
+
+    module load compilers/python/3.5.1
+
+Then create a virtualenv directry with the 'pyvenv' command.
+
+::
+
+    pyvenv workflow1
+
+You should now have a directory called 'workflow1'. You can use whatever
+name you want for the virtualenv, so long as you remember what directory
+corresponds with what environment. You now need to simply activate the
+virtualenv.
+
+::
+
+    source workflow1/bin/activate
+
+Your command prompt will now be pre-emptied by (workflow1) to remind you
+that you have an activate virtualenv. You can now proceed to use python,
+pip, and easy\_install just as you would regularly.
+
+Activating virtual environments using the C shell
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you are using the shells csh or tcsh, you will not be able to source
+the 'activate' file. Instead, you need to source the activate.csh file.
+
+::
+
+    source workflow1/bin/activate.csh
+
+Using site-wide system packages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The centrally installed python interpreters (python loaded with
+modelefiles), usually have some common scientific packages installed
+with them by default. For instance, python 2.7.10 already has Numpy
+1.9.2 and Matplotlib 1.4.2 installed. To have your virtualenv keep using
+these packages so you do not need to install them in your virtualenv,
+using the --system-site-packages option.
+
+::
+
+    virtualenv --system-site-packages
+
+Or
+
+::
+
+    pyvenv --systems-site-packages

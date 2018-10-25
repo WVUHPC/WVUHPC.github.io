@@ -1,0 +1,170 @@
+Python Modules
+==============
+
+Python modules are installed using the DistUtils tools. This can either
+be done through the packaged setup.py script within the package
+distribution tarball:
+
+::
+
+    python setup.py install
+
+Or without downloading the package, you can use the installer tools pip:
+
+::
+
+    pip install <package_name>
+
+Or easy\_isntall:
+
+::
+
+    easy_install <package_name>
+
+The above commands will install the module in the system-wide site
+package directory usually located at
+/usr/local/lib/pythonX.Y/site-packages. However, on the any machine
+where you do not have superuser privileges, including the Research
+Computing clusters, this will throw a permission error. Therefore, you
+need to modify the commands instructing python to use an user scheme
+installation.
+
+Python User Flag
+~~~~~~~~~~~~~~~~
+
+An easy way to install Python modules locally (within your user
+directory) is by using the User flag with the DistUtils installation
+methods:
+
+::
+
+    python setup.py install --user
+
+::
+
+    pip install --user <package_name>
+
+The User Flag directs python to install the package in a user site
+package directory usually located at /lib/pythonX.Y/site-packages, with
+usually being a hidden directory in the user's home directory. This is
+generally the preferred method of locally installing modules as this
+user site package is by default in the python library path: meaning
+modules installed this way can be used as if they were installed
+system-wide.
+
+Python Home/Prefix Flag
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Another way to install Python modules locally is by using the Home flag
+or the Prefix flag with the DistUtils installation:
+
+::
+
+    $> python setup.py install --home=<dir>
+
+Or
+
+::
+
+    python setup.py install --prefix=<dir>
+
+Using pip:
+
+::
+
+    pip install --target <dir> <package_name>
+
+Using easy\_install:
+
+::
+
+    easy_install --install-dir=<dir> <package_name>
+
+With
+
+.. raw:: html
+
+   <dir>
+
+representing the directory location you want the package installed into.
+These flags essentially do the same thing by directing Python to install
+the module in the specified directory. These directories will not be
+searched by default with Python. Therefore, in order to use these
+modules in your Python scripts you will have to modify the PYTHONPATH
+environment variable to include the specified directory. Or
+alternatively, modify sys.path from within your python script (for this
+method, consult `python documentation <https://docs.python.org>`__.
+
+::
+
+    export PYTHONPATH=<dir>
+
+Virtual Environments
+~~~~~~~~~~~~~~~~~~~~
+
+The problem with Python User, Home and Prefix flags are that they will
+all be searched secondary to the system-wide site package. This is a
+problem if you are trying to install locally a different version of a
+module already installed system-wide. A way to get around this is by
+using `Python Virtual Environments <Python virtual environments>`__.
+
+Installing R Packages in default Directories
+--------------------------------------------
+
+The two usual ways to install R packages from CRAN is either executing
+
+::
+
+    install.packages('<Package Name>')
+
+from the R prompt. Or using the command
+
+::
+
+    R CMD INSTALL <package>
+
+from the command line. The second command only works if you have already
+downloaded a copy of the package from CRAN or an external site. The
+first will automatically download the package from CRAN. R will
+automatically detect that you do not have permissions to write in the
+system-wide R library folder and will prompt if you would like to
+install in a local directory from within your home directory. This
+folder will also be checked automatically when you run R for packages,
+allowing you to use anything you install in this way.
+
+Installing R Packages in non-default directories
+------------------------------------------------
+
+Using install.packages()
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+To use install.packages from the R prompt, before you start R you need
+to modify the R\_LIBS environment variable
+
+::
+
+    export R_LIBS=<dir>
+
+Then inside the R prompt you execute install.packages() as normal (see
+above).
+
+Using R CMD INSTALL
+~~~~~~~~~~~~~~~~~~~
+
+For 'R CMD INSTALL' command, you can specify the path with the l flag
+(lowercase 'L')
+
+::
+
+    R CMD INSTALL -l <dir> <package_name>
+
+Using Installed Packages from non-default directories
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To use locally installed packages, before you execute R you just need to
+modify the R\_LIBS environment variable to tell R where to search for
+local packages.
+
+::
+
+    export R_LIBS=<dir>

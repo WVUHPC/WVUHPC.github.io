@@ -1,0 +1,416 @@
+Singularity Containers
+======================
+
+Containers are a software technology that allows us to keep control of
+the environment where a given code runs. Consider for example that you
+want to run a code in such a way the same code runs on several machines
+or clusters ensuring that the same libraries are loaded and the same
+general environment is present. Different clusters could come installed
+with different compilers, different Linux distributions and different
+libraries in general. Containers can be used to package entire
+scientific workflows, software and libraries, and even data and move
+them to several compute infrastructures with complete reproducibility.
+
+Containers are similar to Virtual Machines, however, the differences are
+enough to consider them different technologies and those differences are
+very important for HPC. Virtual Machines takes up a lot of system
+resources. Each Virtual Machine (VM) runs not just a full copy of an
+operating system, but a virtual copy of all the hardware that the
+operating system needs to run. This quickly adds up to a lot of precious
+RAM and CPU cycles, valuable resources for HPC.
+
+In contrast, all that a container requires is enough of an operating
+system, supporting programs and libraries, and system resources to run a
+specific program. From the user perspective, a container is in most
+cases a single file that contains the file system, ie a rather complete
+Unix filesystem tree with all libraries, executables, and data that are
+needed for a given workflow or scientific computation.
+
+There are several container solutions, one prominent example is Docker,
+however, the main issue with containers is security, despite the name,
+containers do not actually contain the powers of the user who executes
+code on them. That is why you do not see Docker installed on an HPC
+cluster. Using dockers requires superuser access something that on
+shared resources like an HPC cluster is not widely offered.
+
+Singularity offers an alternative solution to Docker, users can run the
+prepared images that we are offering on Spruce or bring their own.
+
+For more information about Singularity and complete documentation see:
+https://singularity.lbl.gov/quickstart
+
+How to use a singularity Image
+------------------------------
+
+There are basically two scenarios, interactive execution and job
+submission.
+
+Interactive Job
+~~~~~~~~~~~~~~~
+
+If you are using Visit or RStudio, programs that uses the X11
+forwarding, ensure to connect first to the cluster with X11 forwarding,
+before asking for an interactive job. In order to connect into Spruce
+with X11 forwarding use:
+
+::
+
+    ssh -X <username>@spruce.hpc.wvu.edu
+
+Once you have login into the cluster, create an interactive job with the
+following command line, in this case we are using standby as queue but
+any other queue is valid.
+
+::
+
+    qsub -X -I -q standby
+
+Once you get inside a compute node, load the module:
+
+::
+
+    module load singularity/2.5.1
+
+After loading the module the command singularity is available for usage,
+and you can get a shell inside the image with:
+
+::
+
+    singularity shell /shared/software/containers/<Image Name>
+
+Job Submission
+~~~~~~~~~~~~~~
+
+In this case you do not need to export X11, just login into Spruce
+
+::
+
+    ssh <username>@spruce.hpc.wvu.edu
+
+Once you have login into the cluster, create a submission script
+("runjob.pbs" for this example), in this case we are using standby as
+queue but any other queue is valid.
+
+::
+
+    #!/bin/sh
+
+    #PBS -N JOB
+    #PBS -l nodes=1:ppn=1
+    #PBS -l walltime=04:00:00
+    #PBS -m ae
+    #PBS -q standby
+
+    module load singularity/2.5.1
+
+    singularity exec /shared/software/containers/<Image Name> <command_or_script_to_run>
+
+Submit your job with
+
+::
+
+    qsub runjob.pbs
+
+Central Installed Singularity Images
+------------------------------------
+
+Currently, we are offering the following Images on Spruce, these images
+were created to bind the shared folders that we currently offer on
+Spruce (/users, /gpfs, /group and /scratch). The recipes allows
+verifying how each of those images were created and give you a template
+for creating your own. Notice that in order to create a Singularity
+image you need root access, so you need to install Singularity on your
+own computer to create the image there and transfer the created image
+file back to Spruce.
+
+Keras 2.4 + TensorFlow 1.5 with GPU support
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Keras is a high-level neural networks API, written in Python and capable
+of running on top of TensorFlow, CNTK, or Theano. It was developed with
+a focus on enabling fast experimentation. Being able to go from idea to
+result with the least possible delay is key to doing good research.
+
+**Webpage:** https://keras.io
+
+**Image Name:** Keras-2.1.4\_TensorFlow-1.5.0.simg
+
+**Recipe:**
+
+::
+
+    Bootstrap: docker
+    From: gw000/keras-full
+
+    %environment
+    SHELL=/bin/bash
+    export SHELL
+    VARIABLE=HELLO-CUDA-EXAMPLE
+    export VARIABLE
+
+    %labels
+    AUTHOR gufranco@mail.wvu.edu
+
+    %post
+    . /environment
+    echo 'SHELL=/bin/bash' >> /environment
+    chmod +x /environment
+    mkdir -p /users
+    mkdir -p /group
+    mkdir -p /gpfs
+    mkdir -p /data
+    mkdir -p /scratch
+    touch /usr/bin/nvidia-smi
+
+    %files
+    hello.cu        # copied to root of container
+    hello
+    Keras-2.1.4_TensorFlow-1.5.0.bst
+
+RStudio Desktop 1.1 with R 3.4.3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+RStudio is an integrated development environment (IDE) for R. It
+includes a console, syntax-highlighting editor that supports direct code
+execution, as well as tools for plotting, history, debugging and
+workspace management.
+
+**Webpage:** https://www.rstudio.com/products/RStudio
+
+**Image Name:** RStudio-desktop-1.1.423\_R-3.4.3.simg
+
+**Recipe:**
+
+::
+
+    Bootstrap: shub
+    From: jekriske/rstudio:1.1.423_desktop
+
+    %runscript
+    exec echo "The runscript is the containers default runtime command!"
+
+    %files
+    RStudio-desktop-1.1.423_R-3.4.3.bst
+
+    %environment
+    SHELL=/bin/bash
+    export SHELL
+
+    %labels
+    AUTHOR gufranco@mail.wvu.edu
+
+    %post
+    mkdir /scratch
+    mkdir /users
+    mkdir /group
+    mkdir /gpfs
+    touch /usr/bin/nvidia-smi
+
+Stacks 2.1
+~~~~~~~~~~
+
+Stacks is a software pipeline for building loci from short-read
+sequences, such as those generated on the Illumina platform. Stacks was
+developed to work with restriction enzyme-based data, such as RAD-seq,
+for the purpose of building genetic maps and conducting population
+genomics and phylogeography.
+
+**Webpage:** http://catchenlab.life.illinois.edu/stacks/
+
+**Image Name:** Stacks-2.1.simg
+
+**Recipe:**
+
+::
+
+    Bootstrap: docker
+    From: ubuntu:trusty-20170817
+
+    %help
+    A Singularity image for Stacks v2.1
+
+    %labels
+    AUTHOR gufranco@mail.wvu.edu
+    Maintainer Guillermo Avendano Franco
+    Stacks v2.1
+
+    %environment
+    SELL=/bin/bash
+    export SHELL
+
+    %post
+    STACKS_VERSION=2.1
+
+    sudo locale-gen en_US.UTF-8
+    sudo update-locale
+
+    sudo apt-get --yes update
+    sudo apt-get --yes install build-essential autoconf automake wget git zlib1g-dev libbz2-dev libncurses5-dev curl unzip
+    sudo apt-get --yes install libdbd-mysql-perl
+
+    sudo apt-get --yes install software-properties-common
+    sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
+    sudo apt-get --yes update
+    sudo apt-get --yes install g++-4.9
+
+    cd /tmp
+
+    echo "Installing Stacks"
+    STACKS_URL="http://catchenlab.life.illinois.edu/stacks/source/stacks-${STACKS_VERSION}.tar.gz"
+    STACKS_ZIP=stacks.tar.gz
+    wget -O ${STACKS_ZIP} "${STACKS_URL}"
+    tar xf ${STACKS_ZIP}
+    cd stacks-${STACKS_VERSION}
+    CC=gcc-4.9 CXX=g++-4.9 ./configure
+    make -j4
+    sudo make install
+    sudo mkdir /tests
+    sudo mv tests/* /tests
+
+    echo "Sorting some env variables..."
+    sudo echo 'LANGUAGE="en_US:en"' >> $SINGULARITY_ENVIRONMENT
+    sudo echo 'LC_ALL="en_US.UTF-8"' >> $SINGULARITY_ENVIRONMENT
+    sudo echo 'LC_CTYPE="UTF-8"' >> $SINGULARITY_ENVIRONMENT
+    sudo echo 'LANG="en_US.UTF-8"' >>  $SINGULARITY_ENVIRONMENT
+
+    echo "Done"
+    mkdir /data
+    mkdir /scratch
+    mkdir /users
+    mkdir /group
+    mkdir /gpfs
+    touch /usr/bin/nvidia-smi
+
+    %runscript
+    echo "Welcome to STACKS 2.1" >&2
+    exec "$@"
+
+    %files
+    Stacks-2.1.bst
+
+    %test
+    echo "Testing STACKS"
+    #for testfile in $(ls /tests/*.t);
+    #do
+    #bash ${testfile};
+    #done
+
+TensorFlow Official version with GPU support
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+TensorFlow™ is an open source software library for high-performance
+numerical computation. Originally developed by researchers and engineers
+from the Google Brain team within Google’s AI organization, it comes
+with strong support for machine learning and deep learning and the
+flexible numerical computation core is used across many other scientific
+domains.
+
+The image included, comes from the official dockers repository running
+on Python 3 and supporting GPUs
+
+**Webpage:** https://www.tensorflow.org
+
+**Image Name:** TensorFlow\_gpu\_py3.simg
+
+**Recipe:**
+
+::
+
+    #####################################################################
+    # Tensor Flow Container                                             #
+    # =====================                                             #
+    #                                                                   #
+    # This container provides Tensor Flow as imported                   #
+    # from the official Dockers container                               #
+    #                                                                   #
+    # singularity build TensorFlow_gpu_py3.simg TensorFlow_gpu__py3.bst #
+    #                                                                   #
+    #####################################################################
+
+    Bootstrap: docker
+    From: tensorflow/tensorflow:latest-gpu-py3
+
+    %runscript
+    exec echo "The runscript is the containers default runtime command!"
+
+    %files
+    TensorFlow_gpu_py3.bst
+
+    %environment
+    SELL=/bin/bash
+    export SHELL
+
+    %labels
+    AUTHOR gufranco@mail.wvu.edu
+
+    %post
+    echo "The post section is where you can install, and configure your container."
+    #apt-get update && apt-get -y upgrade
+    mkdir /data
+    mkdir /gpfs
+    mkdir /users
+    mkdir /group
+    mkdir /scratch
+    touch /usr/bin/nvidia-smi
+
+Visit 2.13.2
+~~~~~~~~~~~~
+
+VisIt is an Open Source, interactive, scalable, visualization, animation
+and analysis tool. From Unix, Windows or Mac workstations, users can
+interactively visualize and analyze data ranging in scale from small
+(<101 core) desktop-sized projects to large (>105 core) leadership-class
+computing facility simulation campaigns. Users can quickly generate
+visualizations, animate them through time, manipulate them with a
+
+variety of operators and mathematical expressions, and save the
+resulting images and animations for presentations. VisIt contains a rich
+set of visualization features to enable users to view a wide variety of
+data including scalar and vector fields defined on two- and
+three-dimensional (2D and 3D) structured, adaptive and unstructured
+meshes. Owing to its customizeable plugin design, VisIt is capabable of
+visualizing data from over 120 different scientific data formats.
+
+**Webpage:** https://wci.llnl.gov/simulation/computer-codes/visit
+
+**Image Name:** Visit-2.13.2.simg
+
+**Recipe:**
+
+::
+
+    # Singularity container with Visit 2.13.2
+    #
+    # This is the Bootstrap file to recreate the image.
+    #
+
+    Bootstrap: docker
+    From: ubuntu:trusty
+
+    %runscript
+    exec echo "The runscript is the containers default runtime command!"
+
+    %files
+    Visit-2.13.2.bst
+
+    %environment
+    SHELL=/bin/bash
+    export SHELL
+    PATH=/data/visit2_13_2.linux-x86_64/bin:$PATH
+    export PATH
+
+    %labels
+    AUTHOR gufranco@mail.wvu.edu
+
+    %post
+    echo "The post section is where you can install, and configure your container."
+    apt-get update && apt-get -y install x11-apps wget emacs libgl1-mesa-dev
+    mkdir -p /data
+    mkdir -p /gpfs
+    mkdir -p /users
+    mkdir -p /group
+    mkdir -p /scratch
+    touch /usr/bin/nvidia-smi
+
+    cd /data && wget http://portal.nersc.gov/project/visit/releases/2.13.2/visit2_13_2.linux-x86_64-ubuntu14.tar.gz
+    cd /data && tar -zxvf visit2_13_2.linux-x86_64-ubuntu14.tar.gz

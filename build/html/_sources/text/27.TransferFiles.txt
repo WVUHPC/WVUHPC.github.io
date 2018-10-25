@@ -1,0 +1,281 @@
+.. _qs-transfer-files:
+
+Transferring Files
+==================
+
+Data Transfer Nodes
+-------------------
+
+The HPC facility has two servers dedicated for transferring files around
+WVU as well with other locations around the globe. These two servers are
+called Data Transfer Nodes (DTNs) and have over 400 TB of usable
+temporary storage. These servers are connected at 10 Gb/sec speed to
+WVU's Science DMZ which is dedicated to transferring research data and
+is separated from other network traffic. This allows data to be
+transferred with low latency and high bandwidth to other locations.
+
+DTNs are connected directly to the Spruce Knob HPC cluster which allows
+fast transfer of data to and from Spruce Knob. Data to Spruce Knob is
+transferred over FDR Infiniband at speeds up to 56 Gb/sec. In addition
+to HPC users, this space is for all researchers at WVU who need to
+temporarily store and transfer data to other locations at WVU or
+elsewhere throughout the world.
+
+The preferred method for transferring data to and from the data transfer
+nodes is to use `Globus Online <http://globus.org>`__. Globus Online
+establishes a GridFTP service for transferring files which makes file
+transfer much faster as well as restartable if they fail. Data transfers
+throughput is improved when a user is transferring multiple files from a
+directory because the GridFTP service will send multiple files at the
+same time. In addition, users will receive notifications through email
+and the web interface of the status of the transfer. Globus Online
+provides users a very easy to use web interface for transferring files
+to other locations who have Globus Connect Servers or through Globus
+Connect Personal. Almost all major research institutions have access to
+Globus Online. In addition, users can install Globus Connect Personal on
+their personal computers for free. The application supports Windows,
+Linux, and Mac.
+
+Please see the `Using Globus
+Online <Transferring_Files#Using_Globus_Online>`__ instructions on how
+to use Globus Online with WVU's Data Transfer Nodes.
+
+Users may also use sftp to transfer files to and from the DTNs. To
+access the DTNs you need to use the hostname data.hpc.wvu.edu (i.e. sftp
+username@data.hpc.wvu.edu). However, scp and rsync are not permitted.
+**Note:** If you use sftp with the DTNs your directory structure will be
+different than you are using on Spruce Knob. Your landing directory upon
+login will be /home/user\_name. Your scratch directory is located at
+/scratch/user\_name.
+
+**Note:** Data Transfer Nodes and Globus Online are only connected
+directly to Spruce Knob. If you need to transfer files to Mountaineer,
+you will need to use `Alternative Transfer
+Methods <Transferring_Files#Alternative_Transfer_Methods>`__ and connect
+to mountaineer.hpc.wvu.edu.
+
+Using Globus Online
+-------------------
+
+**Review** https://www.globus.org/researchers/getting-started for a step
+by step guide on how to get a Globus Online Account and to start
+transferring files.
+
+The following are the basic steps for getting started using Globus
+Online with WVU DTN Servers.
+
+Access Globus Online Web Portal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. Go to http://www.globus.org with your web browser and select "Sign
+   Up" if you do not already have access to Globus Online. If you
+   already have access, select Log in in the upper right hand corner.
+#. Search for your organization which will be "West Virginia University"
+   and select "Continue".
+#. Select "West Virginia University" at the Identity Provider on the
+   CiLogon Page and select "Log On".
+#. You will now be redirected to WVU's Sign on Page. Here you will enter
+   you WVU Logon information and select "LOGIN".
+#. You should now be successfully logged into Globus Online and ready to
+   transfer file.
+
+Transfer Files with Globus Online
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. To transfer files to/from your local PC/workstation you need to
+   install Globus Connect Personal. Please visit
+   https://www.globus.org/globus-connect-personal and under "Downloads"
+   select the version that matches your operating system. The next page
+   will guide you through the process of installation. If you just need
+   to transfer data between the WVU's HPC center and another location
+   that uses Globus Online you may skip this step.
+#. Go to https://www.globus.org/xfer/StartTransfer to start the process
+   of transferring files.
+#. On the "Transfer Files" Page there will be a section for two
+   endpoints. Each "Endpoint" can be be used to transfer files to and
+   from the Endpoint to the other Endpoint. For WVU's DTNs you will
+   search for "wvu#hpcdtn".
+#. If you are using an endpoint that is not managed by WVU, you will be
+   presented with the following request: "Please authenticate to access
+   this endpoint". Select "Continue" if you wish to continue.
+#. A CiLogon page will be presented where you can select the appropriate
+   Identity Provider for this endpoint. After you make your selection,
+   please select "Logon On".
+#. You should now be presented with a login page from your Identity
+   Provider.
+#. On the WVU DTN Endpoint, your default file location will be /gpfs.
+   You can transfer directly to/from your home directory, group
+   directory, or scratch directory by selecting the desired path in the
+   "Path" section.
+#. By using selecting the file to transfer and use the arrows you should
+   now be able to transfer files between end points. You should receive
+   an email when your transfer completes or if there are errors. You can
+   also monitor the transfer under the "Activity" section/tab.
+
+Note: For those who prefer to use a command line interface (CLI) for
+data transfers, you may use Globus Online via the CLI.
+
+Globus Online Hints
+~~~~~~~~~~~~~~~~~~~
+
+#. Globus Online recently made an update that allows users to bookmark
+   endpoints and specific directory locations. This makes it quicker and
+   easier to transfer files after the first use. More information on
+   bookmarks can be found at
+   https://www.globus.org/blog/greatly-improved-endpoint-search.
+
+Using Globus Online with Pittsburgh Supercomputing Center (PSC)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+WVU Researcher's have the option to purchase archival storage through
+`PSC's Data
+SuperCell. <http://www.psc.edu/index.php/major-initiatives/data-supercell>`__
+For more information on getting access to SuperCell please contact the
+Research Computing Help Desk at https://helpdesk.hpc.wvu.edu.
+
+With the Data SuperCell, users can easily and quickly transfer files
+from WVU to PSC via Globus Online. Instructions on how to configure
+Globus Online to work with PSC's Data Supercell can be found
+`here <http://www.psc.edu/index.php/resources-for-users/storage-resources#go>`__.
+
+Globus Online Command Line Interface
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For those who prefer to use a command line interface (CLI) for data
+transfers, you may use Globus Online via the CLI. Detailed instructions
+on how to utilize the CLI can be found at
+[https://support.globus.org/entries/30058643-Using-the-Command-Line-Interface-CLI-
+Globus Online CLI Instructions]. Below is an example of using Globus
+Online CLI for reference.
+
+#. Ensure both end points you are using for the Globus Online transfer
+   are activated and will not expire before the transfer completes. This
+   can be done at `Globus
+   Endpoints <https://www.globus.org/app/endpoints>`__ and can also done
+   from the command line via the following command.
+
+       ::
+
+           :$> ssh globus_username@cli.globusonline.org endpoint-activate endpoint_name
+           :
+
+#. You can use one of the following options with the transfer command to
+   transfer files.
+
+       ::
+
+           :Simple method: one file or recursive directory
+           :    transfer [OPTIONS] -- SOURCE-ENDPOINT/FILE DESTINATION-ENDPOINT/FILE
+           :    transfer [OPTIONS] -- SOURCE-ENDPOINT/DIRECTORY/ DESTINATION-ENDPOINT/DIRECTORY/ -r
+           :Advanced method: multiple input lines read from stdin
+           :    transfer [OPTIONS] < INPUT LINE(S)
+           :
+
+#. Example Transfer:
+
+   -  Create a file with a list of files to be transferred
+
+          ::
+
+              :cat << EOF > /tmp/yourfilehere
+              :username#psc-cilogon/file.txt
+              :wvu#hpcdtn/gpfs/home/username/file.txt
+              :EOF
+              :
+
+   -  Execute transfer command
+      :
+
+           .. raw:: html
+
+              </pre>
+
+Alternative Transfer Methods
+----------------------------
+
+To transfer files to the Spruce Knob system and you prefer/can't use the
+Globus Online method described above, you may still use the Data
+Transfer nodes by using the **data.hpc.wvu.edu** hostname. **Note:** You
+can only use Globus Online and SFTP with the Data Transfer Nodes. Other
+methods of transfer (ex. scp, and rsync) can be used for transfers
+against the login nodes but it is not recommended for large transfers.
+
+Using SCP
+~~~~~~~~~
+
+HPC clusters require authenticated connections that uses the encrypted
+protocol SSH, because of this regular ftp connections are blocked. SCP
+comes with all current Unix like operating systems (including Linux and
+Mac OS X) and is available from a terminal. To copy a single file using
+scp you can type
+
+::
+
+    $> scp <filename> username@hostname:.
+
+Where filename is the name of the file you want to be copied, and
+username is your username, hostname is the hostname of the cluster you
+are connecting to. You will be prompted for your username password, and
+then the transfer will begin after authentication. After the hostname
+address name you can specify where you want the file to be copied to and
+what the file will be named on the server. Using the scp command, a
+colon ':' must be specified after the target machines address, in the
+above example the period '.' tells scp to copy the file to the default
+directory (your home directory) and name the file the current filename.
+For instance, if the filename was 'python\_script.py', scp will copy the
+file to your home directory and name the file python\_script.py. If, for
+example, you wanted to copy the file to your SCRATCH directory
+(information about the SCRATCH directory can be found at the `File
+System <File System>`__ page) and name the file a different name you
+could use the command
+
+::
+
+    $> scp <filename> username@hostname:$SCRATCH/new_filename
+
+The above commmand will re-name the file to new\_filename and place it
+in your SCRTACH directory. If you instead want to copy over entire
+directories, this can be done the with -r option
+
+::
+
+    $> scp -r <directory> username@hostname:.
+
+The above command will copy recursively the specified directory from
+your local machine to your home directory on the cluster preserving
+filenames of the directory. A great option for copying over directories
+is to first tarball the directory into a single file. This can be done
+using the Unix tar command
+
+::
+
+    $> tar cvzf archive.tar.gz <directory>
+    $> scp archive.tar.gz username@hostname:.
+
+Then after connecting to the server through SSH, you can unarchive the
+tarball using
+
+::
+
+    $> tar xvzf archive.tar.gz
+
+The tar command compresses the directory (which will also speed up
+transfer time) into a single file. This is also a great way to combine
+multiple files on a local machine before transfer
+
+::
+
+    $> tar cvzf archive.tar.gz <file1> <file2> ... <file100>
+
+The archive.tar.gz is the name of the soon to be created tarball. You
+can name this file whatever you want, and file name extensions are not
+required, .tar.gz is recommended so you can quickly know that you are
+looking at a compressed tarball.
+
+Using WinSCP
+^^^^^^^^^^^^
+
+For transferring files on a Windows computer, you will have to obtain a
+windows SCP client. We recommend
+`WinSCP <http://winscp.net/eng/index.php>`__, it's free and has a very
+easy to use graphical interface.

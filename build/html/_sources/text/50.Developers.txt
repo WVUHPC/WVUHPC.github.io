@@ -1,0 +1,11 @@
+.. _chap-developers:
+
+For Developers
+##############
+
+.. toctree::
+  :maxdepth: 2
+
+  51.Programming.rst
+  52.Parallel.rst
+  53.GCC.rst

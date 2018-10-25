@@ -1,0 +1,113 @@
+Spruce Knob
+===========
+
+Hardware
+--------
+
+
+Queues
+------
+
+
+Environment modules
+-------------------
+
+The current state and limits of queues can be found using the qstat
+command.
+
+::
+
+    $> qstat -q
+
+    server: srih0001.hpc.wvu.edu
+
+    Queue            Memory CPU Time Walltime Node  Run Que Lm  State
+    ---------------- ------ -------- -------- ----  --- --- --  -----
+    admin              --      --       --      --    0   0 --   E R
+    ahismail           --      --       --      --    6   1 --   E R
+    alromero           --      --       --      --   13   5 --   E R
+    bts0019            --      --       --      --    0   0 --   D S
+    bvpopp             --      --       --      --    7   0 --   E R
+    cedumitrescu       --      --       --      --   12  12 --   E R
+    comm_256g_mem      --      --    168:00:0   --    4   5 --   E R
+    comm_gpu           --      --    168:00:0   --    3   1 --   E R
+    comm_large_mem     --      --    168:00:0   --    5 268 --   E R
+    comm_mmem_day      --      --    24:00:00   --    9  38 --   E R
+    comm_mmem_week     --      --    168:00:0   --   71 264 --   E R
+    comm_smp           --      --    168:00:0   --    6   0 --   E R
+    debug              --      --    00:15:00   --    0   0 --   E R
+    dsmebane           --      --       --      --    2   0 --   E R
+    genomics_core      --      --       --      --   16 300 --   E R
+    gmunu              --      --       --      --    0   0 --   E R
+    gspirou            --      --       --      --    0   0 --   E R
+    jaspeir            --      --       --      --    0   0 --   E R
+    jbmertz            --      --       --      --    3   2 --   E R
+    jbmertz_gpu        --      --       --      --    2   0 --   E R
+    jplewis            --      --       --      --    8 114 --   E R
+    jplewis_large      --      --       --      --    0   0 --   E R
+    jshawkins          --      --       --      --    0   0 --   E R
+    jthibaul           --      --       --      --    0   0 --   D R
+    mcwilliams_gpu     --      --       --      --    0   0 --   E R
+    sp0045             --      --       --      --   13   0 --   E R
+    spdifazio          --      --       --      --   25 600 --   E R
+    standby            --      --    04:00:00   --  271 538 --   E R
+    stmcwilliams       --      --       --      --    1   0 --   E R
+    stmcwilliams_lp    --      --       --      --    1   0 --   E R
+    tdmusho            --      --       --      --    0   0 --   E R
+    testqueue          --      --       --      --    0   0 --   E R
+    training           --      --       --      --    0   0 --   D S
+    vyakkerman         --      --       --      --   13   0 --   E R
+    zbetienne          --      --       --      --    1   0 --   E R
+                                                   ----- -----
+                                                     495  2148
+
+There are three main queue types - research team queues, the standby
+queue, and community node queues.
+
+Research Team Queues
+--------------------
+
+Research teams that have bought their own compute nodes have private
+queues that link all their compute nodes together. Only users given
+permission from the research team's buyer (Usually the labs PI) will
+have permission to directly submit jobs to these queues. While these are
+private queues - unused resources/compute nodes from these queues will
+be available to the standby queue (see below). However, per the
+system-wide policies, all research team's compute nodes must be
+available to the research team's users within 4 hours of job submission.
+By default, these queues are regulated by first come, first serve
+queuing. However, individual research teams can ask for different
+settings for their respective queue, and should
+`contact <Getting Help>`__ the RC HPC team with these requests.
+
+Standby Queue
+-------------
+
+The standy queue is for using resources from research teams queues that
+are not currently being used. Priority on the standby queue is set by
+fair share queuing. This means that user priority is assigned based on a
+combination of the size of the job and how much system resources the
+user have used during the given week, with higher priority assigned to
+larger jobs and/or user jobs that have used fewer system resources in
+the week. Further, the standby queue has a 4 hour wall time.
+
+Community Node Queues
+---------------------
+
+Spruce Knob has several queues that start with the word 'comm'. These
+queues are linked to the 51 compute nodes bought using NSF funding
+sources, and as such is open for Statewide Academic use,
+hardware/resource information can be found on the `Spruce Knob Systems
+page <Systems_Spruce>`__ These queues are separated by node type (i.e.
+large memory, gpu, smp) and can be used by all users. Currently, these
+nodes are regulated by fair share queuing. This means that user priority
+is assigned based on a combination of the size of the job and how much
+system resources the user have used during the given week, with higher
+priority assigned to larger jobs and/or user jobs that have used less
+system resources in the week. Further, all community queues have a 24
+hour wall time, except for the week long medium memory queue
+(comm\_mmem\_week). comm\_mmem\_week allows jobs up to a week (168
+hours); however, this queue class also limits the maximum number of
+nodes to 11, and a single user can not exceed 80 CPUs total within this
+queue. These restrictions are set to prevent a single user occupying a
+large number of the community resources for an excessively long time.

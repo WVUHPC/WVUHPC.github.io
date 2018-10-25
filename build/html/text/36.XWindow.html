@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>XWindow &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="next" title="For Advanced Users" href="40.AdvancedUser.html" />
+    <link rel="prev" title="Managing Scratch Contents" href="35.Scratch.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="31.Editors.html">Terminal-based Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="32.editors.html">Terminal-based Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="33.GlobusOnline.html">Globus Online</a></li>
+<li class="toctree-l2"><a class="reference internal" href="33.job_samples.html">Samples of Job Submission scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="34.EnvModules.html">Environment Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="35.Scratch.html">Managing Scratch Contents</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">XWindow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction-to-x">Introduction to X</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launching-x-gui-programs">Launching X (GUI Programs)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#linux-os-x-instructions">Linux/OS X Instructions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#windows-instructions">Windows Instructions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#running-x-gui-programs-on-computing-nodes">Running X (GUI Programs) on Computing Nodes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="30.BasicUser.html">For Basic Users</a> &raquo;</li>
+        
+      <li>XWindow</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/36.XWindow.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="xwindow">
+<h1>XWindow<a class="headerlink" href="#xwindow" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction-to-x">
+<h2>Introduction to X<a class="headerlink" href="#introduction-to-x" title="Permalink to this headline">¶</a></h2>
+<p>To view a graphical user interface (GUI) from one of HPC systems you
+will need to have a X Windows System (often shorten to just &#8216;X&#8217;)
+installed on your PC. UNIX based operating systems (Linux and Mac OS X)
+come with an X Window terminal called X11. For Windows based machines,
+you will need to install one.</p>
+<p>Once you have a functioning X Server running on your PC, you will need
+to tunnel your graphics program from the HPC system to your PC.</p>
+<p><strong>Note: You may execute lite (i.e. not resource intensive) GUI programs
+on the login nodes of the HPC systems. However, these should be programs
+cannot be resource intensive. If you need to run programs such as MATLAB
+and you plan on doing computation through the MATLAB GUI, you will need
+to submit your job to the scheduler.</strong></p>
+</div>
+<div class="section" id="launching-x-gui-programs">
+<h2>Launching X (GUI Programs)<a class="headerlink" href="#launching-x-gui-programs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="linux-os-x-instructions">
+<h3>Linux/OS X Instructions<a class="headerlink" href="#linux-os-x-instructions" title="Permalink to this headline">¶</a></h3>
+<p>With Linux or OS X you can simply run the command below from your
+terminal window to enable X11 forward through SSH.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; ssh -XC username@hostname
+</pre></div>
+</div>
+<p>To verify your X setup, you can run the command &#8220;xclock&#8221; from the
+terminal. If you have successfully tunneled your X traffic, you should
+see a small clock show up on your screen which you may now close. If you
+are not seeing a clock, please open a <a class="reference external" href="Getting_Help">HelpDesk Ticket</a>
+for further assistance.</p>
+</div>
+<div class="section" id="windows-instructions">
+<h3>Windows Instructions<a class="headerlink" href="#windows-instructions" title="Permalink to this headline">¶</a></h3>
+<p>Windows does not have a built in X11 Server so one will need to be
+installed. Below are instructions for
+<a class="reference external" href="https://sourceforge.net/projects/xming/">Xming</a> which is compatible
+with Putty but you maybe also which to look into
+<a class="reference external" href="http://mobaxterm.mobatek.net/">MobaXterm</a>.</p>
+<ol class="arabic">
+<li><p class="first">Download Xming from here
+<a class="reference external" href="https://sourceforge.net/projects/xming/files/Xming/6.9.0.31/Xming-6-9-0-31-setup.exe/download">https://sourceforge.net/projects/xming/files/Xming/6.9.0.31/Xming-6-9-0-31-setup.exe/download</a>.</p>
+</li>
+<li><p class="first">Install and follow the on-screen instructions. If you do not already
+have Putty installed you will want to select &#8220;Full Installation&#8221; when
+you get to the &#8220;Select Components&#8221; screen.</p>
+</li>
+<li><p class="first">At the end of the installation you can keep &#8220;Launch Xming&#8221; selected
+or launch Xming from your start menu.</p>
+</li>
+<li><p class="first">When Xming is running, you will have a icon in your Windows systray
+that looks like an &#8220;X&#8221;.</p>
+</li>
+<li><p class="first">Follow the <a class="reference external" href="PuttyIns">Putty Instructions</a> to setup connectivity
+but before you click &#8220;Open&#8221; be sure to set &#8220;Enable X11 forwarding&#8221;
+under the Category Option section. This will be under Connection,
+SSH, and X11. Example:</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/putty_xforward.png" src="../_images/putty_xforward.png" />
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">You should now be connected to an HPC system with X Forward enabled.</p>
+</li>
+<li><p class="first">To verify your X setup, you can run the command &#8220;xclock&#8221; from the
+terminal. If you have successfully tunneled your X traffic, you
+should see a small clock show up on your screen which you may now
+close. If you are not seeing a clock, please open a HelpDesk Ticket
+for further assistance.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="running-x-gui-programs-on-computing-nodes">
+<h2>Running X (GUI Programs) on Computing Nodes<a class="headerlink" href="#running-x-gui-programs-on-computing-nodes" title="Permalink to this headline">¶</a></h2>
+<p>GUI intensive programs must be ran on a compute node. To accomplish
+this, one will need to follow the applicable above steps to first
+establish a X session to an HPC system. Once this has been accomplished
+you will need to run the following command which will launch an
+interactive job and give you terminal access on a compute node. Note:
+The following command is just an example and you will still need to set
+the appropriate pbs flags that meets the task&#8217;s needs.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; qsub -q standby -X -I
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="40.AdvancedUser.html" class="btn btn-neutral float-right" title="For Advanced Users" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="35.Scratch.html" class="btn btn-neutral" title="Managing Scratch Contents" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Guillermo Avendano-Franco
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
