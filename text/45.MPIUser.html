@@ -1,0 +1,327 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using MPI on RC HPC Clusters &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="next" title="Executing HADOOP jobs" href="46.Hadoop.html" />
+    <link rel="prev" title="Miniconda" href="44.Miniconda.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="41.Conda.html">Conda and BioConda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42.Singularity.html">Singularity Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="42.SingularityContainers.html">Singularity Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="43.UserInstallation.html">Installing Packages in User Locations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="44.Miniconda.html">Miniconda</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Using MPI on RC HPC Clusters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mpi-standards">MPI Standards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#useful-books">Useful Books</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#libraries">Libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="46.Hadoop.html">Executing HADOOP jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="47.Python.html">Python Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="48.Python.html">Python and scientific libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="48.Pythonvenv.html">Python Virtual Environments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="40.AdvancedUser.html">For Advanced Users</a> &raquo;</li>
+        
+      <li>Using MPI on RC HPC Clusters</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/45.MPIUser.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-mpi-on-rc-hpc-clusters">
+<h1>Using MPI on RC HPC Clusters<a class="headerlink" href="#using-mpi-on-rc-hpc-clusters" title="Permalink to this headline">¶</a></h1>
+<p>Many parallel programs take advantage of Message Passing Interface (MPI)
+to communicate across compute nodes and efficiently scale up
+computational analysis. While we can&#8217;t give instructions on how to run
+every program using MPI, all the programs using MPI need to be told
+which hosts and cpus to run. Generally, most programs use the mpirun
+executable that comes pre-packaged with MPI libraries to accomplish this
+task. The general syntax for running parallel programs with mpirun is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>mpirun -np &lt;processor number&gt; -machinefile &lt;procs file&gt; command [..args]
+</pre></div>
+</div>
+<p>With -np option specifying the number of processors the job requires,
+and the -machinefile option with a file that contains the host address
+and number of CPUs to use on each host. On a distributed computing
+cluster with a scheduler in place (both RC clusters), the number of
+processors will be the same number of processors requested with the
+<a class="reference external" href="Running_Jobs">qsub command</a>. Further, it is almost impossible to
+know which hosts your job will run on, since that is determined by a
+number of factors with the current state of the system. Therefore
+Moab/Torque provides a machinefile for each job that is executed through
+the scheduler, and it&#8217;s location is stored in the $PBS_NODEFILE
+variable. Therefore, on our clusters, the general syntax of running a
+program parallel with MPI is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>module load &lt;mpi/modulefile&gt;
+
+mpirun -np &lt;processor number&gt; -machinefile $PBS_NODEFILE command [..args]
+</pre></div>
+</div>
+<p>with being the appropriate <a class="reference external" href="Using_Modulefiles">module file</a> for the
+MPI package the program was compiled with. Of course, you should consult
+the programs documentation for details, as some programs come with their
+own mpirun substitute and/or work better with certain MPI libraries than
+others. Also, each MPI libraries have differences with their mpirun
+commands, and therefore you should take a look at the MPI&#8217;s own
+documentation (links below).</p>
+<div class="section" id="mpi-standards">
+<h2>MPI Standards<a class="headerlink" href="#mpi-standards" title="Permalink to this headline">¶</a></h2>
+<p>Message Passing Interface standards are available free for download at
+<a class="reference external" href="http://www.mpi-forum.org/docs/docs.html">www.mpi-forum.org</a>.</p>
+</div>
+<div class="section" id="useful-books">
+<h2>Useful Books<a class="headerlink" href="#useful-books" title="Permalink to this headline">¶</a></h2>
+<p>Parallel Programming with MPI. Peter Pecheco. ISBN-13:978-1558603394</p>
+<p>Parallel Programming in C with MPI and OpenMP. Michael Quinn.
+ISBN-13:978-0072822564</p>
+<p>MPI: The Complete Reference. Snir et al. ISBN-13:978-0262692168</p>
+</div>
+<div class="section" id="libraries">
+<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">¶</a></h2>
+<p>Current information about location and version of library can be found
+in their respective <a class="reference external" href="Using_Modulefiles">modulefiles</a>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Library</strong></td>
+<td><strong>Documentation</strong></td>
+</tr>
+<tr class="row-even"><td>Intel</td>
+<td><a class="reference external" href="http://software.intel.com/en-us/articles/intel-mpi-library-documentation">http://software.intel.com/en-us/articles/intel-mpi-library-documentation</a></td>
+</tr>
+<tr class="row-odd"><td>Mpich2</td>
+<td><a class="reference external" href="http://www.mpich.org/documentation/guides/">http://www.mpich.org/documentation/guides/</a></td>
+</tr>
+<tr class="row-even"><td>Mvapich2</td>
+<td><a class="reference external" href="http://mvapich.cse.ohio-state.edu/support/">http://mvapich.cse.ohio-state.edu/support/</a></td>
+</tr>
+<tr class="row-odd"><td>OpenMPI</td>
+<td><a class="reference external" href="http://www.open-mpi.org/doc/">http://www.open-mpi.org/doc/</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="46.Hadoop.html" class="btn btn-neutral float-right" title="Executing HADOOP jobs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="44.Miniconda.html" class="btn btn-neutral" title="Miniconda" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Guillermo Avendano-Franco
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

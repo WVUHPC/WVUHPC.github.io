@@ -1,0 +1,518 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Transferring Files &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="next" title="For Basic Users" href="30.BasicUser.html" />
+    <link rel="prev" title="Job Submission" href="26.JobSubmission.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="20.QuickStart.html">Quick Start</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="21.GettingAccess.html">Getting Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22.Connect.html">Connect to the cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="23.CommandLine.html">Command Line Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="24.EditFiles.html">Editing files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="25.Storage.html">Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="26.JobSubmission.html">Job Submission</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Transferring Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-transfer-nodes">Data Transfer Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-globus-online">Using Globus Online</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#access-globus-online-web-portal">Access Globus Online Web Portal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#transfer-files-with-globus-online">Transfer Files with Globus Online</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#globus-online-hints">Globus Online Hints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-globus-online-with-pittsburgh-supercomputing-center-psc">Using Globus Online with Pittsburgh Supercomputing Center (PSC)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#globus-online-command-line-interface">Globus Online Command Line Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#alternative-transfer-methods">Alternative Transfer Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#using-scp">Using SCP</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="20.QuickStart.html">Quick Start</a> &raquo;</li>
+        
+      <li>Transferring Files</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/27.TransferFiles.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="transferring-files">
+<span id="qs-transfer-files"></span><h1>Transferring Files<a class="headerlink" href="#transferring-files" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="data-transfer-nodes">
+<h2>Data Transfer Nodes<a class="headerlink" href="#data-transfer-nodes" title="Permalink to this headline">¶</a></h2>
+<p>The HPC facility has two servers dedicated for transferring files around
+WVU as well with other locations around the globe. These two servers are
+called Data Transfer Nodes (DTNs) and have over 400 TB of usable
+temporary storage. These servers are connected at 10 Gb/sec speed to
+WVU&#8217;s Science DMZ which is dedicated to transferring research data and
+is separated from other network traffic. This allows data to be
+transferred with low latency and high bandwidth to other locations.</p>
+<p>DTNs are connected directly to the Spruce Knob HPC cluster which allows
+fast transfer of data to and from Spruce Knob. Data to Spruce Knob is
+transferred over FDR Infiniband at speeds up to 56 Gb/sec. In addition
+to HPC users, this space is for all researchers at WVU who need to
+temporarily store and transfer data to other locations at WVU or
+elsewhere throughout the world.</p>
+<p>The preferred method for transferring data to and from the data transfer
+nodes is to use <a class="reference external" href="http://globus.org">Globus Online</a>. Globus Online
+establishes a GridFTP service for transferring files which makes file
+transfer much faster as well as restartable if they fail. Data transfers
+throughput is improved when a user is transferring multiple files from a
+directory because the GridFTP service will send multiple files at the
+same time. In addition, users will receive notifications through email
+and the web interface of the status of the transfer. Globus Online
+provides users a very easy to use web interface for transferring files
+to other locations who have Globus Connect Servers or through Globus
+Connect Personal. Almost all major research institutions have access to
+Globus Online. In addition, users can install Globus Connect Personal on
+their personal computers for free. The application supports Windows,
+Linux, and Mac.</p>
+<p>Please see the <a class="reference external" href="Transferring_Files#Using_Globus_Online">Using Globus
+Online</a> instructions on how
+to use Globus Online with WVU&#8217;s Data Transfer Nodes.</p>
+<p>Users may also use sftp to transfer files to and from the DTNs. To
+access the DTNs you need to use the hostname data.hpc.wvu.edu (i.e. sftp
+<a class="reference external" href="mailto:username&#37;&#52;&#48;data&#46;hpc&#46;wvu&#46;edu">username<span>&#64;</span>data<span>&#46;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a>). However, scp and rsync are not permitted.
+<strong>Note:</strong> If you use sftp with the DTNs your directory structure will be
+different than you are using on Spruce Knob. Your landing directory upon
+login will be /home/user_name. Your scratch directory is located at
+/scratch/user_name.</p>
+<p><strong>Note:</strong> Data Transfer Nodes and Globus Online are only connected
+directly to Spruce Knob. If you need to transfer files to Mountaineer,
+you will need to use <a class="reference external" href="Transferring_Files#Alternative_Transfer_Methods">Alternative Transfer
+Methods</a> and connect
+to mountaineer.hpc.wvu.edu.</p>
+</div>
+<div class="section" id="using-globus-online">
+<h2>Using Globus Online<a class="headerlink" href="#using-globus-online" title="Permalink to this headline">¶</a></h2>
+<p><strong>Review</strong> <a class="reference external" href="https://www.globus.org/researchers/getting-started">https://www.globus.org/researchers/getting-started</a> for a step
+by step guide on how to get a Globus Online Account and to start
+transferring files.</p>
+<p>The following are the basic steps for getting started using Globus
+Online with WVU DTN Servers.</p>
+<div class="section" id="access-globus-online-web-portal">
+<h3>Access Globus Online Web Portal<a class="headerlink" href="#access-globus-online-web-portal" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Go to <a class="reference external" href="http://www.globus.org">http://www.globus.org</a> with your web browser and select &#8220;Sign
+Up&#8221; if you do not already have access to Globus Online. If you
+already have access, select Log in in the upper right hand corner.</li>
+<li>Search for your organization which will be &#8220;West Virginia University&#8221;
+and select &#8220;Continue&#8221;.</li>
+<li>Select &#8220;West Virginia University&#8221; at the Identity Provider on the
+CiLogon Page and select &#8220;Log On&#8221;.</li>
+<li>You will now be redirected to WVU&#8217;s Sign on Page. Here you will enter
+you WVU Logon information and select &#8220;LOGIN&#8221;.</li>
+<li>You should now be successfully logged into Globus Online and ready to
+transfer file.</li>
+</ol>
+</div>
+<div class="section" id="transfer-files-with-globus-online">
+<h3>Transfer Files with Globus Online<a class="headerlink" href="#transfer-files-with-globus-online" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>To transfer files to/from your local PC/workstation you need to
+install Globus Connect Personal. Please visit
+<a class="reference external" href="https://www.globus.org/globus-connect-personal">https://www.globus.org/globus-connect-personal</a> and under &#8220;Downloads&#8221;
+select the version that matches your operating system. The next page
+will guide you through the process of installation. If you just need
+to transfer data between the WVU&#8217;s HPC center and another location
+that uses Globus Online you may skip this step.</li>
+<li>Go to <a class="reference external" href="https://www.globus.org/xfer/StartTransfer">https://www.globus.org/xfer/StartTransfer</a> to start the process
+of transferring files.</li>
+<li>On the &#8220;Transfer Files&#8221; Page there will be a section for two
+endpoints. Each &#8220;Endpoint&#8221; can be be used to transfer files to and
+from the Endpoint to the other Endpoint. For WVU&#8217;s DTNs you will
+search for &#8220;wvu#hpcdtn&#8221;.</li>
+<li>If you are using an endpoint that is not managed by WVU, you will be
+presented with the following request: &#8220;Please authenticate to access
+this endpoint&#8221;. Select &#8220;Continue&#8221; if you wish to continue.</li>
+<li>A CiLogon page will be presented where you can select the appropriate
+Identity Provider for this endpoint. After you make your selection,
+please select &#8220;Logon On&#8221;.</li>
+<li>You should now be presented with a login page from your Identity
+Provider.</li>
+<li>On the WVU DTN Endpoint, your default file location will be /gpfs.
+You can transfer directly to/from your home directory, group
+directory, or scratch directory by selecting the desired path in the
+&#8220;Path&#8221; section.</li>
+<li>By using selecting the file to transfer and use the arrows you should
+now be able to transfer files between end points. You should receive
+an email when your transfer completes or if there are errors. You can
+also monitor the transfer under the &#8220;Activity&#8221; section/tab.</li>
+</ol>
+<p>Note: For those who prefer to use a command line interface (CLI) for
+data transfers, you may use Globus Online via the CLI.</p>
+</div>
+<div class="section" id="globus-online-hints">
+<h3>Globus Online Hints<a class="headerlink" href="#globus-online-hints" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Globus Online recently made an update that allows users to bookmark
+endpoints and specific directory locations. This makes it quicker and
+easier to transfer files after the first use. More information on
+bookmarks can be found at
+<a class="reference external" href="https://www.globus.org/blog/greatly-improved-endpoint-search">https://www.globus.org/blog/greatly-improved-endpoint-search</a>.</li>
+</ol>
+</div>
+<div class="section" id="using-globus-online-with-pittsburgh-supercomputing-center-psc">
+<h3>Using Globus Online with Pittsburgh Supercomputing Center (PSC)<a class="headerlink" href="#using-globus-online-with-pittsburgh-supercomputing-center-psc" title="Permalink to this headline">¶</a></h3>
+<p>WVU Researcher&#8217;s have the option to purchase archival storage through
+<a class="reference external" href="http://www.psc.edu/index.php/major-initiatives/data-supercell">PSC&#8217;s Data
+SuperCell.</a>
+For more information on getting access to SuperCell please contact the
+Research Computing Help Desk at <a class="reference external" href="https://helpdesk.hpc.wvu.edu">https://helpdesk.hpc.wvu.edu</a>.</p>
+<p>With the Data SuperCell, users can easily and quickly transfer files
+from WVU to PSC via Globus Online. Instructions on how to configure
+Globus Online to work with PSC&#8217;s Data Supercell can be found
+<a class="reference external" href="http://www.psc.edu/index.php/resources-for-users/storage-resources#go">here</a>.</p>
+</div>
+<div class="section" id="globus-online-command-line-interface">
+<h3>Globus Online Command Line Interface<a class="headerlink" href="#globus-online-command-line-interface" title="Permalink to this headline">¶</a></h3>
+<p>For those who prefer to use a command line interface (CLI) for data
+transfers, you may use Globus Online via the CLI. Detailed instructions
+on how to utilize the CLI can be found at
+[<a class="reference external" href="https://support.globus.org/entries/30058643-Using-the-Command-Line-Interface-CLI">https://support.globus.org/entries/30058643-Using-the-Command-Line-Interface-CLI</a>-
+Globus Online CLI Instructions]. Below is an example of using Globus
+Online CLI for reference.</p>
+<ol class="arabic">
+<li><p class="first">Ensure both end points you are using for the Globus Online transfer
+are activated and will not expire before the transfer completes. This
+can be done at <a class="reference external" href="https://www.globus.org/app/endpoints">Globus
+Endpoints</a> and can also done
+from the command line via the following command.</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span>:$&gt; ssh globus_username@cli.globusonline.org endpoint-activate endpoint_name
+:
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">You can use one of the following options with the transfer command to
+transfer files.</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span>:Simple method: one file or recursive directory
+:    transfer [OPTIONS] -- SOURCE-ENDPOINT/FILE DESTINATION-ENDPOINT/FILE
+:    transfer [OPTIONS] -- SOURCE-ENDPOINT/DIRECTORY/ DESTINATION-ENDPOINT/DIRECTORY/ -r
+:Advanced method: multiple input lines read from stdin
+:    transfer [OPTIONS] &lt; INPUT LINE(S)
+:
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Example Transfer:</p>
+<ul>
+<li><p class="first">Create a file with a list of files to be transferred</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span>:cat &lt;&lt; EOF &gt; /tmp/yourfilehere
+:username#psc-cilogon/file.txt
+:wvu#hpcdtn/gpfs/home/username/file.txt
+:EOF
+:
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Execute transfer command
+:</p>
+<blockquote>
+<div></pre></div></blockquote>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="alternative-transfer-methods">
+<h2>Alternative Transfer Methods<a class="headerlink" href="#alternative-transfer-methods" title="Permalink to this headline">¶</a></h2>
+<p>To transfer files to the Spruce Knob system and you prefer/can&#8217;t use the
+Globus Online method described above, you may still use the Data
+Transfer nodes by using the <strong>data.hpc.wvu.edu</strong> hostname. <strong>Note:</strong> You
+can only use Globus Online and SFTP with the Data Transfer Nodes. Other
+methods of transfer (ex. scp, and rsync) can be used for transfers
+against the login nodes but it is not recommended for large transfers.</p>
+<div class="section" id="using-scp">
+<h3>Using SCP<a class="headerlink" href="#using-scp" title="Permalink to this headline">¶</a></h3>
+<p>HPC clusters require authenticated connections that uses the encrypted
+protocol SSH, because of this regular ftp connections are blocked. SCP
+comes with all current Unix like operating systems (including Linux and
+Mac OS X) and is available from a terminal. To copy a single file using
+scp you can type</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; scp &lt;filename&gt; username@hostname:.
+</pre></div>
+</div>
+<p>Where filename is the name of the file you want to be copied, and
+username is your username, hostname is the hostname of the cluster you
+are connecting to. You will be prompted for your username password, and
+then the transfer will begin after authentication. After the hostname
+address name you can specify where you want the file to be copied to and
+what the file will be named on the server. Using the scp command, a
+colon &#8216;:&#8217; must be specified after the target machines address, in the
+above example the period &#8216;.&#8217; tells scp to copy the file to the default
+directory (your home directory) and name the file the current filename.
+For instance, if the filename was &#8216;python_script.py&#8217;, scp will copy the
+file to your home directory and name the file python_script.py. If, for
+example, you wanted to copy the file to your SCRATCH directory
+(information about the SCRATCH directory can be found at the <a class="reference external" href="FileSystem">File
+System</a> page) and name the file a different name you
+could use the command</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; scp &lt;filename&gt; username@hostname:$SCRATCH/new_filename
+</pre></div>
+</div>
+<p>The above commmand will re-name the file to new_filename and place it
+in your SCRTACH directory. If you instead want to copy over entire
+directories, this can be done the with -r option</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; scp -r &lt;directory&gt; username@hostname:.
+</pre></div>
+</div>
+<p>The above command will copy recursively the specified directory from
+your local machine to your home directory on the cluster preserving
+filenames of the directory. A great option for copying over directories
+is to first tarball the directory into a single file. This can be done
+using the Unix tar command</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; tar cvzf archive.tar.gz &lt;directory&gt;
+$&gt; scp archive.tar.gz username@hostname:.
+</pre></div>
+</div>
+<p>Then after connecting to the server through SSH, you can unarchive the
+tarball using</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; tar xvzf archive.tar.gz
+</pre></div>
+</div>
+<p>The tar command compresses the directory (which will also speed up
+transfer time) into a single file. This is also a great way to combine
+multiple files on a local machine before transfer</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; tar cvzf archive.tar.gz &lt;file1&gt; &lt;file2&gt; ... &lt;file100&gt;
+</pre></div>
+</div>
+<p>The archive.tar.gz is the name of the soon to be created tarball. You
+can name this file whatever you want, and file name extensions are not
+required, .tar.gz is recommended so you can quickly know that you are
+looking at a compressed tarball.</p>
+<div class="section" id="using-winscp">
+<h4>Using WinSCP<a class="headerlink" href="#using-winscp" title="Permalink to this headline">¶</a></h4>
+<p>For transferring files on a Windows computer, you will have to obtain a
+windows SCP client. We recommend
+<a class="reference external" href="http://winscp.net/eng/index.php">WinSCP</a>, it&#8217;s free and has a very
+easy to use graphical interface.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="30.BasicUser.html" class="btn btn-neutral float-right" title="For Basic Users" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="26.JobSubmission.html" class="btn btn-neutral" title="Job Submission" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Guillermo Avendano-Franco
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

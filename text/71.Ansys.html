@@ -1,0 +1,336 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Engineering: ANSYS Products &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="next" title="Engineering: ANSYS/Forte" href="72.ANSYSForte.html" />
+    <link rel="prev" title="Domain Specific Details" href="70.DomainSpecific.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Engineering: ANSYS Products</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#log-in-to-spruce">Log in to Spruce</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-an-interactive-job">Create an interactive job</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#load-the-module-for-ansys-fluids-or-structures">Load the module for ANSYS Fluids or Structures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#executing-the-ansys-package-of-your-choice">Executing the ANSYS package of your choice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="72.ANSYSForte.html">Engineering: ANSYS/Forte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="73.OpenFoam.html">Engineering: Running OpenFOAM simple tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="74.Bioconda.html">Bioinformatics: Conda and BioConda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="75.bowtie2.html">Bioinformatics: Using Bowtie2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="76.Matlab.html">Matlab: Running Matlab scripts on a HPC cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="77.Visit.html">Visualization: VisIt</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="70.DomainSpecific.html">Domain Specific Details</a> &raquo;</li>
+        
+      <li>Engineering: ANSYS Products</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/71.Ansys.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="engineering-ansys-products">
+<h1>Engineering: ANSYS Products<a class="headerlink" href="#engineering-ansys-products" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="log-in-to-spruce">
+<h2>Log in to Spruce<a class="headerlink" href="#log-in-to-spruce" title="Permalink to this headline">¶</a></h2>
+<p>Enter on Spruce with X11 forwarding, at least on Linux it is with</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>ssh -X &lt;USERNAME&gt;@spruce.hpc.wvu.edu
+</pre></div>
+</div>
+<p>On Windows you can MobaXTerm and the program will give you X11
+forwarding too</p>
+<p>You can test the X11 forwarding with:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">xeyes</span>
+</pre></div>
+</div>
+<p>A small window with two eyes will pop up on your screen, execute CTRL-C
+to exit The test will just prove that a window can be created on your
+client machine.</p>
+</div>
+<div class="section" id="create-an-interactive-job">
+<h2>Create an interactive job<a class="headerlink" href="#create-an-interactive-job" title="Permalink to this headline">¶</a></h2>
+<p>Ask for an interactive job with X11 Forwarding enabled, I am using
+&#8220;debug&#8221; queue, change accordingly</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>qsub -X -I -q debug
+</pre></div>
+</div>
+<p>Wait around 2 minutes to get a compute node allocated for you Different
+queues could have different response times before a compute node can be
+allocated to you. In general use &#8220;standby&#8221; on Spruce for Interactive
+jobs to run during a 4-hour timeframe.</p>
+</div>
+<div class="section" id="load-the-module-for-ansys-fluids-or-structures">
+<h2>Load the module for ANSYS Fluids or Structures<a class="headerlink" href="#load-the-module-for-ansys-fluids-or-structures" title="Permalink to this headline">¶</a></h2>
+<p>There are two modules corresponding to equal number of ANSYS Suites of
+packages</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>module load ansys/fluids_18.1
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>module load ansys/structures_18.1
+</pre></div>
+</div>
+<p>You can load one or another or both, they use the same MPI Runtime
+Libraries so they are compatible to each other.</p>
+</div>
+<div class="section" id="executing-the-ansys-package-of-your-choice">
+<h2>Executing the ANSYS package of your choice<a class="headerlink" href="#executing-the-ansys-package-of-your-choice" title="Permalink to this headline">¶</a></h2>
+<p>Most commands will be directly accessible to you, you do not need to
+enter the full path</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fluent</span>
+</pre></div>
+</div>
+<p>The fluent window opens and on the lower right corner you will see:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>/shared/software/ansys/fluids_181/ansys_inc/v181/fluent/fluent18.1.0/bin/fluent -r18.1.0 3d -alnamd64 -path/shared/software/ansys/fluids_181/ansys_inc/v181/fluent -ssh -cx sllc0001.hpc.wvu.edu:41717:33691
+Starting /shared/software/ansys/fluids_181/ansys_inc/v181/fluent/fluent18.1.0/lnamd64/3d/fluent.18.1.0 -cx sllc0001.hpc.wvu.edu:41717:33691
+
+              Welcome to ANSYS Fluent Release 18.1
+
+              Copyright 2017 SAS IP, Inc. All Rights Reserved.
+              Unauthorized use, distribution or duplication is prohibited.
+              This product is subject to U.S. laws governing export and re-export.
+              For full Legal Notice, see documentation.
+
+Build Time: Apr 11 2017 14:22:58 EDT  Build Id: 10162
+
+
+     --------------------------------------------------------------
+     This is an academic version of ANSYS FLUENT. Usage of this product
+     license is limited to the terms and conditions specified in your ANSYS
+     license form, additional terms section.
+     --------------------------------------------------------------
+
+
+Cleanup script file is /gpfs/home/gufranco/cleanup-fluent-sllc0001.hpc.wvu.edu-48370.sh
+</pre></div>
+</div>
+<p>You can try also ANSYS/Forte</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">forte</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>A window with 3 big buttons appear, click Simulate</p>
+<p>The Full Window for Forte appears.</p>
+<p>In the case of ANSYS Structures 18.1 all that you have to do after
+loading the module is to open the Workbench:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">runwb2</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="72.ANSYSForte.html" class="btn btn-neutral float-right" title="Engineering: ANSYS/Forte" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="70.DomainSpecific.html" class="btn btn-neutral" title="Domain Specific Details" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Guillermo Avendano-Franco
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

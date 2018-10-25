@@ -1,0 +1,70 @@
+Linux Commands
+==============
+
+The Research Computing HPC server's use Red Hat Enterprise Linux (RHEL)
+as the operating system. Many clusters around the world run exclusively
+Unix/Linux based operating systems. We strongly encourage users to
+actively get familiar with Unix command line interface and GNU/Linux in
+particular. Outstanding and Free documentation is provided at `The Linux
+Documentation Project <http://www.tldp.org>`__, specifically their
+`Guides <http://www.tldp.org/guides.html>`__ which cover basic topics
+including Using Linux and shell scripting to advanced File system and
+kernel modulization guides. Below is a succinct list of Unix commands
+that will help you get started in moving around and manipulating files.
+
+Moving around the file system
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
++------------------------+-------------------------------------------------------------------------------------------------------------------------------+
+| **pwd**                | List current directory                                                                                                        |
++------------------------+-------------------------------------------------------------------------------------------------------------------------------+
+| **ls**                 | List contents of current directory                                                                                            |
++------------------------+-------------------------------------------------------------------------------------------------------------------------------+
+| **ls -l**              | List contents of current directory with more information per file including permissions, last edited time, and size of file   |
++------------------------+-------------------------------------------------------------------------------------------------------------------------------+
+| **ls -lh**             | Same as ls -lh except file size in included in 'human readable' form (gigabytes, megabytes, kilobytes)                        |
++------------------------+-------------------------------------------------------------------------------------------------------------------------------+
+| **ls -lt**             | Same as ls -l, except list files in chronological order with newer files occurring at the top                                 |
++------------------------+-------------------------------------------------------------------------------------------------------------------------------+
+| **cd** ***dirname***   | Changes current directory to *dirname*                                                                                        |
++------------------------+-------------------------------------------------------------------------------------------------------------------------------+
+| **cd ..**              | Changes current directory up one hiearchy level                                                                               |
++------------------------+-------------------------------------------------------------------------------------------------------------------------------+
+
+Examining Files
+~~~~~~~~~~~~~~~
+
++---------------------------+--------------------------------------------------------------------------------------------------------------------------+
+| **cat** ***filename***    | Concatenates *filename* and prints to standard output (screen)                                                           |
++---------------------------+--------------------------------------------------------------------------------------------------------------------------+
+| **less** ***filename***   | A filter that pages through *filename* one screenful at a time. Allows both forward and backward movement through file   |
++---------------------------+--------------------------------------------------------------------------------------------------------------------------+
+| **more** ***filename***   | Similar to less, except cannot move backwards through file                                                               |
++---------------------------+--------------------------------------------------------------------------------------------------------------------------+
+
+Manipulating Files and Directories
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
++-----------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **cp** ***filename1 filename2***        | Copies *filename1* to *filename2*. If *filename2* is the name of a directory, copies *filename1* into the directory   |
++-----------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **cp -i** ***filename1 filename2***     | Copies *filename1* to *filename2* and ask permission before overwriting                                               |
++-----------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **cp -r** ***directory1 directory2***   | Copies ''directory1 and all of it's contents to *directory2*                                                          |
++-----------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **mv** ***filename1 filename2***        | Renames *filename1* to *filename2*. If *filename2* is a directory, moves *filename1* into directory                   |
++-----------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **mv -i** ***filename1 filename2***     | Renames *filename1* to *filename2* and ask permission before overwriting files                                        |
++-----------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **rm** ***filename***                   | Removes file                                                                                                          |
++-----------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **rm -i** ***filename***                | Removes file and ask permission before doing so                                                                       |
++-----------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **rm -r** ***directory***               | Removes directory and it's contents                                                                                   |
++-----------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **rm -ir** ***directory***              | Removes directory and it's contents asking permission for each file                                                   |
++-----------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **mkdir** ***directory***               | Create a directory with *directory* as a name                                                                         |
++-----------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **rmdir** ***directory***               | Remove an emptry directory                                                                                            |
++-----------------------------------------+-----------------------------------------------------------------------------------------------------------------------+

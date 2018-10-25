@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Environment Modules &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="next" title="Managing Scratch Contents" href="35.Scratch.html" />
+    <link rel="prev" title="Samples of Job Submission scripts" href="33.job_samples.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="31.Editors.html">Terminal-based Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="32.editors.html">Terminal-based Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="33.GlobusOnline.html">Globus Online</a></li>
+<li class="toctree-l2"><a class="reference internal" href="33.job_samples.html">Samples of Job Submission scripts</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Environment Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-are-modulefiles">What are Modulefiles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#listing-available-modefiles">Listing available modefiles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#showing-what-a-modulefile-does">Showing what a modulefile does</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loading-and-unloading-modulefiles">Loading and Unloading modulefiles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-modulefiles-through-qsub">Using modulefiles through qsub</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="35.Scratch.html">Managing Scratch Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="36.XWindow.html">XWindow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="30.BasicUser.html">For Basic Users</a> &raquo;</li>
+        
+      <li>Environment Modules</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/34.EnvModules.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="environment-modules">
+<h1>Environment Modules<a class="headerlink" href="#environment-modules" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-are-modulefiles">
+<h2>What are Modulefiles<a class="headerlink" href="#what-are-modulefiles" title="Permalink to this headline">¶</a></h2>
+<p>Modulefiles are files written in the Tool Command Language (Tcl) and are
+used by the module command to implement different environments for
+particular applications. Whenever a user on a Unix/Linux based system
+runs applications, compiles code, etc. what the user can succesfully do
+is determined by the current shell environment. The most common
+application of this concept is the Unix/Linux PATH shell environment.
+When a user types a command, that command is either referenced by a full
+path name: e.g. /usr/bin/some_dir/another_dir/command_utility or the
+path needs to be specified in the user&#8217;s PATH shell environment. Another
+example is when a particular user compiles application code, often
+several libraries need to be accessible and their are Unix shell
+environment variables that direct the compiler where to look (e.g.
+LD_LIBRARY_PATH). On a moderately sized or large cluster this becomes
+somewhat complicated to keep track of all the libraries and commands
+available on the system. An example would be compile-time libraries:
+often on a HPC system their are several versions of the same library to
+fullfill all user&#8217;s needs. If all libraries where available by default
+to all users there is a good chance that application code would access
+the incorrect versions and cause errors. Modulefiles can be loaded and
+unloaded to modify certain shell environment variables to make
+applications available to the user and not interfere with other
+applications.</p>
+<p>On RC HPC managed systems we use modulefiles to control shell
+environment for any libraries, compilers, and software that are
+installed locally (not globally located by default). In addition,
+modulefiles contain useful information such as version numbers, URLs for
+webpages and manuals, and MAN page information. Further, modulefiles are
+a great way to see what software, libraries and compilers are available
+on our systems.</p>
+</div>
+<div class="section" id="listing-available-modefiles">
+<h2>Listing available modefiles<a class="headerlink" href="#listing-available-modefiles" title="Permalink to this headline">¶</a></h2>
+<p>To list the currentely available modulefiles on the system use the
+module command with the available subcommand:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; module available
+
+--------------------------------------------- /usr/share/Modules/software ----------------------------------------------
+chemistry/autodock_vina genomics/clumpp         genomics/muscle         genomics/tabix
+chemistry/gamess        genomics/cufflinks      genomics/phase          genomics/tablet
+chemistry/gaussian/g03  genomics/distruct       genomics/phrap          genomics/tophat2
+chemistry/gromacs       genomics/eigensoft      genomics/picard-tools   genomics/trf
+data/cdf/3.5.0.2        genomics/emboss         genomics/plink          genomics/trinity
+data/hdf5/1.8.12        genomics/fasta36        genomics/qiime          genomics/vcftools
+genomics/abyss          genomics/fastqc         genomics/repeatexplorer gnu/parallel
+genomics/allpaths       genomics/fastx_toolkit  genomics/rsem           mae/elk/2.3.16
+genomics/beagle         genomics/gatk           genomics/samtools       statistics/matlab
+genomics/bedtools       genomics/hmmer          genomics/shapeit
+genomics/blast          genomics/igv            genomics/soapdenovo
+genomics/bowtie2        genomics/lastz          genomics/structure
+
+-------------------------------------------- /usr/share/Modules/development --------------------------------------------
+compilers/gcc/4.8.2     libraries/DFS/myhadoop  libraries/hdf5/1.8.12   mpi/mpich2/1.2.1
+compilers/gcc/4.9.0     libraries/bupc/2.2      libraries/mkl/4.1.1.036 mpi/mvapich2/1.9
+compilers/intel/14.0    libraries/cdf/3.5.0.2   mpi/intel/4.1.1.036     mpi/openmpi/1.6.5
+</pre></div>
+</div>
+<p>The output of the available subcommand informs the full path where the
+modulefiles are located (e.g. /usr/share/Modules/software) as well as a
+list of modulefiles in that particular location (e.g. gnu/parallel).
+Importantly, all modulefiles are sectioned by categories. For instance,
+all compiler modulefiles start with &#8216;compilers/&#8217; (i.e.
+compilers/gcc/4.8.2). The module available command can be given words
+for matching, and will return modulefiles that start with the given
+word. For instance, if you want to list all MPI modulefiles:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt;module available mpi
+
+-------------------------------------------- /usr/share/Modules/development --------------------------------------------
+mpi/intel/4.1.1.036 mpi/mpich2/1.2.1    mpi/mvapich2/1.9    mpi/openmpi/1.6.5
+</pre></div>
+</div>
+<p>Further, you can list all gcc compilers:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt;module available compilers/gcc
+
+-------------------------------------------- /usr/share/Modules/development --------------------------------------------
+compilers/gcc/4.8.2 compilers/gcc/4.9.0
+</pre></div>
+</div>
+</div>
+<div class="section" id="showing-what-a-modulefile-does">
+<h2>Showing what a modulefile does<a class="headerlink" href="#showing-what-a-modulefile-does" title="Permalink to this headline">¶</a></h2>
+<p>Viewing the contents of a modulefile can be done using the module
+command with the show subcommand:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; module show compilers/intel/14.0
+
+-------------------------------------------------------------------
+/usr/share/Modules/development/compilers/intel/14.0:
+
+module-whatis    Name: Intel Compiler
+module-whatis    Version: 14.0
+module-whatis    Category: compiler, runtime support
+module-whatis    Description: Intel Compiler Family (C/C++/Fortran for x86_64)
+module-whatis    URL: http://software.intel.com/en-us/articles/intel-compilers/
+setenv       INTEL_LICENSE_FILE 28519@srih0001.hpc.wvu.edu
+prepend-path     PATH /shared/software/intel/bin
+prepend-path     MANPATH /shared/software/intel/man
+prepend-path     LD_LIBRARY_PATH /shared/software/intel/lib/intel64
+-------------------------------------------------------------------
+</pre></div>
+</div>
+<p>the modulefile starts with the location of the modulefile
+(/usr/share/Modules/development/compilers/intel/14.0). The next few
+lines module-whatis gives information about version numbers, categories
+for tools, URLs for more information. If you only want to see these
+first few lines you can use the whatis subcommand:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; module whatis compilers/intel/14.0
+
+compilers/intel/14.0 : Name: Intel Compiler
+compilers/intel/14.0 : Version: 14.0
+compilers/intel/14.0 : Category: compiler, runtime support
+compilers/intel/14.0 : Description: Intel Compiler Family (C/C++/Fortran for x86_64)
+compilers/intel/14.0 : URL: http://software.intel.com/en-us/articles/intel-compilers/
+</pre></div>
+</div>
+<p>Returning back to the actual modulefile, after the whatis lines you have
+specific Tcl commands that modify the environment. In this example we
+have two types of commands: 1) setenv which creates a shell environment
+variable (INTEL_LICENSE_FILE in this case). 2) prepend-path statement
+which modify a current shell environment variable. In this case the
+first prepend-path modifies the PATH environment variable by adding
+/shared/software/intel/bin to make that directory available to the user.
+More information about Tcl commands found in modulefiles can be found in
+the modulefile manpage (man modulefile).</p>
+</div>
+<div class="section" id="loading-and-unloading-modulefiles">
+<h2>Loading and Unloading modulefiles<a class="headerlink" href="#loading-and-unloading-modulefiles" title="Permalink to this headline">¶</a></h2>
+<p>Loading and unloading modulefiles can be done using the module command
+the subcommands load and unload. In this example, the Intel C compiler
+is named icc:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; icc
+-bash: icc: command not found
+
+$&gt; module load compilers/intel
+$&gt; icc
+icc: command line error: no files specified; for help type &quot;icc -help&quot;
+
+$&gt; module unload compilers/intel
+$&gt; icc
+-bash: icc: command not found
+</pre></div>
+</div>
+<p>As shown in the above command, initially the icc commands could not be
+found. After loading the module, icc could be found (although I gave it
+no input so it gave me an error), and as expected after unloading the
+module icc could not be found anymore. For more information about module
+subcommands see the module manpage (man module)</p>
+</div>
+<div class="section" id="using-modulefiles-through-qsub">
+<h2>Using modulefiles through qsub<a class="headerlink" href="#using-modulefiles-through-qsub" title="Permalink to this headline">¶</a></h2>
+<p>Modulefiles can be used through the scheduler just as on the command
+line. In your batch shell script (see <a class="reference external" href="RunningJobs">Running Jobs</a>
+for details) you can place the module load/unload or any other module
+subcommand directly before you executed commands.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="35.Scratch.html" class="btn btn-neutral float-right" title="Managing Scratch Contents" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="33.job_samples.html" class="btn btn-neutral" title="Samples of Job Submission scripts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Guillermo Avendano-Franco
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

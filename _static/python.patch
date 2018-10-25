@@ -1,0 +1,29 @@
+--- Makefile.orig	2017-01-24 09:52:54.597959711 -0500
++++ Makefile	        2017-01-24 10:27:24.152893000 -0500
+@@ -469,7 +469,7 @@
+ 	$(MAKE) profile-removal
+
+ build_all_generate_profile:
+-	$(MAKE) build_all CFLAGS="$(CFLAGS) $(PGO_PROF_GEN_FLAG) -flto -fuse-linker-plugin -ffat-lto-objects -flto-partition=none" LDFLAGS="$(LDFLAGS) $(PGO_PROF_GEN_FLAG) -flto -fuse-linker-plugin -ffat-lto-objects -flto-partition=none" LIBS="$(LIBS)"
++	$(MAKE) build_all CFLAGS="$(CFLAGS) $(PGO_PROF_GEN_FLAG) -flto -ffat-lto-objects -flto-partition=none" LDFLAGS="$(LDFLAGS) $(PGO_PROF_GEN_FLAG) -flto -ffat-lto-objects -flto-partition=none" LIBS="$(LIBS)"
+
+ run_profile_task:
+ 	: # FIXME: can't run for a cross build
+@@ -479,7 +479,7 @@
+ 	$(LLVM_PROF_MERGER)
+
+ build_all_use_profile:
+-	$(MAKE) build_all CFLAGS="$(CFLAGS) $(PGO_PROF_USE_FLAG) -flto -fuse-linker-plugin -ffat-lto-objects -flto-partition=none" LDFLAGS="$(LDFLAGS) -flto -fuse-linker-plugin -ffat-lto-objects -flto-partition=none"
++	$(MAKE) build_all CFLAGS="$(CFLAGS) $(PGO_PROF_USE_FLAG) -flto -ffat-lto-objects -flto-partition=none" LDFLAGS="$(LDFLAGS) -flto -ffat-lto-objects -flto-partition=none"
+
+ # Compile and run with gcov
+ .PHONY=coverage coverage-lcov coverage-report
+@@ -947,7 +947,7 @@
+ commoninstall:	 \
+ 		altbininstall libinstall inclinstall libainstall \
+ 		sharedinstall oldsharedinstall altmaninstall \
+-
++
+
+ # Install shared libraries enabled by Setup
+ DESTDIRS=	$(exec_prefix) $(LIBDIR) $(BINLIBDEST) $(DESTSHARED)

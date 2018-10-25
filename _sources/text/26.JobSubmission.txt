@@ -1,0 +1,8 @@
+.. _qs-job-submission:
+
+Job Submission
+==============
+
+Shared resources like Computer clusters are intended to be used by several people at the same time. To coordinate usage of the resources, users should request to a system called "Resource Manager" to give them access to some resources for a predefined amount of time.
+
+The set of resources that are requested and the set of commands that you plan to execute is called a job. There are two kinds of jobs: "interactive" and "non-interactive"

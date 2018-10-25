@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Samples of Job Submission scripts &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="next" title="Environment Modules" href="34.EnvModules.html" />
+    <link rel="prev" title="Globus Online" href="33.GlobusOnline.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="31.Editors.html">Terminal-based Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="32.editors.html">Terminal-based Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="33.GlobusOnline.html">Globus Online</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Samples of Job Submission scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#script-for-running-a-non-array-batch-queue">Script for running a non-array batch queue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#script-for-running-an-array-batch-queue">Script for running an array batch queue</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="34.EnvModules.html">Environment Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="35.Scratch.html">Managing Scratch Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="36.XWindow.html">XWindow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="30.BasicUser.html">For Basic Users</a> &raquo;</li>
+        
+      <li>Samples of Job Submission scripts</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/33.job_samples.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="samples-of-job-submission-scripts">
+<h1>Samples of Job Submission scripts<a class="headerlink" href="#samples-of-job-submission-scripts" title="Permalink to this headline">¶</a></h1>
+<p>Below are bash scripts that can be modified and submitted to the qsub
+command for job submission. For details about the different parts of the
+scripts please visit the <a class="reference external" href="RunningJobs">Running Jobs</a> page. These
+scripts can be copied and pasted in the terminal using any number of
+text editors (i.e. vi, emacs, etc...)</p>
+<div class="section" id="script-for-running-a-non-array-batch-queue">
+<h2>Script for running a non-array batch queue<a class="headerlink" href="#script-for-running-a-non-array-batch-queue" title="Permalink to this headline">¶</a></h2>
+<p>The below script has PBS directives to set-up commonly used variables
+such as job name, resources needed, e-mail address upon job completion
+and abnormal termination and specify a queue to run on</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="c1">#This is an example script for executing generic jobs with</span>
+<span class="c1"># the use of the command &#39;qsub &lt;name of this script&gt;&#39;</span>
+
+
+<span class="c1">#These commands set up the Grid Environment for your job.  Words surrounding by a backet (&#39;&lt;&#39;,&#39;&gt;&#39;) should be changed</span>
+<span class="c1">#Any of the PBS directives can be commented out by placing another pound sign in front</span>
+<span class="c1">#example</span>
+<span class="c1">##PBS -N name</span>
+<span class="c1">#The above line will be skipped by qsub because of the two consecutive # signs</span>
+
+<span class="c1"># Specify job name</span>
+<span class="c1">#PBS -N &lt;name&gt;</span>
+
+<span class="c1"># Specify the resources need for the job</span>
+<span class="c1"># Walltime is specified as hh:mm:ss (hours:minutes:seconds)</span>
+<span class="c1">#PBS -l nodes=&lt;number_of_nodes&gt;:ppn=&lt;number_of_processors_per_node,walltime=&lt;time_needed_by_job&gt;</span>
+
+
+<span class="c1"># Specify when Moab should send e-mails &#39;ae&#39; below user will</span>
+<span class="c1"># receive e-mail for any errors with the job and/or upon completion</span>
+<span class="c1"># If you don&#39;t want e-mails just comment out these next two PBS lines</span>
+<span class="c1">#PBS -m ae</span>
+
+<span class="c1"># Specify the e-mail address to receive above mentioned e-mails</span>
+<span class="c1">#PBS -M &lt;email_address&gt;</span>
+
+<span class="c1"># Specify the queue to execute task in. Current options can be found by excuting the command qstat -q at the terminal</span>
+<span class="c1">#PBS -q &lt;queue_name&gt;</span>
+
+<span class="c1"># Enter your command below with arguments just as if you where going to execute on the command line</span>
+<span class="c1"># It is generally good practice to issue a &#39;cd&#39; command into the directory that contains the files</span>
+<span class="c1"># you want to use or use full path names</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="script-for-running-an-array-batch-queue">
+<h2>Script for running an array batch queue<a class="headerlink" href="#script-for-running-an-array-batch-queue" title="Permalink to this headline">¶</a></h2>
+<p>Script is the same as above, but adds PBS -t to execute array request
+job submissions.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="c1">#This is an example script for executing genetic jobs with</span>
+<span class="c1"># the use of the command &#39;qsub &lt;name of this script&gt;&#39;</span>
+
+
+<span class="c1">#These commands set up the Grid Environment for your job.  Words surrounding by a backet (&#39;&lt;&#39;,&#39;&gt;&#39;) should be changed</span>
+<span class="c1">#Any of the PBS directives can be commented out by placing another pound sign in front</span>
+<span class="c1">#example</span>
+<span class="c1">##PBS -N name</span>
+<span class="c1">#The above line will be skipped by qsub because of the two consecutive # signs</span>
+
+<span class="c1"># Specify job name, use ${PBS_ARRAYID} to ensure names and output/error files have different names</span>
+<span class="c1">#PBS -N &lt;name_${PBS_ARRAYID}</span>
+
+<span class="c1"># Specify the range for the PBS_ARRAYID environment variable</span>
+<span class="c1"># &lt;num_range&gt; can be a continous range like 1-200 or 5-20</span>
+<span class="c1"># or &lt;num_range&gt; can be a comma seperated list of numbers like 5,15,20,55</span>
+<span class="c1"># You can also specify the maximum number of jobs queued at one time with the percent sign</span>
+<span class="c1"># so a &lt;num_range&gt; specified as 5-45%8 would launch forty jobs with a range from 5-45, but only queue 8 at a time until</span>
+<span class="c1"># all jobs are completed.</span>
+<span class="c1"># Further, you can mix and match continous range and list like 1-10,15,25-40%10</span>
+<span class="c1">#PBS -t &lt;num_range&gt;</span>
+
+<span class="c1"># Specify the resources need for the job</span>
+<span class="c1"># Walltime is specified as hh:mm:ss (hours:minutes:seconds)</span>
+<span class="c1">#PBS -l nodes=&lt;number_of_nodes&gt;:ppn=&lt;number_of_processors_per_node,walltime=&lt;time_needed_by_job&gt;</span>
+
+
+<span class="c1"># Specify when Moab should send e-mails &#39;ae&#39; below user will</span>
+<span class="c1"># receive e-mail for any errors with the job and/or upon completion</span>
+<span class="c1"># If you don&#39;t want e-mails just comment out these next two PBS lines</span>
+<span class="c1">#PBS -m ae</span>
+
+<span class="c1"># Specify the e-mail address to receive above mentioned e-mails</span>
+<span class="c1">#PBS -M &lt;email_address&gt;</span>
+
+<span class="c1"># Specify the queue to execute task in. Current options can be found by excuting the command qstat -q at the terminal</span>
+<span class="c1">#PBS -q &lt;queue_name&gt;</span>
+
+<span class="c1"># Enter your command below with arguments just as if you where going to execute on the command line</span>
+<span class="c1"># It is generally good practice to issue a &#39;cd&#39; command into the directory that contains the files</span>
+<span class="c1"># you want to use or use full path names</span>
+<span class="c1"># Any parameter or filename that needs to use the current job number of the array number range use ${PBS_ARRAYID}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="34.EnvModules.html" class="btn btn-neutral float-right" title="Environment Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="33.GlobusOnline.html" class="btn btn-neutral" title="Globus Online" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Guillermo Avendano-Franco
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

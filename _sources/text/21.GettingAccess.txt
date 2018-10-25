@@ -1,0 +1,19 @@
+.. _qs-getting-access:
+
+Getting Access
+==============
+
+To gain access to WVU's Research Computing systems (including HPC systems),
+users need to first have a `WVU Login Account <http://login.wvu.edu>`_.
+
+If you need a WVU Login account, please make a request with `Service Desk
+<https://wvu.teamdynamix.com/TDClient/Requests/ServiceDet?ID=7156>`_.
+
+After getting a WVU Login Account, you will need to request access to Research
+Computing systems through the
+`Research Computing Help Desk <https://helpdesk.hpc.wvu.edu>`_ web page by
+clicking on the 'Open a new ticket' button and selecting
+'New User Account Request' under help topic.
+
+For any additional questions regarding access, please email us at
+`helpdesk@hpc.wvu.edu <mailto:helpdesk@hpc.wvu.edu>`_.

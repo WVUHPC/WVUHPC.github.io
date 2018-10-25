@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Engineering: Running OpenFOAM simple tutorial &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="next" title="Bioinformatics: Conda and BioConda" href="74.Bioconda.html" />
+    <link rel="prev" title="Engineering: ANSYS/Forte" href="72.ANSYSForte.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="71.Ansys.html">Engineering: ANSYS Products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="72.ANSYSForte.html">Engineering: ANSYS/Forte</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Engineering: Running OpenFOAM simple tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#load-modules">Load modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-openfoam">Run OpenFOAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-paraview-with-openfoam">Using ParaView with OpenFoam</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="74.Bioconda.html">Bioinformatics: Conda and BioConda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="75.bowtie2.html">Bioinformatics: Using Bowtie2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="76.Matlab.html">Matlab: Running Matlab scripts on a HPC cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="77.Visit.html">Visualization: VisIt</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="70.DomainSpecific.html">Domain Specific Details</a> &raquo;</li>
+        
+      <li>Engineering: Running OpenFOAM simple tutorial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/73.OpenFoam.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="engineering-running-openfoam-simple-tutorial">
+<h1>Engineering: Running OpenFOAM simple tutorial<a class="headerlink" href="#engineering-running-openfoam-simple-tutorial" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="load-modules">
+<h2>Load modules<a class="headerlink" href="#load-modules" title="Permalink to this headline">¶</a></h2>
+<p>OpenFOAM was compiled with gcc 5.3.0 and openMPI 1.6.5. These
+modulefiles will need to be loaded to run OpenFOAM.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; module load compilers/gcc/5.3.0 mpi/openmpi/1.6.5 libraries/openfoam/3.0+
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-openfoam">
+<h2>Run OpenFOAM<a class="headerlink" href="#run-openfoam" title="Permalink to this headline">¶</a></h2>
+<p>Below is a sample tutorial given by OpenFOAM to show how to run OpenFOAM
+on our systems. The commands below will initiate an interactive job on
+the debug queue, and execute the openFoam tutorial.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; debug
+
+$&gt; module load compilers/gcc/5.3.0 libraries/openfoam/3.0+
+$&gt; mkdir -p $FOAM_RUN
+$&gt; run
+$&gt; cp -r $FOAM_TUTORIALS/incompressible/simpleFoam/pitzDaily ./
+$&gt; mv pitzDaily/* .
+$&gt; blockMesh
+$&gt; simpleFoam
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-paraview-with-openfoam">
+<h2>Using ParaView with OpenFoam<a class="headerlink" href="#using-paraview-with-openfoam" title="Permalink to this headline">¶</a></h2>
+<p>Visualization of openFoam output can be executed from the head node. To
+use paraFoam, make sure you have logged in with <a class="reference external" href="UsingXWindowsapplications">X11 forwarding
+enabled</a>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; module load compilers/gcc/5.3.0 libraries/openfoam/3.0+ visualization/paraview
+$&gt; run
+$&gt; paraFoam
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="74.Bioconda.html" class="btn btn-neutral float-right" title="Bioinformatics: Conda and BioConda" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="72.ANSYSForte.html" class="btn btn-neutral" title="Engineering: ANSYS/Forte" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Guillermo Avendano-Franco
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

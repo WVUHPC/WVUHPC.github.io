@@ -1,0 +1,161 @@
+.. _qs-connect:
+
+Connect to the cluster
+======================
+
+Hostnames
+---------
+
+ - **Mountaineer** mountaineer.hpc.wvu.edu
+ - **Spruce Knob** spruce.hpc.wvu.edu
+
+Connecting to a cluster via SSH
+-------------------------------
+
+Access to a cluster is through the SSH login protocol using a cluster's hostname.
+SSH uses encryption to ensure a secure connection and therefore is preferred.
+Unsecured connections through telnet clients have been disabled and will not work.
+You will need an SSH client which is available with any current Unix based
+operating system (including Linux and Mac OS X).
+Windows users will have to acquire an SSH client, `Putty <http://www.putty.org/>`_
+is a commonly used SSH client with a graphical interface and is available for
+free download.  We have [[puttyIns | Putty Instructions here]].
+
+To use a command-line SSH client available on Unix based operating systems,
+open a terminal shell and type:
+
+::
+
+   $> ssh username@hostname
+
+or
+
+::
+
+   $> ssh -Y username@hostname
+
+Where username is your username and hostname is the name of the cluster you
+wish to connect to.  The -Y option is used to forward X windows applications
+running on Spruce to be forwarded to your local machine.
+
+Logging In
+----------
+
+When your SSH access is granted, you will be prompted with a login message
+(below is the Spruce Knob login message):
+
+::
+
+      ------------------------------------------------------------------------------
+                         Welcome to the Spruce Knob Supercomputer
+                  Shared Research Facilities, West Virginia University
+      ------------------------------------------------------------------------------
+                    ** Unauthorized use/access is prohibited. **
+
+      The actual or attempted unauthorized access, use, or modification of this
+      system is strictly prohibited. Unauthorized users may be subject to
+      institutional disciplinary proceedings and/or criminal and civil penalties under
+      state, federal, or other applicable domestic and foreign laws. The use of this
+      system is monitored and recorded for administrative and security reasons. Anyone
+      accessing this system expressly consents to such monitoring and is advised that
+      if monitoring reveals possible evidence of criminal activity, the Institution
+      may provide the evidence of such activity to law enforcement officials.
+
+      In addition, users must ensure data that is protected by Federal
+      security or privacy laws (e.g., HIPAA, ITAR, FERPA, classified information, etc.)
+      is not stored on this system. This system is not intended to meet the enhanced
+      security required by those laws or regulations.
+
+      By logging on to this system, you acknowledge your awareness of and acceptance
+      of with WVU's Acceptable Use Policies and you agree not to store any of the
+      before mentioned protected data.
+
+      WVU Acceptable Use of Data and Technology Resources Policies:
+      http://it.wvu.edu/governance/standards-and-procedures/all-standards/au
+      ------------------------------------------------------------------------------
+      Last login: Mon Jun 25 16:00:41 2018 from 157.182.62.79
+      ______________________________________________________________________________
+
+      Questions and Problem Reports:
+      -  Email:     helpdesk@hpc.wvu.edu
+      -  Help Desk Ticket System:   https://helpdesk.hpc.wvu.edu
+
+      Additional information on Spruce Knob:
+      -  Documentation:  http://wiki.hpc.wvu.edu
+      -  HPC Website:    http://sharedresearchfacilities.wvu.edu/facilities/hpc
+      ______________________________________________________________________________
+
+      Further system related information:
+
+      - Spruce Knob utilizes the TORQUE/PBS resource manager to manage compute
+         resources.
+
+          To run an interactive shell, issue:
+                qsub -I -q queue_name
+
+          To submit a batch job, issue:       qsub job_script.sh
+          To show all queued jobs, issue:     showq or qstat
+          To check a job status:		checkjob <jobId>
+          To kill a queued job, issue:        canceljob <jobId>
+
+          Example PBS job scripts are located at:
+          http://wiki.hpc.wvu.edu/hpc_wiki/index.php/Sample_Job_Scripts
+
+          The following man pages provide helpful pbs information:
+      	man pbs_resources_linux (How-to request cluster resources)
+      	man qsub
+      	man qstat
+
+      - Spruce Knob utilizes Environment Modules to help manage different software
+         packages available on the cluster.  "module avail" shows the available
+         modules.
+
+      - Spruce has two file systems available to users:
+         - $HOME (permanent storage that is backed up via snapshots, 10GB Limit)
+         - $SCRATCH (temporary storage that is NOT backed up, current allocation 130 TB)
+
+      - Please acknowledge use of this Super Computing System (Spruce Knob) at WVU,
+         which are funded in part by the National Science Foundation EPSCoR
+         Research Infrastructure Improvement Cooperative Agreement #1003907, the
+         state of West Virginia (WVEPSCoR via the Higher Education Policy Commission)
+         and WVU, in your publications produced using these resources.
+      _______________________________________________________________________________
+
+      Recent Updates:
+
+      - 2018.05.18 - Completed OS and server updates across the entire system.
+
+Following this message, you will be prompted for your password.  Type in your
+password and you will be given a command prompt.  Users logging in for the
+first time, will be asked immediately to change their password.  The password
+is managed with Active Directory and cannot be changed using the passwd
+command in the command prompt.
+
+Logging Out
+-----------
+
+Logging out of a cluster can be done with the exit command:
+
+::
+
+   $> exit
+
+The exit command will attempt to terminate any job not running through the
+queuing system.  In some cases, you will get an error that jobs are either
+currently running or currently stopped.  You can view stopped jobs using the
+jobs command:
+
+::
+
+   $> jobs -l
+   [1]+ 3325 Stopped            vim script56.py
+
+The output of jobs -l will give you the job PID number (in this case 3325) and
+the command (vim script56.py).  To kill jobs preventing successful logout,
+use the kill command:
+
+::
+
+   $> kill -s 9 3325
+
+Once all jobs are terminated, the exit command will close the connection to host.

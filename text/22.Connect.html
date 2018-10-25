@@ -1,0 +1,395 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Connect to the cluster &mdash; WVU-RC 1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="next" title="Command Line Interface" href="23.CommandLine.html" />
+    <link rel="prev" title="Getting Access" href="21.GettingAccess.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WVU-RC
+          
+
+          
+            
+            <img src="../_static/ResearchComputing.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="20.QuickStart.html">Quick Start</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="21.GettingAccess.html">Getting Access</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Connect to the cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hostnames">Hostnames</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connecting-to-a-cluster-via-ssh">Connecting to a cluster via SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logging-in">Logging In</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logging-out">Logging Out</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="23.CommandLine.html">Command Line Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="24.EditFiles.html">Editing files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="25.Storage.html">Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="26.JobSubmission.html">Job Submission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="27.TransferFiles.html">Transferring Files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WVU-RC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="20.QuickStart.html">Quick Start</a> &raquo;</li>
+        
+      <li>Connect to the cluster</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/text/22.Connect.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="connect-to-the-cluster">
+<span id="qs-connect"></span><h1>Connect to the cluster<a class="headerlink" href="#connect-to-the-cluster" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="hostnames">
+<h2>Hostnames<a class="headerlink" href="#hostnames" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><strong>Mountaineer</strong> mountaineer.hpc.wvu.edu</li>
+<li><strong>Spruce Knob</strong> spruce.hpc.wvu.edu</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="connecting-to-a-cluster-via-ssh">
+<h2>Connecting to a cluster via SSH<a class="headerlink" href="#connecting-to-a-cluster-via-ssh" title="Permalink to this headline">¶</a></h2>
+<p>Access to a cluster is through the SSH login protocol using a cluster&#8217;s hostname.
+SSH uses encryption to ensure a secure connection and therefore is preferred.
+Unsecured connections through telnet clients have been disabled and will not work.
+You will need an SSH client which is available with any current Unix based
+operating system (including Linux and Mac OS X).
+Windows users will have to acquire an SSH client, <a class="reference external" href="http://www.putty.org/">Putty</a>
+is a commonly used SSH client with a graphical interface and is available for
+free download.  We have [[puttyIns | Putty Instructions here]].</p>
+<p>To use a command-line SSH client available on Unix based operating systems,
+open a terminal shell and type:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; ssh username@hostname
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; ssh -Y username@hostname
+</pre></div>
+</div>
+<p>Where username is your username and hostname is the name of the cluster you
+wish to connect to.  The -Y option is used to forward X windows applications
+running on Spruce to be forwarded to your local machine.</p>
+</div>
+<div class="section" id="logging-in">
+<h2>Logging In<a class="headerlink" href="#logging-in" title="Permalink to this headline">¶</a></h2>
+<p>When your SSH access is granted, you will be prompted with a login message
+(below is the Spruce Knob login message):</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+                   Welcome to the Spruce Knob Supercomputer
+            Shared Research Facilities, West Virginia University
+------------------------------------------------------------------------------
+              ** Unauthorized use/access is prohibited. **
+
+The actual or attempted unauthorized access, use, or modification of this
+system is strictly prohibited. Unauthorized users may be subject to
+institutional disciplinary proceedings and/or criminal and civil penalties under
+state, federal, or other applicable domestic and foreign laws. The use of this
+system is monitored and recorded for administrative and security reasons. Anyone
+accessing this system expressly consents to such monitoring and is advised that
+if monitoring reveals possible evidence of criminal activity, the Institution
+may provide the evidence of such activity to law enforcement officials.
+
+In addition, users must ensure data that is protected by Federal
+security or privacy laws (e.g., HIPAA, ITAR, FERPA, classified information, etc.)
+is not stored on this system. This system is not intended to meet the enhanced
+security required by those laws or regulations.
+
+By logging on to this system, you acknowledge your awareness of and acceptance
+of with WVU&#39;s Acceptable Use Policies and you agree not to store any of the
+before mentioned protected data.
+
+WVU Acceptable Use of Data and Technology Resources Policies:
+http://it.wvu.edu/governance/standards-and-procedures/all-standards/au
+------------------------------------------------------------------------------
+Last login: Mon Jun 25 16:00:41 2018 from 157.182.62.79
+______________________________________________________________________________
+
+Questions and Problem Reports:
+-  Email:     helpdesk@hpc.wvu.edu
+-  Help Desk Ticket System:   https://helpdesk.hpc.wvu.edu
+
+Additional information on Spruce Knob:
+-  Documentation:  http://wiki.hpc.wvu.edu
+-  HPC Website:    http://sharedresearchfacilities.wvu.edu/facilities/hpc
+______________________________________________________________________________
+
+Further system related information:
+
+- Spruce Knob utilizes the TORQUE/PBS resource manager to manage compute
+   resources.
+
+    To run an interactive shell, issue:
+          qsub -I -q queue_name
+
+    To submit a batch job, issue:       qsub job_script.sh
+    To show all queued jobs, issue:     showq or qstat
+    To check a job status:                checkjob &lt;jobId&gt;
+    To kill a queued job, issue:        canceljob &lt;jobId&gt;
+
+    Example PBS job scripts are located at:
+    http://wiki.hpc.wvu.edu/hpc_wiki/index.php/Sample_Job_Scripts
+
+    The following man pages provide helpful pbs information:
+  man pbs_resources_linux (How-to request cluster resources)
+  man qsub
+  man qstat
+
+- Spruce Knob utilizes Environment Modules to help manage different software
+   packages available on the cluster.  &quot;module avail&quot; shows the available
+   modules.
+
+- Spruce has two file systems available to users:
+   - $HOME (permanent storage that is backed up via snapshots, 10GB Limit)
+   - $SCRATCH (temporary storage that is NOT backed up, current allocation 130 TB)
+
+- Please acknowledge use of this Super Computing System (Spruce Knob) at WVU,
+   which are funded in part by the National Science Foundation EPSCoR
+   Research Infrastructure Improvement Cooperative Agreement #1003907, the
+   state of West Virginia (WVEPSCoR via the Higher Education Policy Commission)
+   and WVU, in your publications produced using these resources.
+_______________________________________________________________________________
+
+Recent Updates:
+
+- 2018.05.18 - Completed OS and server updates across the entire system.
+</pre></div>
+</div>
+<p>Following this message, you will be prompted for your password.  Type in your
+password and you will be given a command prompt.  Users logging in for the
+first time, will be asked immediately to change their password.  The password
+is managed with Active Directory and cannot be changed using the passwd
+command in the command prompt.</p>
+</div>
+<div class="section" id="logging-out">
+<h2>Logging Out<a class="headerlink" href="#logging-out" title="Permalink to this headline">¶</a></h2>
+<p>Logging out of a cluster can be done with the exit command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; exit
+</pre></div>
+</div>
+<p>The exit command will attempt to terminate any job not running through the
+queuing system.  In some cases, you will get an error that jobs are either
+currently running or currently stopped.  You can view stopped jobs using the
+jobs command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; jobs -l
+[1]+ 3325 Stopped            vim script56.py
+</pre></div>
+</div>
+<p>The output of jobs -l will give you the job PID number (in this case 3325) and
+the command (vim script56.py).  To kill jobs preventing successful logout,
+use the kill command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; kill -s 9 3325
+</pre></div>
+</div>
+<p>Once all jobs are terminated, the exit command will close the connection to host.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="23.CommandLine.html" class="btn btn-neutral float-right" title="Command Line Interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="21.GettingAccess.html" class="btn btn-neutral" title="Getting Access" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Guillermo Avendano-Franco
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.0',
+              LANGUAGE:'',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: ''
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
