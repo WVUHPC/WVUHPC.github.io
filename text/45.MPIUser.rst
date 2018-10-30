@@ -1,0 +1,75 @@
+Using MPI on RC HPC Clusters
+============================
+
+Many parallel programs take advantage of Message Passing Interface (MPI)
+to communicate across compute nodes and efficiently scale up
+computational analysis. While we can't give instructions on how to run
+every program using MPI, all the programs using MPI need to be told
+which hosts and cpus to run. Generally, most programs use the mpirun
+executable that comes pre-packaged with MPI libraries to accomplish this
+task. The general syntax for running parallel programs with mpirun is:
+
+::
+
+    mpirun -np <processor number> -machinefile <procs file> command [..args]
+
+With -np option specifying the number of processors the job requires,
+and the -machinefile option with a file that contains the host address
+and number of CPUs to use on each host. On a distributed computing
+cluster with a scheduler in place (both RC clusters), the number of
+processors will be the same number of processors requested with the
+`qsub command <Running_Jobs>`__. Further, it is almost impossible to
+know which hosts your job will run on, since that is determined by a
+number of factors with the current state of the system. Therefore
+Moab/Torque provides a machinefile for each job that is executed through
+the scheduler, and it's location is stored in the $PBS\_NODEFILE
+variable. Therefore, on our clusters, the general syntax of running a
+program parallel with MPI is:
+
+::
+
+    module load <mpi/modulefile>
+
+    mpirun -np <processor number> -machinefile $PBS_NODEFILE command [..args]
+
+with being the appropriate `module file <Using_Modulefiles>`__ for the
+MPI package the program was compiled with. Of course, you should consult
+the programs documentation for details, as some programs come with their
+own mpirun substitute and/or work better with certain MPI libraries than
+others. Also, each MPI libraries have differences with their mpirun
+commands, and therefore you should take a look at the MPI's own
+documentation (links below).
+
+MPI Standards
+-------------
+
+Message Passing Interface standards are available free for download at
+`www.mpi-forum.org <http://www.mpi-forum.org/docs/docs.html>`__.
+
+Useful Books
+------------
+
+Parallel Programming with MPI. Peter Pecheco. ISBN-13:978-1558603394
+
+Parallel Programming in C with MPI and OpenMP. Michael Quinn.
+ISBN-13:978-0072822564
+
+MPI: The Complete Reference. Snir et al. ISBN-13:978-0262692168
+
+Libraries
+---------
+
+Current information about location and version of library can be found
+in their respective `modulefiles <Using_Modulefiles>`__.
+
++---------------+----------------------------------------------------------------------------+
+| **Library**   | **Documentation**                                                          |
++---------------+----------------------------------------------------------------------------+
+| Intel         | http://software.intel.com/en-us/articles/intel-mpi-library-documentation   |
++---------------+----------------------------------------------------------------------------+
+| Mpich2        | http://www.mpich.org/documentation/guides/                                 |
++---------------+----------------------------------------------------------------------------+
+| Mvapich2      | http://mvapich.cse.ohio-state.edu/support/                                 |
++---------------+----------------------------------------------------------------------------+
+| OpenMPI       | http://www.open-mpi.org/doc/                                               |
++---------------+----------------------------------------------------------------------------+

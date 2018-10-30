@@ -1,0 +1,94 @@
+Miniconda
+=========
+
+Sometimes you want complete control on your Python installation rather
+than rely on the packages and versions provided for you by the central
+installed python installation. This page will guide you in the process
+of installing miniconda on your home account. We describe here how to
+download, install and update a miniconda installation that will give you
+complete control on the packages that you have and the pace on which
+those packages will be updated.
+
+Downloading Miniconda
+---------------------
+
+Miniconda can be downloaded from::
+
+  wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+  sh Miniconda3-latest-Linux-x86_64.sh
+
+No installing anything
+----------------------
+
+Just load the module::
+
+  module purge
+  module load genomics/qiime
+
+This module will load python 2.7.3 and qiime on top of that
+
+Installing QIIME on a virtual environment on top of python 2.7.13
+-----------------------------------------------------------------
+
+Use this::
+
+  module purge
+  module load compilers/python/2.7.13
+
+  virtualenv veqiime
+  cd veqiime
+  source ./bin/activate
+  pip install numpy
+  pip install qiime (this step takes around a minute)
+
+After installation all that you have to do is::
+
+  module load compilers/python/2.7.13
+  cd veqiime
+  source ./bin/activate
+
+and qiime is ready for use.
+
+Installing QIIME on top of python 2.7.13 (No virtual env)
+---------------------------------------------------------
+
+Execute::
+
+  module purge module load compilers/python/2.7.13
+
+  pip install qiime --user
+
+In this case qiime will be installed locally on your home directory
+at::
+
+  ~/.local/lib/python2.7/site-packages
+
+All that you have to do is::
+
+  module load compilers/python/2.7.13
+
+And qiime is ready for use.
+
+
+Installing with Miniconda
+-------------------------
+
+First install miniconda following the instructions::
+
+  wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+  sh Miniconda3-latest-Linux-x86\_64.sh
+  source ~/.bashrc
+
+  conda install numpy
+
+  conda create -n qiime1 python=2.7 qiime matplotlib=1.4.3 mock nose -c bioconda
+
+Finally follow the instructions at the end of the installation
+
+To activate this environment, use::
+
+  > source activate qiime1
+
+To deactivate this environment, use::
+
+  > source deactivate qiime1

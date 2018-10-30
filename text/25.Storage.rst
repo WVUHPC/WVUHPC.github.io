@@ -1,0 +1,82 @@
+.. _qs-storage:
+
+Storage
+=======
+
+Home Directory
+--------------
+
+Home directories on Spruce Knob are located in /users directory and is
+the default login location for users. The default disk quota for each
+user is 10 Gb. As such, we recommend that home directories use should be
+primarily to store scripts, binary executables and other small data file
+types. For research data, users should use Spruce Knobs Scratch space.
+
+This data is backed up on a daily basis via snapshots and tape. Users
+can retrieve up to 4 weeks of older files from
+/users/.snapshots/{date}/$USER if needed. If files are not available in
+the snapshot, please contact helpdesk@hpc.wvu.edu and the HPC team will
+attempt to retrieve the data from tape.
+
+Note: Users may check their storage quota via the following command:
+
+::
+
+    quota
+
+Scratch Directory
+-----------------
+
+Scratch directories are located in /scratch directory, and can be easily
+moved to using the $SCRATCH environment variable set-up by default for
+each user.
+
+::
+
+    cd $SCRATCH
+
+Scratch directories on Spruce Knob are treated as true scratch space:
+There is no user defined quota for space. All users scratch directories
+share the same file space, which is set at 130 Tb. When the scratch
+directory becomes full, files are automatically deleted by date. To
+facilitate this, all users should use their scratch space as true
+temporary storage. However, we will notify users well in advanced for
+schedule file deletions to give users ample time to remove data to
+prevent data loss.
+
+**Note: Scratch data is NOT backed up.**
+
+Persistent Group Storage
+------------------------
+
+Research groups may purchase long term persistent storage from the RC
+HPC. This storage allows users to keep data on the cluster that will not
+be removed. In addition, this storage utilizes the same GPFS file system
+so files can be written directly to this storage from jobs executing on
+the cluster.
+
+Persistent storage must be purchased in 1 TB chunks. To purchase this
+storage, go to https://helpdesk.hpc.wvu.edu ,select "Open a New Ticket",
+and select "Dedicated Storage Order" from Help Topic. For more
+information, please contact helpdesk@hpc.wvu.edu.
+
+For groups who have purchased this storage, it can be accessed here:
+
+::
+
+    cd /group/{group_name}
+
+**Note: Persistent group storage is NOT backed up.**
+
+**Note: Persistent Group storage has been replaced by a the new
+`Research Data Depot
+Service <https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=35328>`__.**
+
+Archival Storage
+----------------
+
+Please see the `Research Data Depot
+Service <https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=35328>`__
+for archival storage options.
+
+For additional information please contact helpdesk@hpc.wvu.edu.

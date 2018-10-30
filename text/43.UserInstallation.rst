@@ -1,0 +1,140 @@
+Installing Packages in User Locations
+=====================================
+
+Overview: GNU Build System
+--------------------------
+
+To install packages on GNU/Linux systems, packages that are programmed
+in C/C++ or other compiled languages need to be compiled and installed.
+A large majority of these packages will use the GNU Build system, which
+can be broken into three distinct stages: 1) Configuring the package, 2)
+Building the package and 3) installing the package. These three stages
+are controlled by two programs: 'configure' and 'make'. 'make' is a
+Linux utility that is pre-installed on all Linux systems. While
+'configure' will be come with the package as it provides package
+specific information to the 'make' utility. Installing these packages
+can be done in three steps, but user specific options will need to be
+given to make sure the package is installed correctly. This page will
+provide instructions on how to build these packages without superuser
+privileges.
+
+Setting up the Directory Structure
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Before you can start the build/install process, you need to set up the
+directory structure. There are many different ideologies and principles
+on how to do this. Here, I will show only the strategy we use on the
+Research Computing clusters to install and manage software. Throughout
+this page, I'm going to use the package name 'example\_pkg-1.4.7.tar.gz'
+to demonstrate the commands. This package naming style is very common,
+and will most likely be the naming convention you encounter.
+
+The directory structure we use, is to have a parent directory for the
+package name, and then three subsequent directories named 'build',
+'source', and 'install'. This directory topology allows us to
+distinguish the source and build trees from each other (more on what
+this means below), and keep versions in the install directory. That way,
+if you upgrade or change versions of software, all versions of the same
+software package can be located in the same parent directory. In our
+example, this directory structure can be made using:
+
+::
+
+    mkdir example_pkg
+    cd example_pkg
+    mkdir build source install
+
+You then move the tarball into the source directory, and extract the
+files:
+
+::
+
+    mv example_pkg-1.4.7.tar.gz example_pkg/source
+    cd example_pkg/source
+    tar xzvf example_pkg-1.4.7.tar.gz
+
+This should create the directory example\_pkg-1.4.7, and this extracted
+directory is called the 'source tree' since it contains only source
+files and nothing compiled or built.
+
+The Configure Stage
+~~~~~~~~~~~~~~~~~~~
+
+Once the directory structure is set up, we now have to configure the
+build tree, to compile and install the software package. This is done by
+running the 'configure' script. There are two general steps of
+configure. First, you need to load the appropriate dependency
+environments. Second, you need to tell configure where you want to
+install the software.
+
+On most systems, you will not have to load dependency environments,
+however, on you do on Research Computing clusters; and this will be the
+norm for almost all High Performance Computing clusters. Loading
+dependency environments are done through `module
+files <Using Modulefiles>`__. The dependencies for each particular
+package will be different, but they should be listed within the
+installation manual either on the package website or within the
+readme/install file. The readme/install file is almost always within the
+top directory of the extracted package directory as README and/or
+INSTALL. For example, it might be example\_pkg-1.4.7/README in our
+example.
+
+With the correct module files loaded, you now can run the configure
+script. You will want to provide the '--prefix' option to tell configure
+where to install the software. You will additionally, want to run the
+configure script from the build directory that we set up earlier. This
+is good practice, and allows easy cleaning (what is referred to as VPATH
+building).
+
+::
+
+    cd example_pkg/build
+    mkdir 1.4.7
+    cd 1.4.7
+    ../../source/example_pkg-1.4.7/configure --prefix=/users/username/example_pkg/install/1.4.7
+
+This command will tell configure to install the binaries, libraries,
+documentation, etc.. in /users/username/example\_pkg/install/1.4.7
+directory. The configure process will output a large amount of package
+information to the screen. And if the correct dependencies are loaded
+and the package is well built, this process should complete without
+error. If not, it's almost certainly because of a missing dependency. If
+you do not understand the error (most will be missing package 'XXYY'),
+and you need help to resolve it, please use our
+`helpdesk <Getting Help>`__ ticket system to request help.
+
+The Make/Build Stage
+~~~~~~~~~~~~~~~~~~~~
+
+If the configure step finishes without error. The Make/Build step can be
+completed with the single command from within the build directory
+(directory you ran configure in):
+
+::
+
+    make
+
+The Install Stage
+~~~~~~~~~~~~~~~~~
+
+If the configure step finishes without error, it is almost certain that
+the make step will finish (unless the package maintainers incorrectly
+built the configure script). Therefore, the install step can be
+completed with the single command. Again from within the build
+directory:
+
+::
+
+    make install
+
+This command will put all the binaries, libraries, documentation
+wherever you specified using the --prefix option.
+
+Additional Documentation
+------------------------
+
+-  `GNU Autoconf
+   Manual <http://www.gnu.org/software/autoconf/manual/index.html>`__
+-  `GNU Automake
+   Manual <https://www.gnu.org/software/automake/manual/>`__
+-  `GNU Make Manual <https://www.gnu.org/software/make/manual/>`__

@@ -1,0 +1,114 @@
+Globus Online
+=============
+
+Overview
+--------
+
+.. `Globus Online <https://www.globus.org/>`__ is a tool that allows WVU researchers to `transfer data <https://docs.globus.org/how-to/get-started/>`__ between workstations, `share data <https://www.globus.org/data-sharing>`__ with colleagues, `publish datasets <https://www.globus.org/data-publication>`__, and archive data in Google Drive for Education.
+
+For a quick start guide please visit: `Globus: How to Get Started <https://docs.globus.org/how-to/get-started/>`__.
+
+If you need further assistance beyond this documentation, please contact
+helpdesk@hpc.wvu.edu.
+
+Transfer Data
+-------------
+
+
+Use Globus Online web browser to transfer data files between your PC/workstation and the WVU HPC systems.
+There are two dedicated servers, data transfer nodes (DTNs), that are connected to `WVU's Science DMZ (REX) <https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=9806>`__ that allow data to be transferred with low latency and high bandwidth across WVU campus as well as to other locations around the globe.
+This space is available for all researchers at WVU who need to temporarily store and transfer data.
+
+.. In addition to faster transfer speeds, Globus Online also includes restartable file transfers in case a connection fails and includes data checksumming to ensure data is correctly transferred.  
+
+Logging in and transferring files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Visit the URL `Globus Online <https://auth.globus.org/p/login>`__ to login.
+
+.. <https://auth.globus.org/p/login?redirect_uri=%2Fv2%2Foauth2%2Fauthorize%3Fclient_id%3D89ba3e72-768f-4ddb-952d-e0bb7305e2c7%26client_name%3Dglobus_webapp%26scope%3Durn%253Aglobus%253Aauth%253Ascope%253Aauth.globus.org%253Aview_identities%2520urn%253Aglobus%253Aauth%253Ascope%253Anexus.api.globus.org%253Agroups%2520urn%253Aglobus%253Aauth%253Ascope%253Atransfer.api.globus.org%253Aall%26response_type%3Dtoken%26redirect_uri%3Dhttps%253A%252F%252Fwww.globus.org%252Fapp%252Flogin%26redirect_name%3DGlobus%2520Web%2520App%26state%3D29wjlgspim8l&client_id=89ba3e72-768f-4ddb-952d-e0bb7305e2c7>`__ to login.
+
+Select West Virginia University from the organizational list and login using your WVU Login username and password.
+
+.. Navigate to the `Transfer Files <https://www.globus.org/xfer/StartTransfer>`__ page to start transferring files.
+
+.. Additional information about how to Login and Transfer Files can be found at `Globus: How to Get Started <https://docs.globus.org/how-to/get-started/>`__.
+
+.. **Note:** WVU's High Performance Computing (HPC) End Point is named wvu#hpcdtn. You can search for other endpoints in the "Endpoint" Dialog Box.
+
+
+Transferring data to your local workstations/PC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To learn how to transfer data to your local workstation, you will need to install Globus Connect Personal.
+
+.. Instructions on how to install Globus Connect Personal is located at  `Globus: Globus Connect Personal <https://www.globus.org/globus-connect-personal>`__.
+
+.. *Note*: Globus Connect Personal is only needed to transfer files to your personnel workstation/PC.
+.. Most major academic institutions already have a Globus Connect Server installed, which allows you to transfer easily to the remote institution. 
+
+Share Data
+----------
+
+Use Globus Online to share your data files with researchers located at
+other institutions around the world without needing administrative
+assistance.
+
+*Note*
+  If you are not using an endpoint that starts with ``wvu\#``, before you can start sharing data using Globus, you must contact Research Computing and request that a shared endpoint be created for you.
+
+.. Globus, visit `Globus: How to Share Data Using Globus <https://docs.globus.org/how-to/share-files/>`__.
+
+Archive Data
+------------
+
+Globus Online provides an easy mechanism for researchers to archive
+their data sets for free to their MIX Google Drive account via a `Google Drive Connector <https://docs.globus.org/premium-storage-connectors/google-drive/>`__.
+All WVU faculty and students have unlimited storage in Google Drive
+through their MIX account. Staff can request a MIX account by contacting
+helpdesk@hpc.wvu.edu. Google Drive gives researchers a safe environment
+to archive their data sets, which replicates between multiple data
+centers to prevent data loss. Note: You can also use the Google Drive
+web interface as well as the `Google Drive Sync Client <https://tools.google.com/dlpage/drive>`__ to transfer files to
+your Google Drive MIX account; however, the sync client and web
+interface is best used for small files (Example .docx, .pdf, etc.).
+Globus Google Drive Connector is optimized for transferring a large
+number of files as well as very large files, which cannot be done, via
+the Google Drive Web Interface on Sync Client. You will see the best
+performance with Google Drive Connector with transferring several large
+files at once. If you have many small files, it might be best to zip/tar
+these files first before transferring to Google Drive.
+
+**Google Drive is not approved for use of sensitive or protected data
+sets (i.e. HIPPA, FERPA, ITAR, subject to Export Control laws, etc.). If
+you need assistance archiving these types of data sets, please contact
+helpdesk@hpc.wvu.edu.**
+
+To archive data to a Google Drive you will need to follow the
+instructions in the Globus Online Google Drive Connector Instructions,
+which will guide you on how to make a Shared Endpoint that you can
+attach to your MIX Google Drive Account to transfer data to/from.
+
+`Globus Online Google Drive Connector Instructions <https://docs.globus.org/premium-storage-connectors/google-drive/#share_a_google_drive_folder_using_globus>`__
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  **Note:** In step one, when searching all endpoints you will need to
+   search for ‘wvu#gdrive’.
+
+To transfer files to your MIX Google Drive Account, review the “Transfer
+Data” Section above. You will want to select the name of the Shared
+Endpoint you just created in step 3 as one of the two endpoints. The
+other endpoint could be a WVU endpoint, such as wvu#hpcdtn or a personal
+endpoint you created that connects to your workstation/PC.
+
+Publish Data
+------------
+
+Use Globus Online to publish your datasets, possibly as a requirement
+from a granting agency. Published datasets are organized by communities
+and their member collections and are searchable by other Globus users.
+
+*Note*
+  If you are not using an endpoint that starts with ``wvu\#``, before you can start sharing data using Globus, you must contact Research Computing and request that a shared endpoint be created for you.
+
+For more information on how to publish your data sets using Globus Online, visit `Globus, Data Publication User Guide <https://docs.globus.org/data-publication-user-guide/>`__.

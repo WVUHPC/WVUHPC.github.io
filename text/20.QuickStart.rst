@@ -1,0 +1,17 @@
+.. _chap-quick-start:
+
+Quick Start
+###########
+
+This is a short tutorial intended for first-time users. We start on :ref:`qs-getting-access`
+
+.. toctree::
+   :maxdepth: 2
+
+   21.GettingAccess.rst
+   22.Connect.rst
+   23.CommandLine.rst
+   24.EditFiles.rst
+   25.Storage.rst
+   26.JobSubmission.rst
+   27.TransferFiles.rst
