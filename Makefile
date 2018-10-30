@@ -5,7 +5,7 @@
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         =
-BUILDDIR      = ../../WVURC-gh-pages
+BUILDDIR      = _build
 PDFBUILDDIR   = /tmp
 PDF           = ../manual.pdf
 
