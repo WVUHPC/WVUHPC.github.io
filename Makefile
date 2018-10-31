@@ -7,7 +7,7 @@ SPHINXBUILD   = sphinx-build
 PAPER         =
 BUILDDIR      = _build
 PDFBUILDDIR   = /tmp
-PDF           = ../manual.pdf
+PDF           = _build/manual.pdf
 
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
@@ -190,6 +190,7 @@ pseudoxml:
 	@echo
 	@echo "Build finished. The pseudo-XML files are in $(BUILDDIR)/pseudoxml."
 
-commit:
+update-master:
 	test -d ../master && cd ../master && rm -rf _* *.html objects.inv searchindex.js text
 	test -d ../master && rsync -av _build/html/ ../master
+	test -d ../master && cp _build/manual.pdf ../master
