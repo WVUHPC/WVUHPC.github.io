@@ -121,13 +121,13 @@ latex:
 latexpdf:
 	rm -rf $(PDFBUILDDIR)/latex
 	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(PDFBUILDDIR)/latex
-	#                                          ^^^
-	#                                              
+#	#                                          ^^^
+#	#                                              
 	@echo "Running LaTeX files through pdflatex..."
 	make -C $(PDFBUILDDIR)/latex all-pdf
-	#         ^^^
+#	#         ^^^
 	cp $(PDFBUILDDIR)/latex/*.pdf $(PDF)
-	#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#	#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 	@echo "pdflatex finished; see $(PDF)"
 
 latexpdfja:
@@ -189,3 +189,7 @@ pseudoxml:
 	$(SPHINXBUILD) -b pseudoxml $(ALLSPHINXOPTS) $(BUILDDIR)/pseudoxml
 	@echo
 	@echo "Build finished. The pseudo-XML files are in $(BUILDDIR)/pseudoxml."
+
+commit:
+	test -d ../master && cd ../master && rm -rf _* *.html objects.inv searchindex.js text
+	test -d ../master && rsync -av _build/html/ ../master
