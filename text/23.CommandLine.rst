@@ -3,4 +3,55 @@
 Command Line Interface
 ======================
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+The interaction with a HPC cluster happens most of the time using a Command Line Interface (CLI). One the cluster all your interaction is controlled by a program called a *shell*. You identify that you are in *shell* when you see what is called a *prompt*, a set of characters that indicate that the *shell* is ready to receive instructions to operate.
+
+To issue a command to the shell you type a command, eventually followed for a few arguments. When you end typing the full command you type the ``ENTER`` key, the command is executed and if the command is programmed to produce screen output it will appear on your terminal as it executes. Once the command is terminated you get a new *prompt* indicating that the shell is ready for new commands.
+
+The CLI interface is a powerful way to interact with a remote computer.
+
+1. It takes little resources on the remote machine allowing the machine to serve tens, hundreds and in some cases even thousands of concurrent users.
+
+2. The *shell* is far more than command reader and executioner, it is actually a complete programming language. You can create complex sets of instructions by doing what is called *Shell Programming* actually the ability to do shell programming is what we use in this document to differentiate a basic user from an advanced user.
+
+3. Despite of the learning curve being steeper, the CLI give you far more control on the machine, so as you become more comfortable using it you will be able to do things than on a Graphical User Interface are simply cumbersome.
+
+Using a CLI is probably the biggest obstacle than beginners has to overcome before start taking advantage of a HPC cluster. Here we will offer a short straight to the point introduction to the bare minimals of managing files and folders on the *shell*.
+
+Files and Folders
+-----------------
+
+Operating Systems from UNIX legacy, Linux and MacOS being the most prominent examples, uses the idea of *folders* and *files* to organize the data on their storage device. Differently from Windows, on UNIX there is not such idea of Drives ``C:`` or ``D:`` or letters for CD Drives or USB Keys. In UNIX every piece of data on any storage device is logically located in some place of a *filesystem tree*. Thing about the *filesystem tree* where the lowest level is called *the root folder* and is indicated by ``/``. From ``/`` you will see branches like ``/bin``, ``/lib`` and many others, those are folders. Inside each folder there are potentially more folders and files. The tree structure as a metaphor for storing data is very powerful and in the case of UNIX system that data structure is deeply exploited in UNIX systems, even hardware devices such as sound outputs, hard drives receive a file-like entry on the rooted tree.
+When you insert a USB drive, Modern Linux distributions and MacOS will *mount* it automatically, meaning that it will receive a location on the tree, in the case of Linux, the mounting point is usually somewhere inside */media/*, in MacOS the mounting point is */Volumes*.
+
+In the particular case of your interaction with the HPC cluster there are two important folders that you should be aware of. They are so important that they receive special variables to tell you what they are.
+
+Your fist command will show you what those locations are. Execute::
+
+  $> echo $HOME
+  /users/<username>
+  $> echo $SCRATCH
+  /scratch/<username>
+
+The first command to learn is ``echo``. The command above uses ``echo`` to show the contents of two shell variables ``$HOME`` and ``$SCRATCH``. Shell variables are ways to store information in such a way that the shell can use it when needed. Each user on the cluster receives appropriated values for those variables.
+
+Lets explore a bit more the usage of ``echo``. Enter this command line and execute ``ENTER``::
+
+  $> echo "I am learning UNIX Commands"
+  I am learning UNIX Commands
+
+
+The shell is actually able to do basic arithmetical operations, execute this command::
+
+  $> echo $((23+45*2))
+  113
+
+Notice that as customary in mathematics products take precedence over addition. That is called the PEMDAS order of operations, ie "Parentheses, Exponents, Multiplication and Division, and Addition and Subtraction". Check your understanding of the PEMDAS rule with this command::
+
+  $> echo $(((1+2**3*(4+5)-7)/2+9))
+  42
+
+Notice that the exponential operation is expressed with the ``**`` operator.
+The usage of ``echo`` is important, otherwise, if you execute the command without ``echo`` the shell will do the operation and will try to execute a command called ``42`` that does not exists on the system. Try by yourself::
+
+  $> $ $(((1+2**3*(4+5)-7)/2+9))
+  -bash: 42: command not found

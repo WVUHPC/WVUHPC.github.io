@@ -3,7 +3,12 @@
 Quick Start
 ###########
 
-This is a short tutorial intended for first-time users. We start on :ref:`qs-getting-access`
+This is a short tutorial intended for first-time users. We assume no familiarity with High Performance Computing (HPC). The only requirement is basic familiarity with your own computer in order to install the SSH client needed to connect to the cluster.
+
+We start on :ref:`qs-getting-access` on how to request and account. Once the access is granted, we proceed to :ref:`qs-connect` to install and use a SSH client that allow you to get a terminal on the HPC cluster. A Terminal and its command line interface can be the first barrier for an user only familiarized with Graphical User Interfaces (GUI), on :ref:`qs-command-line` we present the most basic commands that will help you to create and manipulate folders and files. The next step is to learn how to edit files, on :ref:`qs-edit-files` we show how to use ``nano`` a very simple but effective text editor. We will use it to create the first program in FORTRAN that we will use later to explain execution on a batch system.  The next section, :ref:`qs-storage`, explains the several options to store data on the cluster, this is very important for first time users as they have the tendency to rely only on the ``$HOME`` folder a storage space that is very limited in most scientific purposes. At this point we are ready to submit our first job. The section :ref:`qs-job-submission` shows how to write a submission script and submit the job to the queue system.
+Finally, section :ref:`qs-transfer-files` explains how to move files in and out between the HPC cluster and your own computer.
+
+At the end of this tutorial, you should have your account activated, connected to spruce, able to create files and folders, submitting simple jobs to the queue system and taking the data back to your own machine.
 
 .. toctree::
    :maxdepth: 2
