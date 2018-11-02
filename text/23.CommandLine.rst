@@ -84,10 +84,83 @@ I am annotating below the location where ``^D`` should be executed::
 
 In fact there are hundreds of commands, most of them with a variety of options that change the behavior of the original command. You can feel bewildered t first by the large number of existing commands, but in fact most of the time you will be using a very little number of them. Learning those will speed up your learning curve.
 
-Folder commands: *pwd*, *cd* and *mkdir*
-----------------------------------------
+Folder commands
+---------------
 
 As we mention before, UNIX organizes data in storage devices as a tree.
 The commands ``pwd``, ``cd`` and ``mkdir`` will allow you to know where you are, move your location on the tree and create new folders. Later we will see how to move folders from one location on the tree to another.
 
-The first command is 
+The first command is ``pwd``. Just execute the command on the terminal::
+
+  $> $ pwd
+  /users/<username>
+
+It is very important at all times to know where in the tree you are. Doing research usually involves dealing with important amount of data, exploring several parameters or physical conditions. Organize properly all the data in meaningful folders is very important to research endeavors.
+
+When you log into a cluster, by default you are located on your ``$HOME`` folder. That is why most likely the command ``pwd`` will return that location in a first instance.
+
+The next command is ``cd``. This command is used to *change directory*. Directory is another name for *folder*.
+The term *directory* is also widely used.
+At least in UNIX the terms *directory* and *folder* are exchangeable.
+Other Desktop Operating Systems like Windows and MacOS have the concept of *smart folders* or *virtual folders*, where the *folder* that you see on screen has not correlation with a directory in the filesystem.
+In those cases the distinction is relevant.
+
+There is another important folder defined in our clusters, its called the scratch folder and each user has its own. The location of the folder is stored in the variable ``$SCRATCH``. Notice that this is an internal convection and is not observed in other HPC clusters.
+
+Use the next command to go to that folder::
+
+  $> cd $SCRATCH
+  $> pwd
+  /scratch/<username>
+
+Notice that the location is different now, if you are using this account for the first time you will not have files on this folder.
+It is time to learn another command to list the contents of a *folder*, execute::
+
+  $> ls
+  $>
+
+Assuming that you are using your HPC account for the first time, you will not have anything on your ``$SCRATCH`` folder.
+This is a good opportunity to start creating one folder there and change your location inside, execute::
+
+  $> mkdir test_folder
+  $> cd test_folder
+
+We have use two new commands here, ``mkdir`` allow you to create folders in places where you are authorized to do so. For example your ``$HOME`` and ``$SCRATCH`` folders. Try this command::
+
+  $> mkdir /test_folder
+  mkdir: cannot create directory `/test_folder': Permission denied
+
+There is an important difference between ``test_folder`` and ``/test_folder``.
+The former is a location in your current working directory (CWD), the later is a location starting on the root directory ``/``. A normal user has no rights to create folders on that directory so ``mkdir`` will fail and a error message will be shown on your screen.
+
+The name of the folder is ``test_folder``, notice the underscore between *test* and *folder*. In UNIX, there is no restriction having files or directories with spaces but using them become a nuisance on the command line. If you want to create the folder with spaces from the command line, here are the options::
+
+  $> mkdir "test folder with spaces"
+  $> mkdir another\ test\ folder\ with\ spaces
+
+In any case you have to type extra characters to prevent the command line application of consider those spaces as separators for several arguments in your command. Try executing the following::
+
+  $> mkdir another folder with spaces
+  $> ls
+  another  another folder with spaces  folder  spaces  test_folder  test folder with spaces  with
+
+Maybe is not clear what is happening here. There is an option for ``ls`` that present the contents of a directory::
+
+    $>ls -l
+    total 0
+    drwxr-xr-x 2 myname mygroup 512 Nov  2 15:44 another
+    drwxr-xr-x 2 myname mygroup 512 Nov  2 15:45 another folder with spaces
+    drwxr-xr-x 2 myname mygroup 512 Nov  2 15:44 folder
+    drwxr-xr-x 2 myname mygroup 512 Nov  2 15:44 spaces
+    drwxr-xr-x 2 myname mygroup 512 Nov  2 15:45 test_folder
+    drwxr-xr-x 2 myname mygroup 512 Nov  2 15:45 test folder with spaces
+    drwxr-xr-x 2 myname mygroup 512 Nov  2 15:44 with
+
+It should be clear, now what happens when the spaces are not contained in quotes ``"test folder with spaces"`` or escaped as ``another\ folder\ with\ spaces``.
+This is the perfect opportunity to learn how to delete empty folders. Execute::
+
+  $> rmdir another
+  $> rmdir folder spaces with
+
+You can delete one or several folders, but all those folders must be empty.
+If those folders contain files or more folders, the command will fail and error message will be displayed.
