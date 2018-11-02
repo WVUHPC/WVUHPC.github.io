@@ -25,6 +25,9 @@ When you insert a USB drive, Modern Linux distributions and MacOS will *mount* i
 
 In the particular case of your interaction with the HPC cluster there are two important folders that you should be aware of. They are so important that they receive special variables to tell you what they are.
 
+The *echo* and *cat* commands
+-----------------------------
+
 Your fist command will show you what those locations are. Execute::
 
   $> echo $HOME
@@ -55,3 +58,36 @@ The usage of ``echo`` is important, otherwise, if you execute the command withou
 
   $> $ $(((1+2**3*(4+5)-7)/2+9))
   -bash: 42: command not found
+
+As you have seen before, when you execute a command on the terminal in most cases you see the output printed on the screen.
+The next thing to learn is how to redirect the output of a command into a file.
+This will be very important later to submit jobs and control where and how the output is produced. Execute the following command::
+
+  $> echo "I am learning UNIX Commands" > report.log
+
+With the character ``>`` redirects the output from ``echo`` into a file called *report.log*. No output is printed on the screen. If the file does not exist it will be created. If the file exists previously, the file is erased and only the new contents are stored.
+
+To check that the file actually contains the line produced by echo, execute::
+
+  $> cat report.log
+  I am learning UNIX Commands
+
+The cat (concatenate) command displays the contents of one or several files. In the case of multiple files the files are printed in the order they are described in the command line, concatenating the output so the name of the command.
+
+You can even use a nice trick to write small text on a file. Execute the following command, followed by the text that you want to write, sat the end execute ``Ctrl-D`` (``^D``), the *Control Key* followed by the ``D`` key.
+I am annotating below the location where ``^D`` should be executed::
+
+  $> cat > report.log
+  I am learning UNIX Commands^D
+  $> cat report.log
+  I am learning UNIX Commands
+
+In fact there are hundreds of commands, most of them with a variety of options that change the behavior of the original command. You can feel bewildered t first by the large number of existing commands, but in fact most of the time you will be using a very little number of them. Learning those will speed up your learning curve.
+
+Folder commands: *pwd*, *cd* and *mkdir*
+----------------------------------------
+
+As we mention before, UNIX organizes data in storage devices as a tree.
+The commands ``pwd``, ``cd`` and ``mkdir`` will allow you to know where you are, move your location on the tree and create new folders. Later we will see how to move folders from one location on the tree to another.
+
+The first command is 
