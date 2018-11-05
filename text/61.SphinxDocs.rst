@@ -21,6 +21,10 @@ Create one folder for both "sphinx" and "master" branches::
     cd DOCS
     git clone --single-branch -b sphinx https://github.com/WVUResearchComputing/WVUResearchComputing.github.io.git sphinx
     git clone --single-branch -b master https://github.com/WVUResearchComputing/WVUResearchComputing.github.io.git master
+    cd sphinx
+    git remote set-url origin git@github.com:WVUResearchComputing/WVUResearchComputing.github.io.git
+    cd ../master
+    git remote set-url origin git@github.com:WVUResearchComputing/WVUResearchComputing.github.io.git
 
 After this commands, the DOCS folder will contain two subfolders, "sphinx" and "master".
 The branch "sphinx" has the sources and "master" the generated web pages.
@@ -29,4 +33,3 @@ Editing the documentation is basically adding or modifying the ".rst" files in t
 To compile the documentation execute::
 
     make html
-    
