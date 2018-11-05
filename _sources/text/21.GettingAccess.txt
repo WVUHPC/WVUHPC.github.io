@@ -3,17 +3,46 @@
 Getting Access
 ==============
 
+A High-Performance Computing (HPC) cluster is a research infrastructure intended to be used by multiple users simultaneously in order to execute calculations that are beyond the capabilities of current personal computers and workstations.
+
+There are two steps involve in getting access to our HPC clusters, having a *WVU account* and using that *WVU account* to get a *HPC account*.
+
+WVU Login Account
+------------------
+
 To gain access to WVU's Research Computing systems (including HPC systems),
-users need to first have a `WVU Login Account <http://login.wvu.edu>`_.
+users need to first have a `WVU Login Account <http://login.wvu.edu>`__.
+
+You can request a *WVU login account* for someone from outside the WVU community in order for the person to have access to specific online resources here. You will need the person's legal name, birth date and current email address in order to make the request, which can be accomplished by filling out the Special Account Request form. Click the **LOGIN Account Ticket** button to get started.
+
+Any employee may submit a request on behalf of a colleague elsewhere and there is no charge to request or use this service.
 
 If you need a WVU Login account, please make a request with `Service Desk
 <https://wvu.teamdynamix.com/TDClient/Requests/ServiceDet?ID=7156>`_.
 
-After getting a WVU Login Account, you will need to request access to Research
+Click on **LOGIN Account Ticket** and follow instructions.
+
+HPC Account
+-----------
+
+After getting a *WVU Login Account*, you will need to request access to Research
 Computing systems through the
 `Research Computing Help Desk <https://helpdesk.hpc.wvu.edu>`_ web page by
 clicking on the 'Open a new ticket' button and selecting
-'New User Account Request' under help topic.
+'New User Account Request' under help topic. More information on :ref:`int-getting-help`
+
+On *Help Topic* select *New User Account Request*
+Enter your personal information such as Full Name and WVU's email address. Personal email addresses (MSN, Gmail, etc) are not allowed for WVU users, for external users, its advisable for them to use an institutional account instead of a personal one.
+
+Enter the field for *Principal Investigator (PI)*, he or her will be the person to be contacted in order to get your account accepted.
+
+For accounting purposes is very important that you fill a *Project Title* and a fairly complete *Project Abstract* This information is collected in order to prepare usage reports for financing institutions.
+
+HPC users must ensure data that is covered by Federal security or privacy laws (e.g., HIPAA, ITAR, FERPA, classified information, etc.) is not stored on any WVU HPC system (Mountaineer or Spruce Knob). These systems currently do not meet the enhanced security requirements imposed or implied by those laws or regulations. By selecting the check mark you are acknowledging you will not store ANY protected data on WVU's HPC systems.
+
+Please acknowledge use of these supercomputing systems (Mountaineer and/or Spruce Knob) at WVU, which are funded in part by the National Science Foundation EPSCoR Research Infrastructure Improvement Cooperative Agreement #1003907, the state of West Virginia (WVEPSCoR via the Higher Education Policy Commission) and WVU, in your publications produced using these resources.
+
+Once the the ticket is submitted a the PI will be notified for acceptance and your *HPC account* will be created. You will be notified once the account is ready for usage.
 
 For any additional questions regarding access, please email us at
 `helpdesk@hpc.wvu.edu <mailto:helpdesk@hpc.wvu.edu>`_.

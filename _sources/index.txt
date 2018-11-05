@@ -30,9 +30,6 @@ Desk web page. You are welcome to e-mail any member of the WVU-RC team directly,
 but since we are not always at our desk, the ticket system will guarantee that
 your support question will be seen by someone currently available.
 
-
-Contents:
-
 .. toctree::
    :maxdepth: 2
 

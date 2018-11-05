@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Job Submission &mdash; WVU-RC 1.0 documentation</title>
+  <title>Documentation on Sphinx &mdash; WVU-RC 1.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="next" title="Transferring Files" href="27.TransferFiles.html" />
-    <link rel="prev" title="Storage" href="25.Storage.html" /> 
+    <link rel="next" title="Domain Specific Details" href="70.DomainSpecific.html" />
+    <link rel="prev" title="For Administrators" href="60.Administrators.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -87,20 +87,18 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="20.QuickStart.html">Quick Start</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="21.GettingAccess.html">Getting Access</a></li>
-<li class="toctree-l2"><a class="reference internal" href="22.Connect.html">Connect to the cluster</a></li>
-<li class="toctree-l2"><a class="reference internal" href="23.CommandLine.html">Command Line Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="24.EditFiles.html">Editing Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="25.Storage.html">Storage</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Job Submission</a></li>
-<li class="toctree-l2"><a class="reference internal" href="27.TransferFiles.html">Transferring Files</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="40.AdvancedUser.html">For Advanced Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="50.Developers.html">For Developers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="60.Administrators.html">For Administrators</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="60.Administrators.html">For Administrators</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Documentation on Sphinx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creation">Creation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#changing-the-documents">Changing the documents</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
 <li class="toctree-l1"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="90.References.html">References</a></li>
@@ -149,15 +147,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="20.QuickStart.html">Quick Start</a> &raquo;</li>
+          <li><a href="60.Administrators.html">For Administrators</a> &raquo;</li>
         
-      <li>Job Submission</li>
+      <li>Documentation on Sphinx</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/26.JobSubmission.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/61.SphinxDocs.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -170,10 +168,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="job-submission">
-<span id="qs-job-submission"></span><h1>Job Submission<a class="headerlink" href="#job-submission" title="Permalink to this headline">¶</a></h1>
-<p>Shared resources like Computer clusters are intended to be used by several people at the same time. To coordinate usage of the resources, users should request to a system called &#8220;Resource Manager&#8221; to give them access to some resources for a predefined amount of time.</p>
-<p>The set of resources that are requested and the set of commands that you plan to execute is called a job. There are two kinds of jobs: &#8220;interactive&#8221; and &#8220;non-interactive&#8221;</p>
+  <div class="section" id="documentation-on-sphinx">
+<h1>Documentation on Sphinx<a class="headerlink" href="#documentation-on-sphinx" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="creation">
+<h2>Creation<a class="headerlink" href="#creation" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Create a Repostory called</li>
+</ol>
+<p>WVUResearchComputing.github.io</p>
+<ol class="arabic simple" start="2">
+<li></li>
+</ol>
+</div>
+<div class="section" id="changing-the-documents">
+<h2>Changing the documents<a class="headerlink" href="#changing-the-documents" title="Permalink to this headline">¶</a></h2>
+<p>These are the steps to create a working environment for introducing changes to the documentation.
+Create one folder for both &#8220;sphinx&#8221; and &#8220;master&#8221; branches:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>mkdir DOCS
+cd DOCS
+git clone --single-branch -b sphinx https://github.com/WVUResearchComputing/WVUResearchComputing.github.io.git sphinx
+git clone --single-branch -b master https://github.com/WVUResearchComputing/WVUResearchComputing.github.io.git master
+</pre></div>
+</div>
+<p>After this commands, the DOCS folder will contain two subfolders, &#8220;sphinx&#8221; and &#8220;master&#8221;.
+The branch &#8220;sphinx&#8221; has the sources and &#8220;master&#8221; the generated web pages.</p>
+<p>Editing the documentation is basically adding or modifying the &#8221;.rst&#8221; files in the subfolder &#8220;texts&#8221;.
+To compile the documentation execute:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>make html
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -184,10 +208,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="27.TransferFiles.html" class="btn btn-neutral float-right" title="Transferring Files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="70.DomainSpecific.html" class="btn btn-neutral float-right" title="Domain Specific Details" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="25.Storage.html" class="btn btn-neutral" title="Storage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="60.Administrators.html" class="btn btn-neutral" title="For Administrators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

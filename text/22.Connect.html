@@ -90,14 +90,14 @@
 <li class="toctree-l1 current"><a class="reference internal" href="20.QuickStart.html">Quick Start</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="21.GettingAccess.html">Getting Access</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Connect to the cluster</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#hostnames">Hostnames</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-a-ssh-client">Get a SSH Client</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#connecting-to-a-cluster-via-ssh">Connecting to a cluster via SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#logging-in">Logging In</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#logging-out">Logging Out</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="23.CommandLine.html">Command Line Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="24.EditFiles.html">Editing files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="24.EditFiles.html">Editing Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="25.Storage.html">Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="26.JobSubmission.html">Job Submission</a></li>
 <li class="toctree-l2"><a class="reference internal" href="27.TransferFiles.html">Transferring Files</a></li>
@@ -178,43 +178,79 @@
             
   <div class="section" id="connect-to-the-cluster">
 <span id="qs-connect"></span><h1>Connect to the cluster<a class="headerlink" href="#connect-to-the-cluster" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="hostnames">
-<h2>Hostnames<a class="headerlink" href="#hostnames" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><strong>Mountaineer</strong> mountaineer.hpc.wvu.edu</li>
-<li><strong>Spruce Knob</strong> spruce.hpc.wvu.edu</li>
-</ul>
-</div></blockquote>
+<p>A HPC cluster is a big computing infrastructure intended for concurrent usage by many users. A desktop, laptop or even workstations are intended for a single user at a time. In general Graphical User Interfaces consume important amount of resources even when the user is not making use of them, that is one of the reasons why is common practice in HPC clusters to only allow remote shell access and limited capabilities for GUI applications.</p>
+<p>Due to security reasons, HPC clusters are intended to be accesed using a secure shell, the standard secure shell nowadays is called SSH. Secure Shell (SSH) is a cryptographic network protocol for operating network services securely over an unsecured network such as internet. The typical application of SSH in HPC is to provide remote command-line login and remote command execution.</p>
+<p>SSH was created as replacement to Telnet and old method for remote communication with no capability of encryption. This kind of access have been disabled and will not work on any cluster.</p>
+<p>In other to connect to any of our clusters you need a <em>username</em>, your name as user of the cluster.
+You should have obtained that <em>username</em> with your <em>WVU Login account</em>
+The next step is to use a SSH client to connect to one of our clusters.</p>
+<div class="section" id="get-a-ssh-client">
+<h2>Get a SSH Client<a class="headerlink" href="#get-a-ssh-client" title="Permalink to this headline">¶</a></h2>
+<p>An SSH Client is a piece of software that allow you to run a remote session on a computer, over a network using a secure connection based on the SSH protocol.</p>
+<p>A SSH client is usually installed on MacOS and most Unix/Linux distributions so if you are using one of those Operating Systems you do not need to install anything.</p>
+<p>Windows users will have to acquire an SSH client.
+PuTTY is a free implementation of SSH for Windows platforms, it comes along with an xterm terminal emulator.</p>
+<p>Go to <a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTy</a> to know more about the product or download it directly from <a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">PuTTY Download</a>.</p>
+<p>PuTTY is not the only SSH client available for Windows. See for example <a class="reference external" href="https://en.wikipedia.org/wiki/Comparison_of_SSH_clients">Comparison of SSH clients</a> for several alternatives.</p>
 </div>
 <div class="section" id="connecting-to-a-cluster-via-ssh">
 <h2>Connecting to a cluster via SSH<a class="headerlink" href="#connecting-to-a-cluster-via-ssh" title="Permalink to this headline">¶</a></h2>
-<p>Access to a cluster is through the SSH login protocol using a cluster&#8217;s hostname.
-SSH uses encryption to ensure a secure connection and therefore is preferred.
-Unsecured connections through telnet clients have been disabled and will not work.
-You will need an SSH client which is available with any current Unix based
-operating system (including Linux and Mac OS X).
-Windows users will have to acquire an SSH client, <a class="reference external" href="http://www.putty.org/">Putty</a>
-is a commonly used SSH client with a graphical interface and is available for
-free download.  We have [[puttyIns | Putty Instructions here]].</p>
-<p>To use a command-line SSH client available on Unix based operating systems,
-open a terminal shell and type:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; ssh username@hostname
+<p>On MacOS and Unix/Linux, open a terminal shell and type:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; ssh &lt;username&gt;@&lt;hostname&gt;
 </pre></div>
 </div>
-<p>or</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; ssh -Y username@hostname
+<p>or:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; ssh -Y &lt;username&gt;@&lt;hostname&gt;
 </pre></div>
 </div>
-<p>Where username is your username and hostname is the name of the cluster you
-wish to connect to.  The -Y option is used to forward X windows applications
-running on Spruce to be forwarded to your local machine.</p>
+<p>Where <tt class="docutils literal"><span class="pre">&lt;username&gt;</span></tt> is your <em>WVU Login account</em> username and <tt class="docutils literal"><span class="pre">&lt;hostname&gt;</span></tt> is the name of the cluster you wish to connect to.
+The -Y option is used to forward X windows applications running on the server to be forwarded to your local machine.
+Remember that the <tt class="docutils literal"><span class="pre">$&gt;</span></tt> symbols above are there to indicate a command on the terminal, you should not enter those initial characters.</p>
+<p>We currently have two clusters <em>Mountaineer</em> and <em>Spruce Knob</em> the hostnames are:</p>
+<table border="1" class="colwidths-given docutils">
+<caption>WVU&#8217;s High Performance Computer (HPC) Clusters</caption>
+<colgroup>
+<col width="25%" />
+<col width="50%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Cluster</th>
+<th class="head">Hostname</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Mountaineer</strong></td>
+<td><em>mountaineer.hpc.wvu.edu</em></td>
+<td>To be decommissioned by the end of 2018</td>
+</tr>
+<tr class="row-odd"><td><strong>Spruce Knob</strong></td>
+<td><em>spruce.hpc.wvu.edu</em></td>
+<td>Operational</td>
+</tr>
+<tr class="row-even"><td><strong>Thorny Flat</strong></td>
+<td><em>thorny.hpc.wvu.edu</em></td>
+<td>To be deployed by the end of 2018</td>
+</tr>
+</tbody>
+</table>
+<p>If you want to connect to Spruce use the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@spruce.hpc.wvu.edu
+</pre></div>
+</div>
+<p>If you are using Windows and PuTTy, click on PuTTy Icon and enter the hosname</p>
+<img alt="../_images/puttystartup.png" src="../_images/puttystartup.png" />
+<p>If you want to get X11 forwarding, ie remote windows popping on your local machine, enable X11 forwarding as shown below.</p>
+<img alt="../_images/putty_xforward.png" src="../_images/putty_xforward.png" />
 </div>
 <div class="section" id="logging-in">
 <h2>Logging In<a class="headerlink" href="#logging-in" title="Permalink to this headline">¶</a></h2>
 <p>When your SSH access is granted, you will be prompted with a login message
 (below is the Spruce Knob login message):</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; ssh &lt;username&gt;@spruce.hpc.wvu.edu
+
+------------------------------------------------------------------------------
                    Welcome to the Spruce Knob Supercomputer
             Shared Research Facilities, West Virginia University
 ------------------------------------------------------------------------------
@@ -241,7 +277,12 @@ before mentioned protected data.
 WVU Acceptable Use of Data and Technology Resources Policies:
 http://it.wvu.edu/governance/standards-and-procedures/all-standards/au
 ------------------------------------------------------------------------------
-Last login: Mon Jun 25 16:00:41 2018 from 157.182.62.79
+Password:
+</pre></div>
+</div>
+<p>Following this message, you will be prompted for your password.  Type in your password and you will be given a command prompt. If you are out of WVU network you will be asked to provide Two-Factor Authentication. You can know more about this on <a class="reference external" href="https://wvu.teamdynamix.com/TDClient/KB/?CategoryID=3626">Two-Factor Authentication (Duo) Articles</a></p>
+<p>Once your identity is confirmed the login procedure will resume:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>Last login: Thu Nov  1 09:23:22 2018 from 157.182.62.87
 ______________________________________________________________________________
 
 Questions and Problem Reports:
@@ -263,16 +304,16 @@ Further system related information:
 
     To submit a batch job, issue:       qsub job_script.sh
     To show all queued jobs, issue:     showq or qstat
-    To check a job status:                checkjob &lt;jobId&gt;
+    To check a job status:            checkjob &lt;jobId&gt;
     To kill a queued job, issue:        canceljob &lt;jobId&gt;
 
     Example PBS job scripts are located at:
     http://wiki.hpc.wvu.edu/hpc_wiki/index.php/Sample_Job_Scripts
 
     The following man pages provide helpful pbs information:
-  man pbs_resources_linux (How-to request cluster resources)
-  man qsub
-  man qstat
+      man pbs_resources_linux (How-to request cluster resources)
+      man qsub
+      man qstat
 
 - Spruce Knob utilizes Environment Modules to help manage different software
    packages available on the cluster.  &quot;module avail&quot; shows the available
@@ -291,14 +332,14 @@ _______________________________________________________________________________
 
 Recent Updates:
 
-- 2018.05.18 - Completed OS and server updates across the entire system.
+- 2018.05.18 - Completed OS and server updates across entire system.
 </pre></div>
 </div>
-<p>Following this message, you will be prompted for your password.  Type in your
-password and you will be given a command prompt.  Users logging in for the
-first time, will be asked immediately to change their password.  The password
-is managed with Active Directory and cannot be changed using the passwd
-command in the command prompt.</p>
+<p>At this point you will get a terminal prompt such as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;username&gt;@srih0001:~$
+</pre></div>
+</div>
+<p>All the commands executed from now on are happening on a remote machine, the Spruce Knob <em>head node</em>, this is the place were most of your direct interaction with the cluster happens.</p>
 </div>
 <div class="section" id="logging-out">
 <h2>Logging Out<a class="headerlink" href="#logging-out" title="Permalink to this headline">¶</a></h2>
@@ -306,10 +347,8 @@ command in the command prompt.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; exit
 </pre></div>
 </div>
-<p>The exit command will attempt to terminate any job not running through the
-queuing system.  In some cases, you will get an error that jobs are either
-currently running or currently stopped.  You can view stopped jobs using the
-jobs command:</p>
+<p>The exit command will attempt to terminate any process running on the head.
+In some cases, you will get an error that jobs are either currently running or currently stopped.  You can view stopped jobs using the jobs command:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; jobs -l
 [1]+ 3325 Stopped            vim script56.py
 </pre></div>
@@ -320,7 +359,8 @@ use the kill command:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; kill -s 9 3325
 </pre></div>
 </div>
-<p>Once all jobs are terminated, the exit command will close the connection to host.</p>
+<p>Once all jobs are terminated, the exit command will close the connection to host.
+On section <a class="reference internal" href="26.JobSubmission.html#qs-job-submission"><em>Job Submission</em></a> we will explain how to submit jobs on the queue system. Jobs on the queue system are not killed when you log out of the head node.</p>
 </div>
 </div>
 

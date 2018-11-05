@@ -28,7 +28,7 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="next" title="Editing files" href="24.EditFiles.html" />
+    <link rel="next" title="Editing Files" href="24.EditFiles.html" />
     <link rel="prev" title="Connect to the cluster" href="22.Connect.html" /> 
 
   
@@ -90,8 +90,13 @@
 <li class="toctree-l1 current"><a class="reference internal" href="20.QuickStart.html">Quick Start</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="21.GettingAccess.html">Getting Access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="22.Connect.html">Connect to the cluster</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Command Line Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="24.EditFiles.html">Editing files</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Command Line Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#files-and-folders">Files and Folders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-echo-and-cat-commands">The <em>echo</em> and <em>cat</em> commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#folder-commands">Folder commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="24.EditFiles.html">Editing Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="25.Storage.html">Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="26.JobSubmission.html">Job Submission</a></li>
 <li class="toctree-l2"><a class="reference internal" href="27.TransferFiles.html">Transferring Files</a></li>
@@ -172,7 +177,149 @@
             
   <div class="section" id="command-line-interface">
 <span id="qs-command-line"></span><h1>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>The interaction with a HPC cluster happens most of the time using a Command Line Interface (CLI). One the cluster all your interaction is controlled by a program called a <em>shell</em>. You identify that you are in <em>shell</em> when you see what is called a <em>prompt</em>, a set of characters that indicate that the <em>shell</em> is ready to receive instructions to operate.</p>
+<p>To issue a command to the shell you type a command, eventually followed for a few arguments. When you end typing the full command you type the <tt class="docutils literal"><span class="pre">ENTER</span></tt> key, the command is executed and if the command is programmed to produce screen output it will appear on your terminal as it executes. Once the command is terminated you get a new <em>prompt</em> indicating that the shell is ready for new commands.</p>
+<p>The CLI interface is a powerful way to interact with a remote computer.</p>
+<ol class="arabic simple">
+<li>It takes little resources on the remote machine allowing the machine to serve tens, hundreds and in some cases even thousands of concurrent users.</li>
+<li>The <em>shell</em> is far more than command reader and executioner, it is actually a complete programming language. You can create complex sets of instructions by doing what is called <em>Shell Programming</em> actually the ability to do shell programming is what we use in this document to differentiate a basic user from an advanced user.</li>
+<li>Despite of the learning curve being steeper, the CLI give you far more control on the machine, so as you become more comfortable using it you will be able to do things than on a Graphical User Interface are simply cumbersome.</li>
+</ol>
+<p>Using a CLI is probably the biggest obstacle than beginners has to overcome before start taking advantage of a HPC cluster. Here we will offer a short straight to the point introduction to the bare minimals of managing files and folders on the <em>shell</em>.</p>
+<div class="section" id="files-and-folders">
+<h2>Files and Folders<a class="headerlink" href="#files-and-folders" title="Permalink to this headline">¶</a></h2>
+<p>Operating Systems from UNIX legacy, Linux and MacOS being the most prominent examples, uses the idea of <em>folders</em> and <em>files</em> to organize the data on their storage device. Differently from Windows, on UNIX there is not such idea of Drives <tt class="docutils literal"><span class="pre">C:</span></tt> or <tt class="docutils literal"><span class="pre">D:</span></tt> or letters for CD Drives or USB Keys. In UNIX every piece of data on any storage device is logically located in some place of a <em>filesystem tree</em>. Thing about the <em>filesystem tree</em> where the lowest level is called <em>the root folder</em> and is indicated by <tt class="docutils literal"><span class="pre">/</span></tt>. From <tt class="docutils literal"><span class="pre">/</span></tt> you will see branches like <tt class="docutils literal"><span class="pre">/bin</span></tt>, <tt class="docutils literal"><span class="pre">/lib</span></tt> and many others, those are folders. Inside each folder there are potentially more folders and files. The tree structure as a metaphor for storing data is very powerful and in the case of UNIX system that data structure is deeply exploited in UNIX systems, even hardware devices such as sound outputs, hard drives receive a file-like entry on the rooted tree.
+When you insert a USB drive, Modern Linux distributions and MacOS will <em>mount</em> it automatically, meaning that it will receive a location on the tree, in the case of Linux, the mounting point is usually somewhere inside <em>/media/</em>, in MacOS the mounting point is <em>/Volumes</em>.</p>
+<p>In the particular case of your interaction with the HPC cluster there are two important folders that you should be aware of. They are so important that they receive special variables to tell you what they are.</p>
+</div>
+<div class="section" id="the-echo-and-cat-commands">
+<h2>The <em>echo</em> and <em>cat</em> commands<a class="headerlink" href="#the-echo-and-cat-commands" title="Permalink to this headline">¶</a></h2>
+<p>Your fist command will show you what those locations are. Execute:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; echo $HOME
+/users/&lt;username&gt;
+$&gt; echo $SCRATCH
+/scratch/&lt;username&gt;
+</pre></div>
+</div>
+<p>The first command to learn is <tt class="docutils literal"><span class="pre">echo</span></tt>. The command above uses <tt class="docutils literal"><span class="pre">echo</span></tt> to show the contents of two shell variables <tt class="docutils literal"><span class="pre">$HOME</span></tt> and <tt class="docutils literal"><span class="pre">$SCRATCH</span></tt>. Shell variables are ways to store information in such a way that the shell can use it when needed. Each user on the cluster receives appropriated values for those variables.</p>
+<p>Lets explore a bit more the usage of <tt class="docutils literal"><span class="pre">echo</span></tt>. Enter this command line and execute <tt class="docutils literal"><span class="pre">ENTER</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; echo &quot;I am learning UNIX Commands&quot;
+I am learning UNIX Commands
+</pre></div>
+</div>
+<p>The shell is actually able to do basic arithmetical operations, execute this command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; echo $((23+45*2))
+113
+</pre></div>
+</div>
+<p>Notice that as customary in mathematics products take precedence over addition. That is called the PEMDAS order of operations, ie &#8220;Parentheses, Exponents, Multiplication and Division, and Addition and Subtraction&#8221;. Check your understanding of the PEMDAS rule with this command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; echo $(((1+2**3*(4+5)-7)/2+9))
+42
+</pre></div>
+</div>
+<p>Notice that the exponential operation is expressed with the <tt class="docutils literal"><span class="pre">**</span></tt> operator.
+The usage of <tt class="docutils literal"><span class="pre">echo</span></tt> is important, otherwise, if you execute the command without <tt class="docutils literal"><span class="pre">echo</span></tt> the shell will do the operation and will try to execute a command called <tt class="docutils literal"><span class="pre">42</span></tt> that does not exists on the system. Try by yourself:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; $ $(((1+2**3*(4+5)-7)/2+9))
+-bash: 42: command not found
+</pre></div>
+</div>
+<p>As you have seen before, when you execute a command on the terminal in most cases you see the output printed on the screen.
+The next thing to learn is how to redirect the output of a command into a file.
+This will be very important later to submit jobs and control where and how the output is produced. Execute the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; echo &quot;I am learning UNIX Commands&quot; &gt; report.log
+</pre></div>
+</div>
+<p>With the character <tt class="docutils literal"><span class="pre">&gt;</span></tt> redirects the output from <tt class="docutils literal"><span class="pre">echo</span></tt> into a file called <em>report.log</em>. No output is printed on the screen. If the file does not exist it will be created. If the file exists previously, the file is erased and only the new contents are stored.</p>
+<p>To check that the file actually contains the line produced by echo, execute:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; cat report.log
+I am learning UNIX Commands
+</pre></div>
+</div>
+<p>The cat (concatenate) command displays the contents of one or several files. In the case of multiple files the files are printed in the order they are described in the command line, concatenating the output so the name of the command.</p>
+<p>You can even use a nice trick to write small text on a file. Execute the following command, followed by the text that you want to write, sat the end execute <tt class="docutils literal"><span class="pre">Ctrl-D</span></tt> (<tt class="docutils literal"><span class="pre">^D</span></tt>), the <em>Control Key</em> followed by the <tt class="docutils literal"><span class="pre">D</span></tt> key.
+I am annotating below the location where <tt class="docutils literal"><span class="pre">^D</span></tt> should be executed:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; cat &gt; report.log
+I am learning UNIX Commands^D
+$&gt; cat report.log
+I am learning UNIX Commands
+</pre></div>
+</div>
+<p>In fact there are hundreds of commands, most of them with a variety of options that change the behavior of the original command. You can feel bewildered t first by the large number of existing commands, but in fact most of the time you will be using a very little number of them. Learning those will speed up your learning curve.</p>
+</div>
+<div class="section" id="folder-commands">
+<h2>Folder commands<a class="headerlink" href="#folder-commands" title="Permalink to this headline">¶</a></h2>
+<p>As we mention before, UNIX organizes data in storage devices as a tree.
+The commands <tt class="docutils literal"><span class="pre">pwd</span></tt>, <tt class="docutils literal"><span class="pre">cd</span></tt> and <tt class="docutils literal"><span class="pre">mkdir</span></tt> will allow you to know where you are, move your location on the tree and create new folders. Later we will see how to move folders from one location on the tree to another.</p>
+<p>The first command is <tt class="docutils literal"><span class="pre">pwd</span></tt>. Just execute the command on the terminal:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; $ pwd
+/users/&lt;username&gt;
+</pre></div>
+</div>
+<p>It is very important at all times to know where in the tree you are. Doing research usually involves dealing with important amount of data, exploring several parameters or physical conditions. Organize properly all the data in meaningful folders is very important to research endeavors.</p>
+<p>When you log into a cluster, by default you are located on your <tt class="docutils literal"><span class="pre">$HOME</span></tt> folder. That is why most likely the command <tt class="docutils literal"><span class="pre">pwd</span></tt> will return that location in a first instance.</p>
+<p>The next command is <tt class="docutils literal"><span class="pre">cd</span></tt>. This command is used to <em>change directory</em>. Directory is another name for <em>folder</em>.
+The term <em>directory</em> is also widely used.
+At least in UNIX the terms <em>directory</em> and <em>folder</em> are exchangeable.
+Other Desktop Operating Systems like Windows and MacOS have the concept of <em>smart folders</em> or <em>virtual folders</em>, where the <em>folder</em> that you see on screen has not correlation with a directory in the filesystem.
+In those cases the distinction is relevant.</p>
+<p>There is another important folder defined in our clusters, its called the scratch folder and each user has its own. The location of the folder is stored in the variable <tt class="docutils literal"><span class="pre">$SCRATCH</span></tt>. Notice that this is an internal convection and is not observed in other HPC clusters.</p>
+<p>Use the next command to go to that folder:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; cd $SCRATCH
+$&gt; pwd
+/scratch/&lt;username&gt;
+</pre></div>
+</div>
+<p>Notice that the location is different now, if you are using this account for the first time you will not have files on this folder.
+It is time to learn another command to list the contents of a <em>folder</em>, execute:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; ls
+$&gt;
+</pre></div>
+</div>
+<p>Assuming that you are using your HPC account for the first time, you will not have anything on your <tt class="docutils literal"><span class="pre">$SCRATCH</span></tt> folder.
+This is a good opportunity to start creating one folder there and change your location inside, execute:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; mkdir test_folder
+$&gt; cd test_folder
+</pre></div>
+</div>
+<p>We have use two new commands here, <tt class="docutils literal"><span class="pre">mkdir</span></tt> allow you to create folders in places where you are authorized to do so. For example your <tt class="docutils literal"><span class="pre">$HOME</span></tt> and <tt class="docutils literal"><span class="pre">$SCRATCH</span></tt> folders. Try this command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; mkdir /test_folder
+mkdir: cannot create directory `/test_folder&#39;: Permission denied
+</pre></div>
+</div>
+<p>There is an important difference between <tt class="docutils literal"><span class="pre">test_folder</span></tt> and <tt class="docutils literal"><span class="pre">/test_folder</span></tt>.
+The former is a location in your current working directory (CWD), the later is a location starting on the root directory <tt class="docutils literal"><span class="pre">/</span></tt>. A normal user has no rights to create folders on that directory so <tt class="docutils literal"><span class="pre">mkdir</span></tt> will fail and a error message will be shown on your screen.</p>
+<p>The name of the folder is <tt class="docutils literal"><span class="pre">test_folder</span></tt>, notice the underscore between <em>test</em> and <em>folder</em>. In UNIX, there is no restriction having files or directories with spaces but using them become a nuisance on the command line. If you want to create the folder with spaces from the command line, here are the options:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; mkdir &quot;test folder with spaces&quot;
+$&gt; mkdir another\ test\ folder\ with\ spaces
+</pre></div>
+</div>
+<p>In any case you have to type extra characters to prevent the command line application of consider those spaces as separators for several arguments in your command. Try executing the following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; mkdir another folder with spaces
+$&gt; ls
+another  another folder with spaces  folder  spaces  test_folder  test folder with spaces  with
+</pre></div>
+</div>
+<p>Maybe is not clear what is happening here. There is an option for <tt class="docutils literal"><span class="pre">ls</span></tt> that present the contents of a directory:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt;ls -l
+total 0
+drwxr-xr-x 2 myname mygroup 512 Nov  2 15:44 another
+drwxr-xr-x 2 myname mygroup 512 Nov  2 15:45 another folder with spaces
+drwxr-xr-x 2 myname mygroup 512 Nov  2 15:44 folder
+drwxr-xr-x 2 myname mygroup 512 Nov  2 15:44 spaces
+drwxr-xr-x 2 myname mygroup 512 Nov  2 15:45 test_folder
+drwxr-xr-x 2 myname mygroup 512 Nov  2 15:45 test folder with spaces
+drwxr-xr-x 2 myname mygroup 512 Nov  2 15:44 with
+</pre></div>
+</div>
+<p>It should be clear, now what happens when the spaces are not contained in quotes <tt class="docutils literal"><span class="pre">&quot;test</span> <span class="pre">folder</span> <span class="pre">with</span> <span class="pre">spaces&quot;</span></tt> or escaped as <tt class="docutils literal"><span class="pre">another\</span> <span class="pre">folder\</span> <span class="pre">with\</span> <span class="pre">spaces</span></tt>.
+This is the perfect opportunity to learn how to delete empty folders. Execute:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; rmdir another
+$&gt; rmdir folder spaces with
+</pre></div>
+</div>
+<p>You can delete one or several folders, but all those folders must be empty.
+If those folders contain files or more folders, the command will fail and error message will be displayed.</p>
+</div>
 </div>
 
 
@@ -183,7 +330,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="24.EditFiles.html" class="btn btn-neutral float-right" title="Editing files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="24.EditFiles.html" class="btn btn-neutral float-right" title="Editing Files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="22.Connect.html" class="btn btn-neutral" title="Connect to the cluster" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

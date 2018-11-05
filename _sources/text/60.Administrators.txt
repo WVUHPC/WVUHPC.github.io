@@ -2,3 +2,8 @@
 
 For Administrators
 ##################
+
+.. toctree::
+  :maxdepth: 2
+
+  61.SphinxDocs.rst
