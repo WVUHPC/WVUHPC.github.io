@@ -188,6 +188,10 @@ Create one folder for both &#8220;sphinx&#8221; and &#8220;master&#8221; branche
 cd DOCS
 git clone --single-branch -b sphinx https://github.com/WVUResearchComputing/WVUResearchComputing.github.io.git sphinx
 git clone --single-branch -b master https://github.com/WVUResearchComputing/WVUResearchComputing.github.io.git master
+cd sphinx
+git remote set-url origin git@github.com:WVUResearchComputing/WVUResearchComputing.github.io.git
+cd ../master
+git remote set-url origin git@github.com:WVUResearchComputing/WVUResearchComputing.github.io.git
 </pre></div>
 </div>
 <p>After this commands, the DOCS folder will contain two subfolders, &#8220;sphinx&#8221; and &#8220;master&#8221;.

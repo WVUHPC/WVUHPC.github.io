@@ -94,6 +94,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#files-and-folders">Files and Folders</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-echo-and-cat-commands">The <em>echo</em> and <em>cat</em> commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#folder-commands">Folder commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#commands-for-copy-and-move">Commands for copy and move</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#delete-files-and-folders">Delete files and Folders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary-of-basic-commands">Summary of Basic Commands</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="24.EditFiles.html">Editing Files</a></li>
@@ -245,6 +248,11 @@ I am learning UNIX Commands
 </pre></div>
 </div>
 <p>In fact there are hundreds of commands, most of them with a variety of options that change the behavior of the original command. You can feel bewildered t first by the large number of existing commands, but in fact most of the time you will be using a very little number of them. Learning those will speed up your learning curve.</p>
+<p>Another very simple command that is very useful in HPC is <tt class="docutils literal"><span class="pre">date</span></tt>. Without any arguments, it prints the current date to the screen. Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; date
+Mon Nov  5 12:05:58 EST 2018
+</pre></div>
+</div>
 </div>
 <div class="section" id="folder-commands">
 <h2>Folder commands<a class="headerlink" href="#folder-commands" title="Permalink to this headline">¶</a></h2>
@@ -319,6 +327,140 @@ $&gt; rmdir folder spaces with
 </div>
 <p>You can delete one or several folders, but all those folders must be empty.
 If those folders contain files or more folders, the command will fail and error message will be displayed.</p>
+<p>After deleting those folders created by mistake, lets check the contents of the current directory. The command <tt class="docutils literal"><span class="pre">ls</span> <span class="pre">-1</span></tt> will list the contents of a file one per line, something very convenient for future scripting:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; ls -1
+another folder with spaces
+test_folder
+test folder with spaces
+</pre></div>
+</div>
+</div>
+<div class="section" id="commands-for-copy-and-move">
+<h2>Commands for copy and move<a class="headerlink" href="#commands-for-copy-and-move" title="Permalink to this headline">¶</a></h2>
+<p>The next two commands are <tt class="docutils literal"><span class="pre">cp</span></tt> and <tt class="docutils literal"><span class="pre">mv</span></tt>. They are use to copy or move files or folders from one location to another. In its simplest usage, those two commands take two arguments, the first argument is the source and the last one the destination. In the case of more than two arguments the destination must be a directory. The effect will be to copy or move all the source items into the folder indicated as destination.</p>
+<p>Before doing a few examples with <tt class="docutils literal"><span class="pre">cp</span></tt> and <tt class="docutils literal"><span class="pre">mv</span></tt> lets use a very handy command to create files. The command <tt class="docutils literal"><span class="pre">touch</span></tt> is use to update the access and modification times of a file or folder to the current time. In case there is not such a file, the command will create a new empty file. We will use that feature to create some empty files for the purpose of demonstrate how to use <tt class="docutils literal"><span class="pre">cp</span></tt> and <tt class="docutils literal"><span class="pre">mv</span></tt>.</p>
+<p>Lets create a few files and directories:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; mkdir even odd
+$&gt; touch f01 f02 f03 f05 f07 f11
+</pre></div>
+</div>
+<p>Now, lets copy some of those existing files to complete all the numbers up to <tt class="docutils literal"><span class="pre">f11</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; cp f03 f04
+$&gt; cp f05 f06
+$&gt; cp f07 f08
+$&gt; cp f07 f09
+$&gt; cp f07 f10
+</pre></div>
+</div>
+<p>This is good opportunity to present the <tt class="docutils literal"><span class="pre">*</span></tt> <em>wildcard</em>, use it to replace an arbitrary sequence of characters. For instance, execute this command to  list all the files created above:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; ls f*
+f01  f02  f03  f04  f05  f06  f07  f08  f09  f10  f11
+</pre></div>
+</div>
+<p>The <em>wildcard</em> is able to replace zero or more arbitrary characters, see for example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; ls f*1
+f01  f11
+</pre></div>
+</div>
+<p>There is another way of representing files or directories that follow a pattern,
+execute this command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; ls f0[3,5,7]
+f03  f05  f07
+</pre></div>
+</div>
+<p>The files selected are those whose last character is on the list <tt class="docutils literal"><span class="pre">[3,5,7]</span></tt>. Similarly a range of characters can be represented. See:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; ls f0[3-7]
+f03  f04  f05  f06  f07
+</pre></div>
+</div>
+<p>We will use those special character to move files based on its parity. Execute:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; mv f[0,1][1,3,5,7,9] odd
+$&gt; mv f[0,1][0,2,4,6,8] even
+</pre></div>
+</div>
+<p>The command above is equivalent to execute the explicit listing of sources:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; mv f01 f03 f05 f07 f09 f11 odd
+$&gt; mv f02 f04 f06 f08 f10 even
+</pre></div>
+</div>
+</div>
+<div class="section" id="delete-files-and-folders">
+<h2>Delete files and Folders<a class="headerlink" href="#delete-files-and-folders" title="Permalink to this headline">¶</a></h2>
+<p>As we mention above, empty folders can be deleted with the command <tt class="docutils literal"><span class="pre">rmdir</span></tt> but that only works if there are no subfolders or files inside the folder that you want to delete. See for example what happens if you try to delete the folder called <tt class="docutils literal"><span class="pre">odd</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; rmdir odd
+rmdir: failed to remove `odd&#39;: Directory not empty
+</pre></div>
+</div>
+<p>If you want to delete odd, you can do it in two ways. The command <tt class="docutils literal"><span class="pre">rm</span></tt> allow you to delete one or more files entered as arguments. Lets delete all the files inside odd, followed by the deletion of the folder <tt class="docutils literal"><span class="pre">odd</span></tt> itself:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; rm odd/*
+$&gt; rmdir odd
+</pre></div>
+</div>
+<p>Another option is to delete a folder recursively, this is a powerful but also dangerous option. Even if deleting a file is not actually filling with zeros the location of the data, on HPC systems the recovery of data is practice unfeasible. Lets delete the folder even recursively:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; rm -r even
+</pre></div>
+</div>
+</div>
+<div class="section" id="summary-of-basic-commands">
+<h2>Summary of Basic Commands<a class="headerlink" href="#summary-of-basic-commands" title="Permalink to this headline">¶</a></h2>
+<p>The purpose of this brief tutorial is familiarize you with the most common commands used in UNIX environments. We have shown 10 commands that you will be using, very often on your interaction. This 10 basic commands and one editor from the next section is all that you need to be ready for submitting jobs on the cluster.</p>
+<p>The next table summarizes those commands.</p>
+<table border="1" class="colwidths-given docutils">
+<caption>WVU&#8217;s High Performance Computer (HPC) Clusters</caption>
+<colgroup>
+<col width="25%" />
+<col width="50%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Command</th>
+<th class="head">Description</th>
+<th class="head">Examples</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">echo</span></tt></td>
+<td>Display a given message on the screen</td>
+<td><tt class="docutils literal"><span class="pre">echo</span> <span class="pre">&quot;This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">message&quot;</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">cat</span></tt></td>
+<td>Display the contents of a file on screen, concatenate files</td>
+<td><tt class="docutils literal"><span class="pre">cat</span> <span class="pre">my_file</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">date</span></tt></td>
+<td>Shows the current date on screen</td>
+<td><tt class="docutils literal"><span class="pre">date</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">pwd</span></tt></td>
+<td><em>thorny.hpc.wvu.edu</em></td>
+<td>To be deployed by the end of 2018</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">cd</span></tt></td>
+<td>Change directory</td>
+<td><tt class="docutils literal"><span class="pre">cd</span> <span class="pre">sub_folder</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">mkdir</span></tt></td>
+<td>Create directory</td>
+<td><tt class="docutils literal"><span class="pre">mkdir</span> <span class="pre">new_folder</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">touch</span></tt></td>
+<td>Change the access and modification time of a file, create empty files</td>
+<td><tt class="docutils literal"><span class="pre">touch</span> <span class="pre">new_file</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">cp</span></tt></td>
+<td>Copy a file in another location. Copy several files into a destination directory</td>
+<td><tt class="docutils literal"><span class="pre">cp</span> <span class="pre">old_file</span> <span class="pre">new_file</span></tt></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">mv</span></tt></td>
+<td>Move a file in another location. Move several files into a destination directory</td>
+<td><tt class="docutils literal"><span class="pre">mv</span> <span class="pre">old_name</span> <span class="pre">new_name</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">rm</span></tt></td>
+<td>Remove one or more files from the file system tree.</td>
+<td><tt class="docutils literal"><span class="pre">rm</span> <span class="pre">trash_file</span></tt></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
