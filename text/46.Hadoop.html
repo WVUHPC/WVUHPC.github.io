@@ -1,8 +1,8 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -28,6 +28,8 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Python Modules" href="47.Python.html" />
     <link rel="prev" title="Using MPI on RC HPC Clusters" href="45.MPIUser.html" /> 
 
@@ -96,7 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="43.UserInstallation.html">Installing Packages in User Locations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="44.Miniconda.html">Miniconda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="45.MPIUser.html">Using MPI on RC HPC Clusters</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Executing HADOOP jobs</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Executing HADOOP jobs</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#what-is-hadoop">What is Hadoop</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#using-hadoop-on-the-cluster">Using Hadoop on the cluster</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#r-interface-with-hadoop-rhipe">R Interface with Hadoop - Rhipe</a></li>
@@ -170,7 +172,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/46.Hadoop.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/46.Hadoop.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -191,7 +193,7 @@
 processing by using the Hadoop Distributed File System (HDFS) to provide
 fast bandwidth of large data across clusters. Using the Hadoop
 interface, it is possible to split large data across both nodes and
-processors to increase data processing time. Hadoop&#8217;s advantage is
+processors to increase data processing time. Hadoop’s advantage is
 processing large data files (gigabytes to terabyte range), in a
 non-POSIX compliant filesystem to increase throughput performance.
 Hadoop is currently installed on the Spruce Knob cluster.</p>
@@ -204,7 +206,7 @@ PBS job script. However, before you run Hadoop commands, you need to
 start the Hadoop datanode. To do this, you need to load a few module
 files and run a few start-up scripts. In addition a specific PBS
 directive (PBS -W) needs to be specified so Hadoop runs properly:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>#PBS -W x=nmatchpolicy:exactnode
+<div class="highlight-default"><div class="highlight"><pre><span></span>#PBS -W x=nmatchpolicy:exactnode
 
 module load compilers/java/jre1.8.0
 module load libraries/DFS/myhadoop
@@ -217,7 +219,7 @@ start-all.sh
 </div>
 <p>Below these lines, you can place your intended hadoop commands. At the
 end of your script, you need to stop the hadoop datanode:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">stop</span><span class="o">-</span><span class="nb">all</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">stop</span><span class="o">-</span><span class="nb">all</span><span class="o">.</span><span class="n">sh</span>
 
 <span class="n">myhadoop</span><span class="o">-</span><span class="n">cleanup</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
@@ -228,7 +230,7 @@ Hadoop script that will run on 3 nodes with 1 processor a node. The
 example is a wordcount program that is distributed with Hadoop that
 counts the presence of all words in small sample of Shakespeare
 playwrights taken from Project Gutenberg.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>#!/bin/bash
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
 
 #PBS -q standby
 #PBS -N hadoop_job
@@ -275,8 +277,8 @@ memory. However, using Hadoop with R can overcome that limitation. To
 use the R package Rhipe, after setting up the hadoop datanode, you can
 load the two modules for the dynamically shared R binary and the Rhipe R
 package:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>module load compilers/R/3.1.0
-module load libraries/R/Rhipe
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">compilers</span><span class="o">/</span><span class="n">R</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">libraries</span><span class="o">/</span><span class="n">R</span><span class="o">/</span><span class="n">Rhipe</span>
 </pre></div>
 </div>
 <p>Note: Rhipe must be loaded after the R module - otherwise you will get a
@@ -345,11 +347,11 @@ pre-requisite error.</p>
           var DOCUMENTATION_OPTIONS = {
               URL_ROOT:'../',
               VERSION:'1.0',
-              LANGUAGE:'',
+              LANGUAGE:'None',
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>

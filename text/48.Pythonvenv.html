@@ -1,8 +1,8 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -28,6 +28,8 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="For Developers" href="50.Developers.html" />
     <link rel="prev" title="Python and scientific libraries" href="48.Python.html" /> 
 
@@ -99,7 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="46.Hadoop.html">Executing HADOOP jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="47.Python.html">Python Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="48.Python.html">Python and scientific libraries</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Python Virtual Environments</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python Virtual Environments</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#using-virtual-environments-with-python2">Using Virtual Environments with python2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#using-virtual-environments-with-python3">Using Virtual Environments with python3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#activating-virtual-environments-using-the-c-shell">Activating virtual environments using the C shell</a></li>
@@ -166,7 +168,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/48.Pythonvenv.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/48.Pythonvenv.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -192,7 +194,7 @@ versions of pkbC will be installed to the same location.</p>
 isolation of package dependencies, so you can successfully have
 different versions of packages installed and tied to seperate python
 interpreters. Setting up python virtual environments is easy, and using
-them is no different than using python it&#8217;s self.</p>
+them is no different than using python it’s self.</p>
 <div class="section" id="using-virtual-environments-with-python2">
 <h2>Using Virtual Environments with python2<a class="headerlink" href="#using-virtual-environments-with-python2" title="Permalink to this headline">¶</a></h2>
 <p>First, load which version of python2 you would like to use as your base
@@ -200,18 +202,18 @@ python interpreter. For instance, if you want python 2.7.10, then load
 the 2.7.10 python modefule. If you want to use the default system python
 (v. 2.6), then you do not need to load a python modulefile. However, you
 do need to load the virtualenv modulefile.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>module load compilers/python/2.7.10 compilers/python/virtualenv
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">compilers</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">10</span> <span class="n">compilers</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">virtualenv</span>
 </pre></div>
 </div>
-<p>Then create a virtualenv directory with the &#8216;virtualenv&#8217; command.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>virtualenv workflow1
+<p>Then create a virtualenv directory with the ‘virtualenv’ command.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">virtualenv</span> <span class="n">workflow1</span>
 </pre></div>
 </div>
-<p>You should now have a directory called &#8216;workflow1&#8217;. You can use whatever
+<p>You should now have a directory called ‘workflow1’. You can use whatever
 name you want for the virtualenv, so long as you remember what directory
 corresponds with what environment. You now need to simply activate the
 virtualenv.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>source workflow1/bin/activate
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">workflow1</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
 </pre></div>
 </div>
 <p>Your command prompt will now be pre-emptied by (workflow1) to remind you
@@ -221,20 +223,20 @@ pip, and easy_install just as you would regularly.</p>
 <div class="section" id="using-virtual-environments-with-python3">
 <h2>Using Virtual Environments with python3<a class="headerlink" href="#using-virtual-environments-with-python3" title="Permalink to this headline">¶</a></h2>
 <p>First, load the python3 modulefile. The python3 modulefile comes with
-it&#8217;s own virtual environment utility, so you do not need to load the
+it’s own virtual environment utility, so you do not need to load the
 virtualenv modulefile.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>module load compilers/python/3.5.1
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">compilers</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">1</span>
 </pre></div>
 </div>
-<p>Then create a virtualenv directry with the &#8216;pyvenv&#8217; command.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>pyvenv workflow1
+<p>Then create a virtualenv directry with the ‘pyvenv’ command.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pyvenv</span> <span class="n">workflow1</span>
 </pre></div>
 </div>
-<p>You should now have a directory called &#8216;workflow1&#8217;. You can use whatever
+<p>You should now have a directory called ‘workflow1’. You can use whatever
 name you want for the virtualenv, so long as you remember what directory
 corresponds with what environment. You now need to simply activate the
 virtualenv.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>source workflow1/bin/activate
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">workflow1</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
 </pre></div>
 </div>
 <p>Your command prompt will now be pre-emptied by (workflow1) to remind you
@@ -244,8 +246,8 @@ pip, and easy_install just as you would regularly.</p>
 <div class="section" id="activating-virtual-environments-using-the-c-shell">
 <h2>Activating virtual environments using the C shell<a class="headerlink" href="#activating-virtual-environments-using-the-c-shell" title="Permalink to this headline">¶</a></h2>
 <p>If you are using the shells csh or tcsh, you will not be able to source
-the &#8216;activate&#8217; file. Instead, you need to source the activate.csh file.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>source workflow1/bin/activate.csh
+the ‘activate’ file. Instead, you need to source the activate.csh file.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">workflow1</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span><span class="o">.</span><span class="n">csh</span>
 </pre></div>
 </div>
 </div>
@@ -256,12 +258,12 @@ modelefiles), usually have some common scientific packages installed
 with them by default. For instance, python 2.7.10 already has Numpy
 1.9.2 and Matplotlib 1.4.2 installed. To have your virtualenv keep using
 these packages so you do not need to install them in your virtualenv,
-using the &#8211;system-site-packages option.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">virtualenv</span> <span class="o">--</span><span class="n">system</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span>
+using the –system-site-packages option.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">virtualenv</span> <span class="o">--</span><span class="n">system</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span>
 </pre></div>
 </div>
 <p>Or</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">pyvenv</span> <span class="o">--</span><span class="n">systems</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pyvenv</span> <span class="o">--</span><span class="n">systems</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span>
 </pre></div>
 </div>
 </div>
@@ -312,11 +314,11 @@ using the &#8211;system-site-packages option.</p>
           var DOCUMENTATION_OPTIONS = {
               URL_ROOT:'../',
               VERSION:'1.0',
-              LANGUAGE:'',
+              LANGUAGE:'None',
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>

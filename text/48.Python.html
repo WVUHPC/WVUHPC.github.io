@@ -1,8 +1,8 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -28,6 +28,8 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Python Virtual Environments" href="48.Pythonvenv.html" />
     <link rel="prev" title="Python Modules" href="47.Python.html" /> 
 
@@ -98,7 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="45.MPIUser.html">Using MPI on RC HPC Clusters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="46.Hadoop.html">Executing HADOOP jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="47.Python.html">Python Modules</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Python and scientific libraries</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python and scientific libraries</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#packages-included">Packages included</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#libraries-included">Libraries included</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#python-2-7-and-3-6">Python 2.7 and 3.6</a></li>
@@ -170,7 +172,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/48.Python.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/48.Python.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -198,8 +200,8 @@ that happens python 2 and 3 will coexist and that is the reason why we
 keep both on our cluster.</p>
 <div class="section" id="packages-included">
 <h2>Packages included<a class="headerlink" href="#packages-included" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span>* Python-2.7.13
-* Python-3.6.0
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">Python</span><span class="o">-</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">13</span>
+<span class="o">*</span> <span class="n">Python</span><span class="o">-</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -289,14 +291,14 @@ LZMA is a newer compression algorithm that Python 3 is linked to.</p>
 (LTO) and Profile-guided optimization (PGO) to maximize performance in
 production runs.</p>
 <p>Compilation proceed with (similar for 6.3.0):</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>../configure --prefix=/shared/software/languages/python/2.7.13
-make profile-opt
-make install
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">languages</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="mf">2.7</span><span class="o">.</span><span class="mi">13</span>
+<span class="n">make</span> <span class="n">profile</span><span class="o">-</span><span class="n">opt</span>
+<span class="n">make</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>The Makefile was modified to remove the command option
-<tt class="docutils literal"><span class="pre">-fuse-linker-plugin</span></tt></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>--- Makefile.orig	2017-01-24 09:52:54.597959711 -0500
+<code class="docutils literal"><span class="pre">-fuse-linker-plugin</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>--- Makefile.orig	2017-01-24 09:52:54.597959711 -0500
 +++ Makefile	        2017-01-24 10:27:24.152893000 -0500
 @@ -469,7 +469,7 @@
  	$(MAKE) profile-removal
@@ -375,11 +377,11 @@ make install
           var DOCUMENTATION_OPTIONS = {
               URL_ROOT:'../',
               VERSION:'1.0',
-              LANGUAGE:'',
+              LANGUAGE:'None',
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>

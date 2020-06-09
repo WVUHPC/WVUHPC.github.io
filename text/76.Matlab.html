@@ -1,8 +1,8 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -28,6 +28,8 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Visualization: VisIt" href="77.Visit.html" />
     <link rel="prev" title="Bioinformatics: Using Bowtie2" href="75.bowtie2.html" /> 
 
@@ -98,7 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="73.OpenFoam.html">Engineering: Running OpenFOAM simple tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="74.Bioconda.html">Bioinformatics: Conda and BioConda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="75.bowtie2.html">Bioinformatics: Using Bowtie2</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Matlab: Running Matlab scripts on a HPC cluster</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Matlab: Running Matlab scripts on a HPC cluster</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#executing-matlab-scripts">Executing Matlab scripts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#using-the-matlab-compiler">Using the Matlab Compiler</a></li>
 </ul>
@@ -161,7 +163,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/76.Matlab.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/76.Matlab.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -185,14 +187,14 @@ of a function to find extrema and inflection points of a given function.</p>
 <p><a class="reference external" href="Media:derivatives.zip">derivatives.zip</a></p>
 <p>You can create a directory for this, for example MATLAB and uncompress
 there the file derivatives.zip:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>unzip derivatives.zip
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">unzip</span> <span class="n">derivatives</span><span class="o">.</span><span class="n">zip</span>
 </pre></div>
 </div>
-<p>It will uncompress a file called &#8220;derivatives.m&#8221;, that is the actual
+<p>It will uncompress a file called “derivatives.m”, that is the actual
 matlab code that we would like to execute on the cluster.</p>
 <p>The submission script is very simple, for this example we will use a
 single core:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>#!/bin/sh
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/sh
 
 #PBS -N MATLAB
 #PBS -l nodes=1:ppn=1
@@ -209,34 +211,34 @@ matlab -nodisplay -r derivatives
 </div>
 <p>Store this lines into a file called runjob.pbs</p>
 <p>This submission script is telling the PBS system that we are creating a
-job called &#8220;MATLAB&#8221;, that will use one node (nodes=1) and one core per
+job called “MATLAB”, that will use one node (nodes=1) and one core per
 node (ppn=1), during one hour (walltime=1:00:00). I will be notified by
 email (-m ae) either for the job being aborted or ended. The queue were
-the job is submitted is called &#8220;debug&#8221; but you can also choose other
-queues such as &#8220;comm_mmem_week&#8221; or &#8220;comm_mmem_day&#8221;. that will offer
+the job is submitted is called “debug” but you can also choose other
+queues such as “comm_mmem_week” or “comm_mmem_day”. that will offer
 extended periods of time.</p>
 <p>The lines module purge and module load statistics/matlab/2014a will
 prepare the environment for executing Matlab on the HPC cluster.</p>
-<p>Finally, the script will execute the matlab script &#8220;derivatives.m&#8221;
+<p>Finally, the script will execute the matlab script “derivatives.m”
 without opening the graphical user interface (GUI). Notive that you
-should execute matlab -nodisplay -r derivatives without adding the &#8221;.m&#8221;.
-Matlab will always search for a file called &#8220;derivatives.m&#8221;</p>
+should execute matlab -nodisplay -r derivatives without adding the “.m”.
+Matlab will always search for a file called “derivatives.m”</p>
 <p>You submit the job from the command line executing:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$qsub runjob.pbs
+<div class="highlight-default"><div class="highlight"><pre><span></span>$qsub runjob.pbs
 987788.srih0001.hpc.wvu.edu
 </pre></div>
 </div>
 <p>You should get like above the JobID, an identifier that allow you to
 keep track of your execution. You can monitor the execution like this:
 When in queue, ie, waiting for execution:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$ qstat 987788
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ qstat 987788
 Job ID                    Name             User            Time Use S Queue
 ------------------------- ---------------- --------------- -------- - ------
 987788.srih0001            MATLAB           gufranco               0 Q debug
 </pre></div>
 </div>
 <p>When running:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$ qstat 987788
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ qstat 987788
 Job ID                    Name             User            Time Use S Queue
 
 ------------------------- ---------------- --------------- -------- - ------
@@ -244,7 +246,7 @@ Job ID                    Name             Use
 </pre></div>
 </div>
 <p>When finished:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$ qstat 987788
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ qstat 987788
 
 Job ID                    Name             User            Time Use S Queue
 ------------------------- ---------------- --------------- -------- - -----
@@ -252,7 +254,7 @@ Job ID                    Name             Use
 </pre></div>
 </div>
 <p>When the job concludes, you will get the files:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>derivatives.fig
+<div class="highlight-default"><div class="highlight"><pre><span></span>derivatives.fig
 derivatives.m
 derivatives.png
 MATLAB.e987788
@@ -262,77 +264,77 @@ runjob.pbs``
 </div>
 <p>The figures where generated and save on the same folder you submit your
 job. The output of your execution is stored at MATLAB.o987788</p>
-<div class="figure">
+<div class="figure" id="id1">
 <img alt="derivatives.png" src="../_images/derivatives.png" />
-<p class="caption">derivatives.png</p>
+<p class="caption"><span class="caption-text">derivatives.png</span></p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                            &lt; M A T L A B (R) &gt;
-                  Copyright 1984-2014 The MathWorks, Inc.
-                    R2014a (8.3.0.532) 64-bit (glnxa64)
-                             February 11, 2014
+<div class="highlight-default"><div class="highlight"><pre><span></span>                            <span class="o">&lt;</span> <span class="n">M</span> <span class="n">A</span> <span class="n">T</span> <span class="n">L</span> <span class="n">A</span> <span class="n">B</span> <span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="o">&gt;</span>
+                  <span class="n">Copyright</span> <span class="mi">1984</span><span class="o">-</span><span class="mi">2014</span> <span class="n">The</span> <span class="n">MathWorks</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span>
+                    <span class="n">R2014a</span> <span class="p">(</span><span class="mf">8.3</span><span class="o">.</span><span class="mf">0.532</span><span class="p">)</span> <span class="mi">64</span><span class="o">-</span><span class="n">bit</span> <span class="p">(</span><span class="n">glnxa64</span><span class="p">)</span>
+                             <span class="n">February</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2014</span>
 
 
-To get started, type one of these: helpwin, helpdesk, or demo.
-For product information, visit www.mathworks.com.
+<span class="n">To</span> <span class="n">get</span> <span class="n">started</span><span class="p">,</span> <span class="nb">type</span> <span class="n">one</span> <span class="n">of</span> <span class="n">these</span><span class="p">:</span> <span class="n">helpwin</span><span class="p">,</span> <span class="n">helpdesk</span><span class="p">,</span> <span class="ow">or</span> <span class="n">demo</span><span class="o">.</span>
+<span class="n">For</span> <span class="n">product</span> <span class="n">information</span><span class="p">,</span> <span class="n">visit</span> <span class="n">www</span><span class="o">.</span><span class="n">mathworks</span><span class="o">.</span><span class="n">com</span><span class="o">.</span>
 
-First Derivatives: Finding Local Minima and Maxima
-==================================================
+<span class="n">First</span> <span class="n">Derivatives</span><span class="p">:</span> <span class="n">Finding</span> <span class="n">Local</span> <span class="n">Minima</span> <span class="ow">and</span> <span class="n">Maxima</span>
+<span class="o">==================================================</span>
 
-f =
+<span class="n">f</span> <span class="o">=</span>
 
-(3*x^3 + 17*x^2 + 6*x + 1)/(2*x^3 - x + 3)
-
-
-ans =
-
-3/2
+<span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">17</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">6</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">-</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
 
 
-ans =
+<span class="n">ans</span> <span class="o">=</span>
 
-3/2
-
-
-ans =
-
-- 1/(6*(3/4 - (241^(1/2)*432^(1/2))/432)^(1/3)) - (3/4 - (241^(1/2)*432^(1/2))/432)^(1/3)
+<span class="mi">3</span><span class="o">/</span><span class="mi">2</span>
 
 
-ans =
+<span class="n">ans</span> <span class="o">=</span>
 
-   -1.2896
-
-First Derivative: Local extremum Points
-=======================================
-
-g =
-
-(9*x^2 + 34*x + 6)/(2*x^3 - x + 3) - ((6*x^2 - 1)*(3*x^3 + 17*x^2 + 6*x + 1))/(2*x^3 - x + 3)^2
+<span class="mi">3</span><span class="o">/</span><span class="mi">2</span>
 
 
-ans =
+<span class="n">ans</span> <span class="o">=</span>
 
- ((2841*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(1/3))/1156 + 9*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(2/3) + 361/289)^(1/2)/(6*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(1/6)) + ((337491*6^(1/2)*((3*3^(1/2)*178939632355^(1/2))/9826 + 2198209/9826)^(1/2))/39304 + (2841*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(1/3)*((2841*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(1/3))/1156 + 9*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(2/3) + 361/289)^(1/2))/578 - 9*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(2/3)*((2841*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(1/3))/1156 + 9*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(2/3) + 361/289)^(1/2) - (361*((2841*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(1/3))/1156 + 9*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(2/3) + 361/289)^(1/2))/289)^(1/2)/(6*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(1/6)*((2841*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(1/3))/1156 + 9*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(2/3) + 361/289)^(1/4)) - 15/68
- ((2841*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(1/3))/1156 + 9*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(2/3) + 361/289)^(1/2)/(6*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(1/6)) - ((337491*6^(1/2)*((3*3^(1/2)*178939632355^(1/2))/9826 + 2198209/9826)^(1/2))/39304 + (2841*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(1/3)*((2841*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(1/3))/1156 + 9*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(2/3) + 361/289)^(1/2))/578 - 9*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(2/3)*((2841*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(1/3))/1156 + 9*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(2/3) + 361/289)^(1/2) - (361*((2841*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(1/3))/1156 + 9*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(2/3) + 361/289)^(1/2))/289)^(1/2)/(6*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(1/6)*((2841*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(1/3))/1156 + 9*((3^(1/2)*178939632355^(1/2))/176868 + 2198209/530604)^(2/3) + 361/289)^(1/4)) - 15/68
-
-
-ans =
-
-    1.2860
-   -0.1892
-
-Second Derivatives: Finding Inflection Points
-=============================================
-
-h =
-
-(18*x + 34)/(2*x^3 - x + 3) - (2*(6*x^2 - 1)*(9*x^2 + 34*x + 6))/(2*x^3 - x + 3)^2 - (12*x*(3*x^3 + 17*x^2 + 6*x + 1))/(2*x^3 - x + 3)^2 + (2*(6*x^2 - 1)^2*(3*x^3 + 17*x^2 + 6*x + 1))/(2*x^3 - x + 3)^3
+<span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span> <span class="o">-</span> <span class="p">(</span><span class="mi">241</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">432</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">432</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span> <span class="o">-</span> <span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span> <span class="o">-</span> <span class="p">(</span><span class="mi">241</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">432</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">432</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
 
 
-ans =
+<span class="n">ans</span> <span class="o">=</span>
 
-  1.8651543689917122385037075917613
- 0.57871842655441748319601085860196
+   <span class="o">-</span><span class="mf">1.2896</span>
+
+<span class="n">First</span> <span class="n">Derivative</span><span class="p">:</span> <span class="n">Local</span> <span class="n">extremum</span> <span class="n">Points</span>
+<span class="o">=======================================</span>
+
+<span class="n">g</span> <span class="o">=</span>
+
+<span class="p">(</span><span class="mi">9</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">34</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">6</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">-</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="p">((</span><span class="mi">6</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">17</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">6</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">-</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span>
+
+
+<span class="n">ans</span> <span class="o">=</span>
+
+ <span class="p">((</span><span class="mi">2841</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span><span class="o">/</span><span class="mi">1156</span> <span class="o">+</span> <span class="mi">9</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">361</span><span class="o">/</span><span class="mi">289</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">))</span> <span class="o">+</span> <span class="p">((</span><span class="mi">337491</span><span class="o">*</span><span class="mi">6</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">*</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">9826</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">9826</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">39304</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2841</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="mi">2841</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span><span class="o">/</span><span class="mi">1156</span> <span class="o">+</span> <span class="mi">9</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">361</span><span class="o">/</span><span class="mi">289</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">578</span> <span class="o">-</span> <span class="mi">9</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="mi">2841</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span><span class="o">/</span><span class="mi">1156</span> <span class="o">+</span> <span class="mi">9</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">361</span><span class="o">/</span><span class="mi">289</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">361</span><span class="o">*</span><span class="p">((</span><span class="mi">2841</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span><span class="o">/</span><span class="mi">1156</span> <span class="o">+</span> <span class="mi">9</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">361</span><span class="o">/</span><span class="mi">289</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">289</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="mi">2841</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span><span class="o">/</span><span class="mi">1156</span> <span class="o">+</span> <span class="mi">9</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">361</span><span class="o">/</span><span class="mi">289</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">))</span> <span class="o">-</span> <span class="mi">15</span><span class="o">/</span><span class="mi">68</span>
+ <span class="p">((</span><span class="mi">2841</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span><span class="o">/</span><span class="mi">1156</span> <span class="o">+</span> <span class="mi">9</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">361</span><span class="o">/</span><span class="mi">289</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">))</span> <span class="o">-</span> <span class="p">((</span><span class="mi">337491</span><span class="o">*</span><span class="mi">6</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">*</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">9826</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">9826</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">39304</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2841</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="mi">2841</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span><span class="o">/</span><span class="mi">1156</span> <span class="o">+</span> <span class="mi">9</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">361</span><span class="o">/</span><span class="mi">289</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">578</span> <span class="o">-</span> <span class="mi">9</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="mi">2841</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span><span class="o">/</span><span class="mi">1156</span> <span class="o">+</span> <span class="mi">9</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">361</span><span class="o">/</span><span class="mi">289</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">361</span><span class="o">*</span><span class="p">((</span><span class="mi">2841</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span><span class="o">/</span><span class="mi">1156</span> <span class="o">+</span> <span class="mi">9</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">361</span><span class="o">/</span><span class="mi">289</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">289</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="mi">2841</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span><span class="o">/</span><span class="mi">1156</span> <span class="o">+</span> <span class="mi">9</span><span class="o">*</span><span class="p">((</span><span class="mi">3</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">178939632355</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">176868</span> <span class="o">+</span> <span class="mi">2198209</span><span class="o">/</span><span class="mi">530604</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">361</span><span class="o">/</span><span class="mi">289</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">))</span> <span class="o">-</span> <span class="mi">15</span><span class="o">/</span><span class="mi">68</span>
+
+
+<span class="n">ans</span> <span class="o">=</span>
+
+    <span class="mf">1.2860</span>
+   <span class="o">-</span><span class="mf">0.1892</span>
+
+<span class="n">Second</span> <span class="n">Derivatives</span><span class="p">:</span> <span class="n">Finding</span> <span class="n">Inflection</span> <span class="n">Points</span>
+<span class="o">=============================================</span>
+
+<span class="n">h</span> <span class="o">=</span>
+
+<span class="p">(</span><span class="mi">18</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">34</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">-</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">9</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">34</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">6</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">-</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="p">(</span><span class="mi">12</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">17</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">6</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">-</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">17</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">6</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">-</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span><span class="o">^</span><span class="mi">3</span>
+
+
+<span class="n">ans</span> <span class="o">=</span>
+
+  <span class="mf">1.8651543689917122385037075917613</span>
+ <span class="mf">0.57871842655441748319601085860196</span>
 </pre></div>
 </div>
 </div>
@@ -342,7 +344,7 @@ ans =
 <blockquote>
 <div>module&nbsp;load&nbsp;statistics/matlab/2014a</div></blockquote>
 <p>Prepare the compilation environment with:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$ mbuild -setup``
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ mbuild -setup``
 MBUILD configured to use &#39;gcc&#39; for C language compilation.``
 
 To choose a different language, execute one from the following:``
@@ -354,17 +356,17 @@ To choose a different language, execute one from the following:``
 <p><a class="reference external" href="https://www.mathworks.com/products/ineligible_programs.html">https://www.mathworks.com/products/ineligible_programs.html</a></p>
 <p>So we will use another script for this tutorial.</p>
 <p><a class="reference external" href="Media:mandelbrot.zip">mandelbrot.zip</a></p>
-<p>After uncompress the file &#8220;mandelbrot.m&#8221;:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>mcc -m mandelbrot.m
+<p>After uncompress the file “mandelbrot.m”:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mcc</span> <span class="o">-</span><span class="n">m</span> <span class="n">mandelbrot</span><span class="o">.</span><span class="n">m</span>
 </pre></div>
 </div>
 <p>It takes a while, when finished you will get some extra files:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">mandelbrot</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mandelbrot</span>
 <span class="n">run_mandelbrot</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <p>The submission script changes to:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>#!/bin/sh
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/sh
 
 #PBS -N MATLAB
 #PBS -l nodes=1:ppn=1
@@ -380,13 +382,13 @@ cd $PBS_O_WORKDIR
 </pre></div>
 </div>
 <p>After submit the job with:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>qsub runjob.pbs
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">runjob</span><span class="o">.</span><span class="n">pbs</span>
 </pre></div>
 </div>
-<p>You get the results on &#8220;MATLAB.o#######&#8221; with the corresponding JobID</p>
-<div class="figure">
+<p>You get the results on “MATLAB.o#######” with the corresponding JobID</p>
+<div class="figure" id="id2">
 <img alt="Mandelbrot fractal generated from Matlab" src="../_images/mandelbrotmatlab.png" />
-<p class="caption">Mandelbrot fractal generated from Matlab</p>
+<p class="caption"><span class="caption-text">Mandelbrot fractal generated from Matlab</span></p>
 </div>
 </div>
 </div>
@@ -436,11 +438,11 @@ cd $PBS_O_WORKDIR
           var DOCUMENTATION_OPTIONS = {
               URL_ROOT:'../',
               VERSION:'1.0',
-              LANGUAGE:'',
+              LANGUAGE:'None',
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>

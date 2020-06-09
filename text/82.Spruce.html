@@ -1,8 +1,8 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -28,6 +28,8 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Thorny Flat Cluster" href="83.ThornyFlat.html" />
     <link rel="prev" title="Mountaineer Cluster" href="81.Mountaineer.html" /> 
 
@@ -95,7 +97,7 @@
 <li class="toctree-l1"><a class="reference internal" href="70.DomainSpecific.html">Domain Specific Details</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="80.ClusterSpecific.html">Clusters Specifications</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="81.Mountaineer.html">Mountaineer Cluster</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Spruce Knob</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Spruce Knob</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#hardware">Hardware</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#queues">Queues</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#environment-modules">Environment modules</a></li>
@@ -162,7 +164,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/82.Spruce.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/82.Spruce.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -187,7 +189,7 @@
 <h2>Environment modules<a class="headerlink" href="#environment-modules" title="Permalink to this headline">¶</a></h2>
 <p>The current state and limits of queues can be found using the qstat
 command.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; qstat -q
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; qstat -q
 
 server: srih0001.hpc.wvu.edu
 
@@ -239,12 +241,12 @@ queue, and community node queues.</p>
 <h2>Research Team Queues<a class="headerlink" href="#research-team-queues" title="Permalink to this headline">¶</a></h2>
 <p>Research teams that have bought their own compute nodes have private
 queues that link all their compute nodes together. Only users given
-permission from the research team&#8217;s buyer (Usually the labs PI) will
+permission from the research team’s buyer (Usually the labs PI) will
 have permission to directly submit jobs to these queues. While these are
 private queues - unused resources/compute nodes from these queues will
 be available to the standby queue (see below). However, per the
-system-wide policies, all research team&#8217;s compute nodes must be
-available to the research team&#8217;s users within 4 hours of job submission.
+system-wide policies, all research team’s compute nodes must be
+available to the research team’s users within 4 hours of job submission.
 By default, these queues are regulated by first come, first serve
 queuing. However, individual research teams can ask for different
 settings for their respective queue, and should
@@ -262,7 +264,7 @@ the week. Further, the standby queue has a 4 hour wall time.</p>
 </div>
 <div class="section" id="community-node-queues">
 <h2>Community Node Queues<a class="headerlink" href="#community-node-queues" title="Permalink to this headline">¶</a></h2>
-<p>Spruce Knob has several queues that start with the word &#8216;comm&#8217;. These
+<p>Spruce Knob has several queues that start with the word ‘comm’. These
 queues are linked to the 51 compute nodes bought using NSF funding
 sources, and as such is open for Statewide Academic use,
 hardware/resource information can be found on the <a class="reference external" href="Systems_Spruce">Spruce Knob Systems
@@ -327,11 +329,11 @@ large number of the community resources for an excessively long time.</p>
           var DOCUMENTATION_OPTIONS = {
               URL_ROOT:'../',
               VERSION:'1.0',
-              LANGUAGE:'',
+              LANGUAGE:'None',
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>

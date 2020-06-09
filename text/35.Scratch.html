@@ -1,8 +1,8 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -28,6 +28,8 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="XWindow" href="36.XWindow.html" />
     <link rel="prev" title="Environment Modules" href="34.EnvModules.html" /> 
 
@@ -94,7 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="33.GlobusOnline.html">Globus Online</a></li>
 <li class="toctree-l2"><a class="reference internal" href="33.job_samples.html">Samples of Job Submission scripts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="34.EnvModules.html">Environment Modules</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Managing Scratch Contents</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Managing Scratch Contents</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#knowing-my-current-usage">Knowing my current usage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#searching-for-empty-files">Searching for empty files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#searching-for-big-files">Searching for Big Files</a></li>
@@ -162,7 +164,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/35.Scratch.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/35.Scratch.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -190,14 +192,14 @@ locations.</p>
 <h2>Knowing my current usage<a class="headerlink" href="#knowing-my-current-usage" title="Permalink to this headline">¶</a></h2>
 <p>First we should know what we have in terms of used space and number of
 files</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$ /usr/lpp/mmfs/bin/mmlsquota --block-size M gpfs01:scratch
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ /usr/lpp/mmfs/bin/mmlsquota --block-size M gpfs01:scratch
                          Block Limits                                               |     File Limits
 Filesystem Fileset    type             MB      quota      limit   in_doubt    grace |    files   quota    limit in_doubt    grace  Remarks
 gpfs01     scratch    USR         1943448   62914560   68157440        235     none |   557657 24000000 25000000      172     none
 </pre></div>
 </div>
 <p>You can also get this information in GigaBytes</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$ /usr/lpp/mmfs/bin/mmlsquota --block-size G gpfs01:scratch
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ /usr/lpp/mmfs/bin/mmlsquota --block-size G gpfs01:scratch
                          Block Limits                                               |     File Limits
 Filesystem Fileset    type             GB      quota      limit   in_doubt    grace |    files   quota    limit in_doubt    grace  Remarks
 gpfs01     scratch    USR            1898      61440      66560          1     none |   557657 24000000 25000000      172     none
@@ -224,51 +226,51 @@ in some cases empty files are used for some codes to indicate run
 conditions. Their sole existence carries a meaning.</p>
 <p>On Spruce every user has an environmental variable pointing to their
 personal Scratch folder. You can see that variable with:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$ echo $SCRATCH
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ echo $SCRATCH
 /scratch/&lt;USERNAME&gt;
 </pre></div>
 </div>
 <p>On this examples we will use this variable to allow you to copy and
 paste this commands in total generality</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>find $SCRATCH -size 0
+<div class="highlight-default"><div class="highlight"><pre><span></span>find $SCRATCH -size 0
 </pre></div>
 </div>
 <p>I got thousands of files. Some of them I do not want to remove, but
 there are quite a number of files like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>./OrbitalGAF/58d36a1374d8b558e47f9623/58d36a1374d8b558e47f9623.e1165669
-./OrbitalGAF/58d46c6d74d8b558e47f9cf7/58d46c6d74d8b558e47f9cf7.o1172814
-./OrbitalGAF/58d46c6d74d8b558e47f9cf7/58d46c6d74d8b558e47f9cf7.e1172814
-./OrbitalGAF/58d36a1374d8b558e47f9629/58d36a1374d8b558e47f9629.o1165671
-./OrbitalGAF/58d36a1374d8b558e47f9629/58d36a1374d8b558e47f9629.e1165671
-./OrbitalGAF/58d46c6d74d8b558e47f9cc7/58d46c6d74d8b558e47f9cc7.o1172802
-./OrbitalGAF/58d46c6d74d8b558e47f9cc7/58d46c6d74d8b558e47f9cc7.e1172802
-./OrbitalGAF/58d46c6d74d8b558e47f9cca/58d46c6d74d8b558e47f9cca.o1172803
-./OrbitalGAF/58d46c6d74d8b558e47f9cca/58d46c6d74d8b558e47f9cca.e1172803
-./OrbitalGAF/58d46c6d74d8b558e47f9cd3/58d46c6d74d8b558e47f9cd3.o1172806
-./OrbitalGAF/58d46c6d74d8b558e47f9cd3/58d46c6d74d8b558e47f9cd3.e1172806
-./OrbitalGAF/58d46c6d74d8b558e47f9cd6/58d46c6d74d8b558e47f9cd6.o1172807
-./OrbitalGAF/58d46c6d74d8b558e47f9cd6/58d46c6d74d8b558e47f9cd6.e1172807
-./OrbitalGAF/58d46c6d74d8b558e47f9cd9/58d46c6d74d8b558e47f9cd9.o1172808
-./OrbitalGAF/58d46c6d74d8b558e47f9cd9/58d46c6d74d8b558e47f9cd9.e1172808
-./OrbitalGAF/58d46c6d74d8b558e47f9cf4/58d46c6d74d8b558e47f9cf4.o1172813
-./OrbitalGAF/58d46c6d74d8b558e47f9cf4/58d46c6d74d8b558e47f9cf4.e1172813
-./OrbitalGAF/58d36a1374d8b558e47f963e/58d36a1374d8b558e47f963e.o1165678
-./OrbitalGAF/58d36a1374d8b558e47f963e/58d36a1374d8b558e47f963e.e1165678
-./OrbitalGAF/58d46c6d74d8b558e47f9cb5/58d46c6d74d8b558e47f9cb5.o1172796
-./OrbitalGAF/58d46c6d74d8b558e47f9cb5/58d46c6d74d8b558e47f9cb5.e1172796
-./OrbitalGAF/58d46c6d74d8b558e47f9cbe/58d46c6d74d8b558e47f9cbe.o1172799
-./OrbitalGAF/58d46c6d74d8b558e47f9cbe/58d46c6d74d8b558e47f9cbe.e1172799
-./OrbitalGAF/58d46c6d74d8b558e47f9cc1/58d46c6d74d8b558e47f9cc1.o1172800
-./OrbitalGAF/58d46c6d74d8b558e47f9cc1/58d46c6d74d8b558e47f9cc1.e1172800
-./OrbitalGAF/58d46c6d74d8b558e47f9cc4/58d46c6d74d8b558e47f9cc4.o1172801
-./OrbitalGAF/58d46c6d74d8b558e47f9cc4/58d46c6d74d8b558e47f9cc4.e1172801
-./OrbitalGAF/58d36a1374d8b558e47f9653/58d36a1374d8b558e47f9653.o1165683
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d36a1374d8b558e47f9623</span><span class="o">/</span><span class="mi">58</span><span class="n">d36a1374d8b558e47f9623</span><span class="o">.</span><span class="n">e1165669</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cf7</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cf7</span><span class="o">.</span><span class="n">o1172814</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cf7</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cf7</span><span class="o">.</span><span class="n">e1172814</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d36a1374d8b558e47f9629</span><span class="o">/</span><span class="mi">58</span><span class="n">d36a1374d8b558e47f9629</span><span class="o">.</span><span class="n">o1165671</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d36a1374d8b558e47f9629</span><span class="o">/</span><span class="mi">58</span><span class="n">d36a1374d8b558e47f9629</span><span class="o">.</span><span class="n">e1165671</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cc7</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cc7</span><span class="o">.</span><span class="n">o1172802</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cc7</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cc7</span><span class="o">.</span><span class="n">e1172802</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cca</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cca</span><span class="o">.</span><span class="n">o1172803</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cca</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cca</span><span class="o">.</span><span class="n">e1172803</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cd3</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cd3</span><span class="o">.</span><span class="n">o1172806</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cd3</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cd3</span><span class="o">.</span><span class="n">e1172806</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cd6</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cd6</span><span class="o">.</span><span class="n">o1172807</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cd6</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cd6</span><span class="o">.</span><span class="n">e1172807</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cd9</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cd9</span><span class="o">.</span><span class="n">o1172808</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cd9</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cd9</span><span class="o">.</span><span class="n">e1172808</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cf4</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cf4</span><span class="o">.</span><span class="n">o1172813</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cf4</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cf4</span><span class="o">.</span><span class="n">e1172813</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d36a1374d8b558e47f963e</span><span class="o">/</span><span class="mi">58</span><span class="n">d36a1374d8b558e47f963e</span><span class="o">.</span><span class="n">o1165678</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d36a1374d8b558e47f963e</span><span class="o">/</span><span class="mi">58</span><span class="n">d36a1374d8b558e47f963e</span><span class="o">.</span><span class="n">e1165678</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cb5</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cb5</span><span class="o">.</span><span class="n">o1172796</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cb5</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cb5</span><span class="o">.</span><span class="n">e1172796</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cbe</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cbe</span><span class="o">.</span><span class="n">o1172799</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cbe</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cbe</span><span class="o">.</span><span class="n">e1172799</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cc1</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cc1</span><span class="o">.</span><span class="n">o1172800</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cc1</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cc1</span><span class="o">.</span><span class="n">e1172800</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cc4</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cc4</span><span class="o">.</span><span class="n">o1172801</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cc4</span><span class="o">/</span><span class="mi">58</span><span class="n">d46c6d74d8b558e47f9cc4</span><span class="o">.</span><span class="n">e1172801</span>
+<span class="o">./</span><span class="n">OrbitalGAF</span><span class="o">/</span><span class="mi">58</span><span class="n">d36a1374d8b558e47f9653</span><span class="o">/</span><span class="mi">58</span><span class="n">d36a1374d8b558e47f9653</span><span class="o">.</span><span class="n">o1165683</span>
 </pre></div>
 </div>
 <p>All those are empty files created by Torque/Moab from simulations that I
 have carried out in the past. Those files in the format:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;JOB_NAME&gt;.o&lt;JOB_ID_NUMBER&gt;
-&lt;JOB_NAME&gt;.e&lt;JOB_ID_NUMBER&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">JOB_NAME</span><span class="o">&gt;.</span><span class="n">o</span><span class="o">&lt;</span><span class="n">JOB_ID_NUMBER</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">JOB_NAME</span><span class="o">&gt;.</span><span class="n">e</span><span class="o">&lt;</span><span class="n">JOB_ID_NUMBER</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>Those files contain the standard Output (o) and Standard Error (e) from
@@ -278,7 +280,7 @@ and because the codes that I use do not write anything on the standard
 error. Deleting those empty files will not help me with my storage usage
 by it will reduce the number of files that I will have to move later on.</p>
 <p>I can target those files with a more specific command:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>find $SCRATCH -size 0 -regextype posix-egrep  -regex &quot;.*\.[o,e][0-9]{5,7}&quot;
+<div class="highlight-default"><div class="highlight"><pre><span></span>find $SCRATCH -size 0 -regextype posix-egrep  -regex &quot;.*\.[o,e][0-9]{5,7}&quot;
 </pre></div>
 </div>
 <p>The command above search for all empty files on Scratch that contains.
@@ -287,7 +289,7 @@ most cases those files are not important to you to keep. They are empty
 and not used at all other than telling you the JOB_ID that you probably
 do not need for old jobs. If you feel confortable deleting those files
 you can execute:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>find $SCRATCH -size 0 -regextype posix-egrep  -regex &quot;.*\.[o,e][0-9]{5,7}&quot; -exec rm {} \;
+<div class="highlight-default"><div class="highlight"><pre><span></span>find $SCRATCH -size 0 -regextype posix-egrep  -regex &quot;.*\.[o,e][0-9]{5,7}&quot; -exec rm {} \;
 </pre></div>
 </div>
 <p>On my case it help me delete 16113 files</p>
@@ -298,14 +300,14 @@ you can execute:</p>
 not needed to extract the actual answers for which you run those
 calculations and could be deleted safely. The first step is knowing
 where they are. This command search for files bigger than 2GB</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>find $SCRATCH -size +2G
+<div class="highlight-default"><div class="highlight"><pre><span></span>find $SCRATCH -size +2G
 </pre></div>
 </div>
 <p>You can increase or decrease the value if you are getting too many or
 very few. Once you identify the biggest files you can use the their
 names to target those files for deletion. Imagine that the files called
-&#8220;WAVECAR&#8221; can be deleted. You can use this command&#8221;</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>find $SCRATCH -size +2G -name &quot;WAVECAR&quot; -exec rm {} \;
+“WAVECAR” can be deleted. You can use this command”</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>find $SCRATCH -size +2G -name &quot;WAVECAR&quot; -exec rm {} \;
 </pre></div>
 </div>
 </div>
@@ -356,11 +358,11 @@ names to target those files for deletion. Imagine that the files called
           var DOCUMENTATION_OPTIONS = {
               URL_ROOT:'../',
               VERSION:'1.0',
-              LANGUAGE:'',
+              LANGUAGE:'None',
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>

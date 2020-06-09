@@ -1,8 +1,8 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -28,6 +28,8 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Job Submission" href="26.JobSubmission.html" />
     <link rel="prev" title="Editing Files" href="24.EditFiles.html" /> 
 
@@ -92,7 +94,7 @@
 <li class="toctree-l2"><a class="reference internal" href="22.Connect.html">Connect to the cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="23.CommandLine.html">Command Line Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="24.EditFiles.html">Editing Files</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Storage</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Storage</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#home-directory">Home Directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#scratch-directory">Scratch Directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#persistent-group-storage">Persistent Group Storage</a></li>
@@ -163,7 +165,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/25.Storage.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/25.Storage.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -191,7 +193,7 @@ can retrieve up to 4 weeks of older files from
 the snapshot, please contact <a class="reference external" href="mailto:helpdesk&#37;&#52;&#48;hpc&#46;wvu&#46;edu">helpdesk<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a> and the HPC team will
 attempt to retrieve the data from tape.</p>
 <p>Note: Users may check their storage quota via the following command:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">quota</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">quota</span>
 </pre></div>
 </div>
 </div>
@@ -200,7 +202,7 @@ attempt to retrieve the data from tape.</p>
 <p>Scratch directories are located in /scratch directory, and can be easily
 moved to using the $SCRATCH environment variable set-up by default for
 each user.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>cd $SCRATCH
+<div class="highlight-default"><div class="highlight"><pre><span></span>cd $SCRATCH
 </pre></div>
 </div>
 <p>Scratch directories on Spruce Knob are treated as true scratch space:
@@ -221,11 +223,11 @@ be removed. In addition, this storage utilizes the same GPFS file system
 so files can be written directly to this storage from jobs executing on
 the cluster.</p>
 <p>Persistent storage must be purchased in 1 TB chunks. To purchase this
-storage, go to <a class="reference external" href="https://helpdesk.hpc.wvu.edu">https://helpdesk.hpc.wvu.edu</a> ,select &#8220;Open a New Ticket&#8221;,
-and select &#8220;Dedicated Storage Order&#8221; from Help Topic. For more
+storage, go to <a class="reference external" href="https://helpdesk.hpc.wvu.edu">https://helpdesk.hpc.wvu.edu</a> ,select “Open a New Ticket”,
+and select “Dedicated Storage Order” from Help Topic. For more
 information, please contact <a class="reference external" href="mailto:helpdesk&#37;&#52;&#48;hpc&#46;wvu&#46;edu">helpdesk<span>&#64;</span>hpc<span>&#46;</span>wvu<span>&#46;</span>edu</a>.</p>
 <p>For groups who have purchased this storage, it can be accessed here:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">group</span><span class="o">/</span><span class="p">{</span><span class="n">group_name</span><span class="p">}</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">group</span><span class="o">/</span><span class="p">{</span><span class="n">group_name</span><span class="p">}</span>
 </pre></div>
 </div>
 <p><strong>Note: Persistent group storage is NOT backed up.</strong></p>
@@ -287,11 +289,11 @@ for archival storage options.</p>
           var DOCUMENTATION_OPTIONS = {
               URL_ROOT:'../',
               VERSION:'1.0',
-              LANGUAGE:'',
+              LANGUAGE:'None',
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>

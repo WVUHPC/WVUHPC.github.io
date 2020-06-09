@@ -1,8 +1,8 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -28,6 +28,8 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Python and scientific libraries" href="48.Python.html" />
     <link rel="prev" title="Executing HADOOP jobs" href="46.Hadoop.html" /> 
 
@@ -97,7 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="44.Miniconda.html">Miniconda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="45.MPIUser.html">Using MPI on RC HPC Clusters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="46.Hadoop.html">Executing HADOOP jobs</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Python Modules</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python Modules</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#python-user-flag">Python User Flag</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#python-home-prefix-flag">Python Home/Prefix Flag</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#virtual-environments">Virtual Environments</a><ul>
@@ -172,7 +174,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/47.Python.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/47.Python.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -190,15 +192,15 @@
 <p>Python modules are installed using the DistUtils tools. This can either
 be done through the packaged setup.py script within the package
 distribution tarball:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>python setup.py install
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>Or without downloading the package, you can use the installer tools pip:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>pip install &lt;package_name&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>Or easy_isntall:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>easy_install &lt;package_name&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">easy_install</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>The above commands will install the module in the system-wide site
@@ -213,15 +215,15 @@ installation.</p>
 <p>An easy way to install Python modules locally (within your user
 directory) is by using the User flag with the DistUtils installation
 methods:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>python setup.py install --user
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>pip install --user &lt;package_name&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>The User Flag directs python to install the package in a user site
 package directory usually located at /lib/pythonX.Y/site-packages, with
-usually being a hidden directory in the user&#8217;s home directory. This is
+usually being a hidden directory in the user’s home directory. This is
 generally the preferred method of locally installing modules as this
 user site package is by default in the python library path: meaning
 modules installed this way can be used as if they were installed
@@ -231,19 +233,19 @@ system-wide.</p>
 <h2>Python Home/Prefix Flag<a class="headerlink" href="#python-home-prefix-flag" title="Permalink to this headline">¶</a></h2>
 <p>Another way to install Python modules locally is by using the Home flag
 or the Prefix flag with the DistUtils installation:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; python setup.py install --home=&lt;dir&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; python setup.py install --home=&lt;dir&gt;
 </pre></div>
 </div>
 <p>Or</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>python setup.py install --prefix=&lt;dir&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=&lt;</span><span class="nb">dir</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>Using pip:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>pip install --target &lt;dir&gt; &lt;package_name&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">target</span> <span class="o">&lt;</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>Using easy_install:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>easy_install --install-dir=&lt;dir&gt; &lt;package_name&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">easy_install</span> <span class="o">--</span><span class="n">install</span><span class="o">-</span><span class="nb">dir</span><span class="o">=&lt;</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>With</p>
@@ -255,7 +257,7 @@ modules in your Python scripts you will have to modify the PYTHONPATH
 environment variable to include the specified directory. Or
 alternatively, modify sys.path from within your python script (for this
 method, consult <a class="reference external" href="https://docs.python.org">python documentation</a>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>export PYTHONPATH=&lt;dir&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">PYTHONPATH</span><span class="o">=&lt;</span><span class="nb">dir</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -269,11 +271,11 @@ using <a class="reference external" href="Pythonvirtualenvironments">Python Virt
 <div class="section" id="installing-r-packages-in-default-directories">
 <h3>Installing R Packages in default Directories<a class="headerlink" href="#installing-r-packages-in-default-directories" title="Permalink to this headline">¶</a></h3>
 <p>The two usual ways to install R packages from CRAN is either executing</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s1">&#39;&lt;Package Name&gt;&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s1">&#39;&lt;Package Name&gt;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>from the R prompt. Or using the command</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>R CMD INSTALL &lt;package&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="n">CMD</span> <span class="n">INSTALL</span> <span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>from the command line. The second command only works if you have already
@@ -293,7 +295,7 @@ allowing you to use anything you install in this way.</p>
 <h2>Using install.packages()<a class="headerlink" href="#using-install-packages" title="Permalink to this headline">¶</a></h2>
 <p>To use install.packages from the R prompt, before you start R you need
 to modify the R_LIBS environment variable</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>export R_LIBS=&lt;dir&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">R_LIBS</span><span class="o">=&lt;</span><span class="nb">dir</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>Then inside the R prompt you execute install.packages() as normal (see
@@ -301,9 +303,9 @@ above).</p>
 </div>
 <div class="section" id="using-r-cmd-install">
 <h2>Using R CMD INSTALL<a class="headerlink" href="#using-r-cmd-install" title="Permalink to this headline">¶</a></h2>
-<p>For &#8216;R CMD INSTALL&#8217; command, you can specify the path with the l flag
-(lowercase &#8216;L&#8217;)</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>R CMD INSTALL -l &lt;dir&gt; &lt;package_name&gt;
+<p>For ‘R CMD INSTALL’ command, you can specify the path with the l flag
+(lowercase ‘L’)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="n">CMD</span> <span class="n">INSTALL</span> <span class="o">-</span><span class="n">l</span> <span class="o">&lt;</span><span class="nb">dir</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -312,7 +314,7 @@ above).</p>
 <p>To use locally installed packages, before you execute R you just need to
 modify the R_LIBS environment variable to tell R where to search for
 local packages.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>export R_LIBS=&lt;dir&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">R_LIBS</span><span class="o">=&lt;</span><span class="nb">dir</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -363,11 +365,11 @@ local packages.</p>
           var DOCUMENTATION_OPTIONS = {
               URL_ROOT:'../',
               VERSION:'1.0',
-              LANGUAGE:'',
+              LANGUAGE:'None',
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>

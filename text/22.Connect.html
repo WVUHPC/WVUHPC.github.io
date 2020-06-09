@@ -1,8 +1,8 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -28,6 +28,8 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Command Line Interface" href="23.CommandLine.html" />
     <link rel="prev" title="Getting Access" href="21.GettingAccess.html" /> 
 
@@ -89,7 +91,7 @@
 <li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="20.QuickStart.html">Quick Start</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="21.GettingAccess.html">Getting Access</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Connect to the cluster</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Connect to the cluster</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#get-a-ssh-client">Get a SSH Client</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#connecting-to-a-cluster-via-ssh">Connecting to a cluster via SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#logging-in">Logging In</a></li>
@@ -163,7 +165,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/22.Connect.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/22.Connect.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -196,19 +198,19 @@ PuTTY is a free implementation of SSH for Windows platforms, it comes along with
 <div class="section" id="connecting-to-a-cluster-via-ssh">
 <h2>Connecting to a cluster via SSH<a class="headerlink" href="#connecting-to-a-cluster-via-ssh" title="Permalink to this headline">¶</a></h2>
 <p>On MacOS and Unix/Linux, open a terminal shell and type:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; ssh &lt;username&gt;@&lt;hostname&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ssh &lt;username&gt;@&lt;hostname&gt;
 </pre></div>
 </div>
 <p>or:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; ssh -Y &lt;username&gt;@&lt;hostname&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ssh -Y &lt;username&gt;@&lt;hostname&gt;
 </pre></div>
 </div>
-<p>Where <tt class="docutils literal"><span class="pre">&lt;username&gt;</span></tt> is your <em>WVU Login account</em> username and <tt class="docutils literal"><span class="pre">&lt;hostname&gt;</span></tt> is the name of the cluster you wish to connect to.
+<p>Where <code class="docutils literal"><span class="pre">&lt;username&gt;</span></code> is your <em>WVU Login account</em> username and <code class="docutils literal"><span class="pre">&lt;hostname&gt;</span></code> is the name of the cluster you wish to connect to.
 The -Y option is used to forward X windows applications running on the server to be forwarded to your local machine.
-Remember that the <tt class="docutils literal"><span class="pre">$&gt;</span></tt> symbols above are there to indicate a command on the terminal, you should not enter those initial characters.</p>
+Remember that the <code class="docutils literal"><span class="pre">$&gt;</span></code> symbols above are there to indicate a command on the terminal, you should not enter those initial characters.</p>
 <p>We currently have two clusters <em>Mountaineer</em> and <em>Spruce Knob</em> the hostnames are:</p>
-<table border="1" class="colwidths-given docutils">
-<caption>WVU&#8217;s High Performance Computer (HPC) Clusters</caption>
+<table border="1" class="colwidths-given docutils" id="id1">
+<caption><span class="caption-text">WVU’s High Performance Computer (HPC) Clusters</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="25%" />
 <col width="50%" />
@@ -236,7 +238,7 @@ Remember that the <tt class="docutils literal"><span class="pre">$&gt;</span></t
 </tbody>
 </table>
 <p>If you want to connect to Spruce use the following command:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@spruce.hpc.wvu.edu
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ssh &lt;username&gt;@spruce.hpc.wvu.edu
 </pre></div>
 </div>
 <p>If you are using Windows and PuTTy, click on PuTTy Icon and enter the hosname</p>
@@ -248,7 +250,7 @@ Remember that the <tt class="docutils literal"><span class="pre">$&gt;</span></t
 <h2>Logging In<a class="headerlink" href="#logging-in" title="Permalink to this headline">¶</a></h2>
 <p>When your SSH access is granted, you will be prompted with a login message
 (below is the Spruce Knob login message):</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; ssh &lt;username&gt;@spruce.hpc.wvu.edu
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; ssh &lt;username&gt;@spruce.hpc.wvu.edu
 
 ------------------------------------------------------------------------------
                    Welcome to the Spruce Knob Supercomputer
@@ -282,7 +284,7 @@ Password:
 </div>
 <p>Following this message, you will be prompted for your password.  Type in your password and you will be given a command prompt. If you are out of WVU network you will be asked to provide Two-Factor Authentication. You can know more about this on <a class="reference external" href="https://wvu.teamdynamix.com/TDClient/KB/?CategoryID=3626">Two-Factor Authentication (Duo) Articles</a></p>
 <p>Once your identity is confirmed the login procedure will resume:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Last login: Thu Nov  1 09:23:22 2018 from 157.182.62.87
+<div class="highlight-default"><div class="highlight"><pre><span></span>Last login: Thu Nov  1 09:23:22 2018 from 157.182.62.87
 ______________________________________________________________________________
 
 Questions and Problem Reports:
@@ -336,7 +338,7 @@ Recent Updates:
 </pre></div>
 </div>
 <p>At this point you will get a terminal prompt such as:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;username&gt;@srih0001:~$
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;username&gt;@srih0001:~$
 </pre></div>
 </div>
 <p>All the commands executed from now on are happening on a remote machine, the Spruce Knob <em>head node</em>, this is the place were most of your direct interaction with the cluster happens.</p>
@@ -344,23 +346,23 @@ Recent Updates:
 <div class="section" id="logging-out">
 <h2>Logging Out<a class="headerlink" href="#logging-out" title="Permalink to this headline">¶</a></h2>
 <p>Logging out of a cluster can be done with the exit command:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; exit
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; exit
 </pre></div>
 </div>
 <p>The exit command will attempt to terminate any process running on the head.
 In some cases, you will get an error that jobs are either currently running or currently stopped.  You can view stopped jobs using the jobs command:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; jobs -l
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; jobs -l
 [1]+ 3325 Stopped            vim script56.py
 </pre></div>
 </div>
 <p>The output of jobs -l will give you the job PID number (in this case 3325) and
 the command (vim script56.py).  To kill jobs preventing successful logout,
 use the kill command:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$&gt; kill -s 9 3325
+<div class="highlight-default"><div class="highlight"><pre><span></span>$&gt; kill -s 9 3325
 </pre></div>
 </div>
 <p>Once all jobs are terminated, the exit command will close the connection to host.
-On section <a class="reference internal" href="26.JobSubmission.html#qs-job-submission"><em>Job Submission</em></a> we will explain how to submit jobs on the queue system. Jobs on the queue system are not killed when you log out of the head node.</p>
+On section <a class="reference internal" href="26.JobSubmission.html#qs-job-submission"><span class="std std-ref">Job Submission</span></a> we will explain how to submit jobs on the queue system. Jobs on the queue system are not killed when you log out of the head node.</p>
 </div>
 </div>
 
@@ -409,11 +411,11 @@ On section <a class="reference internal" href="26.JobSubmission.html#qs-job-subm
           var DOCUMENTATION_OPTIONS = {
               URL_ROOT:'../',
               VERSION:'1.0',
-              LANGUAGE:'',
+              LANGUAGE:'None',
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>

@@ -1,8 +1,8 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -28,6 +28,8 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Bioinformatics: Using Bowtie2" href="75.bowtie2.html" />
     <link rel="prev" title="Engineering: Running OpenFOAM simple tutorial" href="73.OpenFoam.html" /> 
 
@@ -96,7 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="71.Ansys.html">Engineering: ANSYS Products</a></li>
 <li class="toctree-l2"><a class="reference internal" href="72.ANSYSForte.html">Engineering: ANSYS/Forte</a></li>
 <li class="toctree-l2"><a class="reference internal" href="73.OpenFoam.html">Engineering: Running OpenFOAM simple tutorial</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Bioinformatics: Conda and BioConda</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Bioinformatics: Conda and BioConda</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#preparing-the-environment">Preparing the environment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#knowing-which-environments-are-available">Knowing which environments are available</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#activating-an-existing-environment">Activating an existing environment</a></li>
@@ -168,7 +170,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/74.Bioconda.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/74.Bioconda.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -189,7 +191,7 @@ installs, runs and updates packages and their dependencies. Conda easily
 creates, saves, loads and switches between environments.</p>
 <p>We have Conda installed on Spruce, all that you have to do to enable the
 conda environment is to execute:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">conda</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">conda</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <p><strong>Bioconda</strong> is a channel for the conda package manager specializing in
@@ -205,12 +207,12 @@ we prepare a basic tutorial on its usage on Spruce.</p>
 <p>On spruce:</p>
 <p>You can load the module, but it only remembers you the script that needs
 to be sourced to operate with Bioconda</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>module load genomics/bioconda
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">genomics</span><span class="o">/</span><span class="n">bioconda</span>
 </pre></div>
 </div>
 <p>In fact the conda environment is enable only when you actually source
 the script</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">conda</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">conda</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 </div>
@@ -218,7 +220,7 @@ the script</p>
 <h2>Knowing which environments are available<a class="headerlink" href="#knowing-which-environments-are-available" title="Permalink to this headline">¶</a></h2>
 <p>By the time of writting this tutorial Spruce offers three environments
 centrally installed:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$ conda info --envs
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ conda info --envs
 # conda environments:
 #
                          /scratch/gufranco/bowtie2
@@ -230,15 +232,15 @@ tpd0001                  /shared/software/miniconda3/envs/tpd0001
 </div>
 <div class="section" id="activating-an-existing-environment">
 <h2>Activating an existing environment<a class="headerlink" href="#activating-an-existing-environment" title="Permalink to this headline">¶</a></h2>
-<p>Suppose that you want to use the environment called &#8220;tpd0001&#8221;, to
+<p>Suppose that you want to use the environment called “tpd0001”, to
 achieve that execute</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>conda activate tpd0001
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">tpd0001</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="deactivating-the-current-environment">
 <h2>Deactivating the current environment<a class="headerlink" href="#deactivating-the-current-environment" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span>conda deactivate
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">deactivate</span>
 </pre></div>
 </div>
 </div>
@@ -248,45 +250,45 @@ achieve that execute</p>
 YML file that describes the channels and packages that you want on your
 environment. The YML file will look like this, for a simple case when
 you want one env for bowtie2 (bowtie2.yml)</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>name: spruce-bowtie2
-channels:
-  - bioconda
-  - conda-forge
-  - defaults
-dependencies:
-  - bowtie2
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">spruce</span><span class="o">-</span><span class="n">bowtie2</span>
+<span class="n">channels</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">bioconda</span>
+  <span class="o">-</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+  <span class="o">-</span> <span class="n">defaults</span>
+<span class="n">dependencies</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">bowtie2</span>
 </pre></div>
 </div>
 <p>Another example is this YML file for installing a curated set of basic
 genomics codes that requires just a few dependencies. (biocore.yml)</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>name: biocode
-channels:
-  - bioconda
-  - conda-forge
-  - defaults
-dependencies:
-  - bamtools
-  - bcftools
-  - bedtools
-  - hmmer
-  - muscle
-  - raxml
-  - samtools
-  - sga
-  - soapdenovo-trans
-  - soapdenovo2
-  - sra-tools
-  - vcftools
-  - velvet
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">biocode</span>
+<span class="n">channels</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">bioconda</span>
+  <span class="o">-</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+  <span class="o">-</span> <span class="n">defaults</span>
+<span class="n">dependencies</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">bamtools</span>
+  <span class="o">-</span> <span class="n">bcftools</span>
+  <span class="o">-</span> <span class="n">bedtools</span>
+  <span class="o">-</span> <span class="n">hmmer</span>
+  <span class="o">-</span> <span class="n">muscle</span>
+  <span class="o">-</span> <span class="n">raxml</span>
+  <span class="o">-</span> <span class="n">samtools</span>
+  <span class="o">-</span> <span class="n">sga</span>
+  <span class="o">-</span> <span class="n">soapdenovo</span><span class="o">-</span><span class="n">trans</span>
+  <span class="o">-</span> <span class="n">soapdenovo2</span>
+  <span class="o">-</span> <span class="n">sra</span><span class="o">-</span><span class="n">tools</span>
+  <span class="o">-</span> <span class="n">vcftools</span>
+  <span class="o">-</span> <span class="n">velvet</span>
 </pre></div>
 </div>
 <p>To create an environment from those YML files you can select one
 location on your scratch folder</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>conda env create -p $SCRATCH/bowtie2 -f bowtie2.yml
+<div class="highlight-default"><div class="highlight"><pre><span></span>conda env create -p $SCRATCH/bowtie2 -f bowtie2.yml
 </pre></div>
 </div>
 <p>or for the biocore.yml</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>conda env create -p $SCRATCH/biocore -f biocore.yml
+<div class="highlight-default"><div class="highlight"><pre><span></span>conda env create -p $SCRATCH/biocore -f biocore.yml
 </pre></div>
 </div>
 <p>By default, new environments are created inside your $HOME folder on
@@ -297,7 +299,7 @@ $HOME/.conda</p>
 <p>Bowtie2 has a number of dependencies (19 dependencies for 1 package)
 Notice that only bowtie2 comes from bioconda channel. All other packages
 are part of conda-forge, a lower level channel.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>$ conda activate $SCRATCH/bowtie2
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ conda activate $SCRATCH/bowtie2
 $ conda list
 # packages in environment at /scratch/gufranco/bowtie2:
 #
@@ -330,7 +332,7 @@ zlib                      1.2.11               h470a237_3    conda-forge
 script, activate the environment that contains the software you need,
 execute the the scientific code and deactivate the environment. This is
 a simple example showing that for bowtie2</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>#!/bin/bash
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
 
 #PBS -N MY_JOB
 #PBS -q standby
@@ -349,7 +351,7 @@ conda deactivate
 <div class="section" id="deleting-a-environment">
 <h2>Deleting a environment<a class="headerlink" href="#deleting-a-environment" title="Permalink to this headline">¶</a></h2>
 <p>To remove an environment you can just execute this command.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>conda remove --all -p $SCRATCH/bowtie2
+<div class="highlight-default"><div class="highlight"><pre><span></span>conda remove --all -p $SCRATCH/bowtie2
 </pre></div>
 </div>
 </div>
@@ -410,11 +412,11 @@ documentation</a></p>
           var DOCUMENTATION_OPTIONS = {
               URL_ROOT:'../',
               VERSION:'1.0',
-              LANGUAGE:'',
+              LANGUAGE:'None',
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>

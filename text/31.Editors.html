@@ -1,8 +1,8 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -28,6 +28,8 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Terminal-based Text Editors" href="32.editors.html" />
     <link rel="prev" title="For Basic Users" href="30.BasicUser.html" /> 
 
@@ -89,7 +91,7 @@
 <li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="20.QuickStart.html">Quick Start</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="30.BasicUser.html">For Basic Users</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">Terminal-based Text Editors</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Terminal-based Text Editors</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#nano">Nano</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#emacs">Emacs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vi-vim">Vi/Vim</a><ul>
@@ -176,7 +178,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/31.Editors.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/31.Editors.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -194,18 +196,18 @@
 <p>There are several terminal-based editors available on our clusters. We will focus our attention on three of them: nano, emacs, and vim.
 Your choice of an editor depends mostly on how much functionality do you want from your editor, how many fingers do you want to use for a given command and the learning curve to master it.
 For HPC users the editor is an important choice. Most of your time you are on the terminal executing commands or editing files, being those input files, submission scripts or the output of your calculations.</p>
-<p>Let&#8217;s review those three editors to give you the opportunity to have an informed choice.</p>
+<p>Let’s review those three editors to give you the opportunity to have an informed choice.</p>
 <div class="section" id="nano">
 <h2>Nano<a class="headerlink" href="#nano" title="Permalink to this headline">¶</a></h2>
 <p>Nano is a small, free and friendly editor with commands that usually manage using the Control (CTRL) combined with some other key.</p>
 <p>You can start editing a file using a command line like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>nano myfile.f90
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="n">myfile</span><span class="o">.</span><span class="n">f90</span>
 </pre></div>
 </div>
 <p>There are several commands available, the list below comes from the help text.
-When you see the symbol &#8220;^&#8221; it means to press the Control (CTRL) key, the symbol
-&#8220;M-&#8221; is called Meta, but in most keyboards is identified with the (Alt) key.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>^G  (F1)            Display this help text
+When you see the symbol “^” it means to press the Control (CTRL) key, the symbol
+“M-” is called Meta, but in most keyboards is identified with the (Alt) key.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>^G  (F1)            Display this help text
 ^X  (F2)            Close the current file buffer / Exit from nano
 ^O  (F3)            Write the current file to disk
 ^J  (F4)            Justify the current paragraph
@@ -282,7 +284,7 @@ M-Z                     Suspension enable/disable
 </pre></div>
 </div>
 <p>The most basic usage is to edit a file, and exit from the editor with CTRL-X.
-Nano ask you if you want to save the file, you answer &#8220;Y&#8221; and offers you a name.
+Nano ask you if you want to save the file, you answer “Y” and offers you a name.
 Simply press ENTER and your file is saved.</p>
 </div>
 <div class="section" id="emacs">
@@ -292,7 +294,7 @@ used editors in Linux environments. There are a big number of commands, customiz
 that can be integrated with Emacs. We will just go briefly covering the basics.</p>
 <p>The number of commands for Emacs is large, here the basic list of commands for editing, moving and searching text.</p>
 <p>=== Entering Emacs ===</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>emacs &lt;filename&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">emacs</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>=== Leaving Emacs ===</p>
@@ -349,7 +351,7 @@ character (delete, not kill) DEL C-d
 word M-DEL M-d
 line (to end of) M-0 C-k C-k
 sentence C-x DEL M-k
-sexp M&#8211; C-M-k C-M-k
+sexp M– C-M-k C-M-k
 kill region C-w
 copy region to kill ring M-w
 kill through next occurrence of char M-z char
@@ -403,19 +405,19 @@ lowercase region C-x C-l</div></blockquote>
 </div>
 <div class="section" id="vi-vim">
 <h2>Vi/Vim<a class="headerlink" href="#vi-vim" title="Permalink to this headline">¶</a></h2>
-<p>The third editor widely supported on Linux systems is &#8220;vi&#8221;.
+<p>The third editor widely supported on Linux systems is “vi”.
 Over the years since its creation, vi became the <em>de-facto</em> standard Unix editor.
 The Single UNIX Specification specifies vi, so every conforming system must have it.</p>
 <p>vi is a modal editor: it operates in either insert mode (where typed text becomes part of the document) or normal mode (where keystrokes are interpreted as commands that control the edit session).
-For example, typing i while in normal mode switches the editor to insert mode, but typing i again at this point places an &#8220;i&#8221; character in the document.
+For example, typing i while in normal mode switches the editor to insert mode, but typing i again at this point places an “i” character in the document.
 From insert mode, pressing ESC switches the editor back to normal mode.</p>
 <p>Vim is an improved version of the original vi, it offers</p>
-<p>Here is a summary of the main commands used on vi. On Spruce when using &#8220;vi&#8221; you are actually using &#8220;vim&#8221;.</p>
+<p>Here is a summary of the main commands used on vi. On Spruce when using “vi” you are actually using “vim”.</p>
 <div class="section" id="to-start-vi">
 <h3>To Start vi<a class="headerlink" href="#to-start-vi" title="Permalink to this headline">¶</a></h3>
 <p>To use vi on a file, type in vi filename. If the file named filename exists, then the first page (or screen) of the file will be displayed; if the file does not exist, then an empty file and screen are created into which you may enter text:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>vi filename  edit filename starting at line 1
-vi -r filename       recover filename that was being edited when the system crashed
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">vi</span> <span class="n">filename</span>  <span class="n">edit</span> <span class="n">filename</span> <span class="n">starting</span> <span class="n">at</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">vi</span> <span class="o">-</span><span class="n">r</span> <span class="n">filename</span>       <span class="n">recover</span> <span class="n">filename</span> <span class="n">that</span> <span class="n">was</span> <span class="n">being</span> <span class="n">edited</span> <span class="n">when</span> <span class="n">the</span> <span class="n">system</span> <span class="n">crashed</span>
 </pre></div>
 </div>
 </div>
@@ -423,7 +425,7 @@ vi -r filename       recover filename that was being edited when the system cras
 <h3>To Exit vi<a class="headerlink" href="#to-exit-vi" title="Permalink to this headline">¶</a></h3>
 <p>Usually, the new or modified file is saved when you leave vi. However, it is also possible to quit vi without saving the file.
 Note: The cursor moves to bottom of the screen whenever a colon (:) is typed. This type of command is completed by hitting the &lt;Return&gt; (or &lt;Enter&gt;) key:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>:x&lt;Return&gt;   quit vi, writing out modified file to file named in original invocation
+<div class="highlight-default"><div class="highlight"><pre><span></span>:x&lt;Return&gt;   quit vi, writing out modified file to file named in original invocation
 :wq&lt;Return&gt;  quit vi, writing out modified file to file named in original invocation
 :q&lt;Return&gt;   quit (or exit) vi
 :q!&lt;Return&gt;  quit vi even though latest changes have not been saved for this vi call
@@ -435,7 +437,7 @@ Note: The cursor moves to bottom of the screen whenever a colon (:) is typed. Th
 <p>Unlike many of the PC and MacIntosh editors, the mouse does not move the cursor within the vi editor screen (or window). You must use the the key commands listed below. On some UNIX platforms, the arrow keys may be used as well; however, since vi was designed with the Qwerty keyboard (containing no arrow keys) in mind, the arrow keys sometimes produce strange effects in vi and should be avoided.
 If you go back and forth between a PC environment and a UNIX environment, you may find that this dissimilarity in methods for cursor movement is the most frustrating difference between the two.
 In the table below, the symbol ^ before a letter means that the &lt;Ctrl&gt; key should be held down while the letter key is pressed:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>j or &lt;Return&gt; [or down-arrow]           move cursor down one line
+<div class="highlight-default"><div class="highlight"><pre><span></span>j or &lt;Return&gt; [or down-arrow]           move cursor down one line
 k [or up-arrow]                 move cursor up one line
 h or &lt;Backspace&gt; [or left-arrow]  move cursor left one character
 l or &lt;Space&gt; [or right-arrow]           move cursor right one character
@@ -453,17 +455,17 @@ b                               move cursor back to beginning of preceding word
 <h3>Screen Manipulation<a class="headerlink" href="#screen-manipulation" title="Permalink to this headline">¶</a></h3>
 <p>The following commands allow the vi editor screen (or window) to move up or down several lines and to be refreshed.</p>
 <dl class="docutils">
-<dt><tt class="docutils literal"><span class="pre">^f</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">^f</span></code></dt>
 <dd>move forward one screen</dd>
-<dt><tt class="docutils literal"><span class="pre">^b</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">^b</span></code></dt>
 <dd>move backward one screen</dd>
-<dt><tt class="docutils literal"><span class="pre">^d</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">^d</span></code></dt>
 <dd>move down (forward) one half screen</dd>
-<dt><tt class="docutils literal"><span class="pre">^u</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">^u</span></code></dt>
 <dd>move up (back) one half screen</dd>
-<dt><tt class="docutils literal"><span class="pre">^l</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">^l</span></code></dt>
 <dd>redraws the screen</dd>
-<dt><tt class="docutils literal"><span class="pre">^r</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">^r</span></code></dt>
 <dd>redraws the screen, removing deleted lines</dd>
 </dl>
 </div>
@@ -472,7 +474,7 @@ b                               move cursor back to beginning of preceding word
 <p>This command acts like a toggle, undoing and redoing your most recent action.
 You cannot go back more than one step.</p>
 <dl class="docutils">
-<dt><tt class="docutils literal"><span class="pre">u</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">u</span></code></dt>
 <dd>UNDO WHATEVER YOU JUST DID; a simple toggle</dd>
 </dl>
 </div>
@@ -482,17 +484,17 @@ You cannot go back more than one step.</p>
 Each of these commands puts the vi editor into insert mode; thus, the &lt;Esc&gt; key must be pressed to terminate the entry of text and to put the vi editor
 back into command mode.</p>
 <dl class="docutils">
-<dt><tt class="docutils literal"><span class="pre">i</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">i</span></code></dt>
 <dd>insert text before cursor, until &lt;Esc&gt; hit</dd>
-<dt><tt class="docutils literal"><span class="pre">I</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">I</span></code></dt>
 <dd>insert text at beginning of current line, until &lt;Esc&gt; hit</dd>
-<dt><tt class="docutils literal"><span class="pre">a</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">a</span></code></dt>
 <dd>append text after cursor, until &lt;Esc&gt; hit</dd>
-<dt><tt class="docutils literal"><span class="pre">A</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">A</span></code></dt>
 <dd>append text to end of current line, until &lt;Esc&gt; hit</dd>
-<dt><tt class="docutils literal"><span class="pre">o</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">o</span></code></dt>
 <dd>open and put text in a new line below current line, until &lt;Esc&gt; hit</dd>
-<dt><tt class="docutils literal"><span class="pre">O</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">O</span></code></dt>
 <dd>open and put text in a new line above current line, until &lt;Esc&gt; hit</dd>
 </dl>
 </div>
@@ -500,19 +502,19 @@ back into command mode.</p>
 <h3>Changing Text<a class="headerlink" href="#changing-text" title="Permalink to this headline">¶</a></h3>
 <p>The following commands allow you to modify text.</p>
 <dl class="docutils">
-<dt><tt class="docutils literal"><span class="pre">r</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">r</span></code></dt>
 <dd>replace single character under cursor (no &lt;Esc&gt; needed)</dd>
-<dt><tt class="docutils literal"><span class="pre">R</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">R</span></code></dt>
 <dd>replace characters, starting with current cursor position, until &lt;Esc&gt; hit</dd>
-<dt><tt class="docutils literal"><span class="pre">cw</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">cw</span></code></dt>
 <dd>change the current word with new text, starting with the character under cursor, until &lt;Esc&gt; hit</dd>
-<dt><tt class="docutils literal"><span class="pre">cNw</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">cNw</span></code></dt>
 <dd>change N words beginning with character under cursor, until &lt;Esc&gt; hit; e.g., c5w changes 5 words</dd>
-<dt><tt class="docutils literal"><span class="pre">C</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">C</span></code></dt>
 <dd>change (replace) the characters in the current line, until &lt;Esc&gt; hit</dd>
-<dt><tt class="docutils literal"><span class="pre">cc</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">cc</span></code></dt>
 <dd>change (replace) the entire current line, stopping when &lt;Esc&gt; is hit</dd>
-<dt><tt class="docutils literal"><span class="pre">Ncc</span> <span class="pre">or</span> <span class="pre">cNc</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">Ncc</span> <span class="pre">or</span> <span class="pre">cNc</span></code></dt>
 <dd>change (replace) the next N lines, starting with the current line, stopping when &lt;Esc&gt; is hit</dd>
 </dl>
 </div>
@@ -520,21 +522,21 @@ back into command mode.</p>
 <h3>Deleting Text<a class="headerlink" href="#deleting-text" title="Permalink to this headline">¶</a></h3>
 <p>The following commands allow you to delete text.</p>
 <dl class="docutils">
-<dt><tt class="docutils literal"><span class="pre">x</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">x</span></code></dt>
 <dd>delete single character under cursor</dd>
-<dt><tt class="docutils literal"><span class="pre">Nx</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">Nx</span></code></dt>
 <dd>delete N characters, starting with character under cursor</dd>
-<dt><tt class="docutils literal"><span class="pre">dw</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">dw</span></code></dt>
 <dd>delete the single word beginning with character under cursor</dd>
-<dt><tt class="docutils literal"><span class="pre">dNw</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">dNw</span></code></dt>
 <dd>delete N words beginning with character under cursor; e.g., d5w deletes 5 words</dd>
-<dt><tt class="docutils literal"><span class="pre">D</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">D</span></code></dt>
 <dd>delete the remainder of the line, starting with current cursor position</dd>
-<dt><tt class="docutils literal"><span class="pre">dd</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">dd</span></code></dt>
 <dd>delete entire current line</dd>
-<dt><tt class="docutils literal"><span class="pre">Ndd</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">Ndd</span></code></dt>
 <dd>delete N lines, beginning with the current line; e.g., 5dd deletes 5 lines</dd>
-<dt><tt class="docutils literal"><span class="pre">dNd</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">dNd</span></code></dt>
 <dd>same as Ndd</dd>
 </dl>
 </div>
@@ -542,13 +544,13 @@ back into command mode.</p>
 <h3>Cutting and Pasting Text<a class="headerlink" href="#cutting-and-pasting-text" title="Permalink to this headline">¶</a></h3>
 <p>The following commands allow you to copy and paste text.</p>
 <dl class="docutils">
-<dt><tt class="docutils literal"><span class="pre">yy</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">yy</span></code></dt>
 <dd>copy (yank, cut) the current line into the buffer</dd>
-<dt><tt class="docutils literal"><span class="pre">Nyy</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">Nyy</span></code></dt>
 <dd>copy (yank, cut) the next N lines, including the current line, into the buffer</dd>
-<dt><tt class="docutils literal"><span class="pre">yNy</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">yNy</span></code></dt>
 <dd>same as Nyy</dd>
-<dt><tt class="docutils literal"><span class="pre">p</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">p</span></code></dt>
 <dd>put (paste) the line(s) in the buffer into the text after the current line</dd>
 </dl>
 </div>
@@ -556,13 +558,13 @@ back into command mode.</p>
 <h3>Searching Text<a class="headerlink" href="#searching-text" title="Permalink to this headline">¶</a></h3>
 <p>A common occurrence in text editing is to replace one word or phase by another. To locate instances of particular sets of characters (or strings), use the following commands.</p>
 <dl class="docutils">
-<dt><tt class="docutils literal"><span class="pre">/string</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">/string</span></code></dt>
 <dd>search forward for occurrence of string in text</dd>
-<dt><tt class="docutils literal"><span class="pre">?string</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">?string</span></code></dt>
 <dd>search backward for occurrence of string in text</dd>
-<dt><tt class="docutils literal"><span class="pre">n</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">n</span></code></dt>
 <dd>move to next occurrence of search string</dd>
-<dt><tt class="docutils literal"><span class="pre">N</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">N</span></code></dt>
 <dd>move to next occurrence of search string in opposite direction</dd>
 </dl>
 </div>
@@ -571,11 +573,11 @@ back into command mode.</p>
 <p>Being able to determine the line number of the current line or the total number
 of lines in the file being edited is sometimes useful.</p>
 <dl class="docutils">
-<dt><tt class="docutils literal"><span class="pre">:.=</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">:.=</span></code></dt>
 <dd>returns line number of current line at bottom of screen</dd>
-<dt><tt class="docutils literal"><span class="pre">:=</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">:=</span></code></dt>
 <dd>returns the total number of lines at bottom of screen</dd>
-<dt><tt class="docutils literal"><span class="pre">^g</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">^g</span></code></dt>
 <dd>provides the current line number, along with the total number of lines, in the file at the bottom of the screen</dd>
 </dl>
 </div>
@@ -583,15 +585,15 @@ of lines in the file being edited is sometimes useful.</p>
 <h3>Saving and Reading Files<a class="headerlink" href="#saving-and-reading-files" title="Permalink to this headline">¶</a></h3>
 <p>These commands permit you to input and output files other than the named file with which you are currently working.</p>
 <dl class="docutils">
-<dt><tt class="docutils literal"><span class="pre">:r</span> <span class="pre">filename&lt;Return&gt;</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">:r</span> <span class="pre">filename&lt;Return&gt;</span></code></dt>
 <dd>read file named filename and insert after current line (the line with cursor)</dd>
-<dt><tt class="docutils literal"><span class="pre">:w&lt;Return&gt;</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">:w&lt;Return&gt;</span></code></dt>
 <dd>write current contents to file named in original vi call</dd>
-<dt><tt class="docutils literal"><span class="pre">:w</span> <span class="pre">newfile&lt;Return&gt;</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">:w</span> <span class="pre">newfile&lt;Return&gt;</span></code></dt>
 <dd>write current contents to a new file named newfile</dd>
-<dt><tt class="docutils literal"><span class="pre">:12,35w</span> <span class="pre">smallfile&lt;Return&gt;</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">:12,35w</span> <span class="pre">smallfile&lt;Return&gt;</span></code></dt>
 <dd>write the contents of the lines numbered 12 through 35 to a new file named smallfile</dd>
-<dt><tt class="docutils literal"><span class="pre">:w!</span> <span class="pre">prevfile&lt;Return&gt;</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">:w!</span> <span class="pre">prevfile&lt;Return&gt;</span></code></dt>
 <dd>write current contents over a pre-existing file named prevfile</dd>
 </dl>
 </div>
@@ -643,11 +645,11 @@ of lines in the file being edited is sometimes useful.</p>
           var DOCUMENTATION_OPTIONS = {
               URL_ROOT:'../',
               VERSION:'1.0',
-              LANGUAGE:'',
+              LANGUAGE:'None',
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>

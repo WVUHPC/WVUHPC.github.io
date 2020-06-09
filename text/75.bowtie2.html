@@ -1,8 +1,8 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -28,6 +28,8 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Matlab: Running Matlab scripts on a HPC cluster" href="76.Matlab.html" />
     <link rel="prev" title="Bioinformatics: Conda and BioConda" href="74.Bioconda.html" /> 
 
@@ -97,7 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="72.ANSYSForte.html">Engineering: ANSYS/Forte</a></li>
 <li class="toctree-l2"><a class="reference internal" href="73.OpenFoam.html">Engineering: Running OpenFOAM simple tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="74.Bioconda.html">Bioinformatics: Conda and BioConda</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Bioinformatics: Using Bowtie2</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Bioinformatics: Using Bowtie2</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#transfer-the-files">1. Transfer the files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#preparing-folders">2. Preparing folders</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#splitting-the-files">3. Splitting the files</a></li>
@@ -164,7 +166,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/75.bowtie2.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/75.bowtie2.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -184,11 +186,11 @@ a big pair of sequencing data.</p>
 <p>For the purpose of the tutorial, consider that you receive a pair of
 files like this:</p>
 <div class="line-block">
-<div class="line"><tt class="docutils literal"><span class="pre">Estrogen_24_1.clean.fq</span></tt></div>
-<div class="line"><tt class="docutils literal"><span class="pre">Estrogen_24_2.clean.fq</span></tt></div>
+<div class="line"><code class="docutils literal"><span class="pre">Estrogen_24_1.clean.fq</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">Estrogen_24_2.clean.fq</span></code></div>
 </div>
 <p>And you have a reference like:</p>
-<p><tt class="docutils literal"><span class="pre">Oncorhynchus_mykiss_chr.fa</span></tt></p>
+<p><code class="docutils literal"><span class="pre">Oncorhynchus_mykiss_chr.fa</span></code></p>
 <p>This tutorial will show you how to do the alignments concurrently by
 splitting the fq files and use BSseeker and bowtie2 for the alignment.
 When the job is done we use samtools to merge the results in a single
@@ -203,7 +205,7 @@ using the Globus connector to sent those files from your computer to the
 cluster.</p>
 <p>If you are using Linux or Mac on your side, the command to send those
 files will be,</p>
-<p><tt class="docutils literal"><span class="pre">rsync&nbsp;-av&nbsp;Estrogen_24_1.clean.fq&nbsp;&nbsp;Estrogen_24_2.clean.fq&nbsp;Oncorhynchus_mykiss_chr.fa&nbsp;[username]&#64;spruce.hpc.wvu.edu:/scratch/[username]</span></tt></p>
+<p><code class="docutils literal"><span class="pre">rsync&nbsp;-av&nbsp;Estrogen_24_1.clean.fq&nbsp;&nbsp;Estrogen_24_2.clean.fq&nbsp;Oncorhynchus_mykiss_chr.fa&nbsp;[username]&#64;spruce.hpc.wvu.edu:/scratch/[username]</span></code></p>
 <p>Globus is another alternative, follow the instructions:
 [Transferring_Files]</p>
 </div>
@@ -214,13 +216,13 @@ will use on your research. We suggest creating a few directories, for
 the references, for the big sequence fq files, output and temporary
 files.</p>
 <div class="line-block">
-<div class="line"><tt class="docutils literal"><span class="pre">cd&nbsp;/scratch/[username]</span></tt></div>
-<div class="line"><tt class="docutils literal"><span class="pre">mkdir&nbsp;REFS&nbsp;OUTPUT&nbsp;TMP&nbsp;WGBS</span></tt></div>
+<div class="line"><code class="docutils literal"><span class="pre">cd&nbsp;/scratch/[username]</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">mkdir&nbsp;REFS&nbsp;OUTPUT&nbsp;TMP&nbsp;WGBS</span></code></div>
 </div>
 <p>Now we need to move the big fq files to WGBS and the reference to REFS</p>
 <div class="line-block">
-<div class="line"><tt class="docutils literal"><span class="pre">mv&nbsp;Estrogen_24_1.clean.fq&nbsp;&nbsp;Estrogen_24_2.clean.fq&nbsp;WGBS</span></tt></div>
-<div class="line"><tt class="docutils literal"><span class="pre">mv&nbsp;Oncorhynchus_mykiss_chr.fa&nbsp;REFS</span></tt></div>
+<div class="line"><code class="docutils literal"><span class="pre">mv&nbsp;Estrogen_24_1.clean.fq&nbsp;&nbsp;Estrogen_24_2.clean.fq&nbsp;WGBS</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">mv&nbsp;Oncorhynchus_mykiss_chr.fa&nbsp;REFS</span></code></div>
 </div>
 </div>
 <div class="section" id="splitting-the-files">
@@ -228,7 +230,7 @@ files.</p>
 <p>Our first couple of jobs consists on splitting the two big fq files. We
 can get an idea about how big they are by counting the number of lines</p>
 <div class="line-block">
-<div class="line"><tt class="docutils literal"><span class="pre">$&nbsp;wc&nbsp;-l&nbsp;WGBS/Estrogen_24*.fq</span></tt></div>
+<div class="line"><code class="docutils literal"><span class="pre">$&nbsp;wc&nbsp;-l&nbsp;WGBS/Estrogen_24*.fq</span></code></div>
 <div class="line">``&nbsp;&nbsp;670407612&nbsp;WGBS/Estrogen_24_1.clean.fq``</div>
 <div class="line">``&nbsp;&nbsp;670407612&nbsp;WGBS/Estrogen_24_2.clean.fq``</div>
 <div class="line">``&nbsp;1340815224&nbsp;total``</div>
@@ -237,10 +239,10 @@ can get an idea about how big they are by counting the number of lines</p>
 important to realize that you cannot simple cut those files arbitrarily.
 Each 4 lines makes a block of information that cannot be splitted</p>
 <div class="line-block">
-<div class="line"><tt class="docutils literal"><span class="pre">&#64;ST-E00144:275:HW5VJCCXX:7:1101:2564:1327&nbsp;1:N:0:NTGAGCCA</span></tt></div>
-<div class="line"><tt class="docutils literal"><span class="pre">NGAGAATATTTTTGGTTATTTTTTTTAGTTTTTGATTTGGAAGATTTATTAGATAGAGAATATTGTTGGTTATTTTTTTTAGTTTTTGATTTGGAGGATGTAGTAAATAGATAATATTTTTGTTGTGTATTTTTTTTAGTTTTTGTGTTG</span></tt></div>
-<div class="line"><tt class="docutils literal"><span class="pre">+</span></tt></div>
-<div class="line"><tt class="docutils literal"><span class="pre">#AAAAA7-7A</span></tt></div>
+<div class="line"><code class="docutils literal"><span class="pre">&#64;ST-E00144:275:HW5VJCCXX:7:1101:2564:1327&nbsp;1:N:0:NTGAGCCA</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">NGAGAATATTTTTGGTTATTTTTTTTAGTTTTTGATTTGGAAGATTTATTAGATAGAGAATATTGTTGGTTATTTTTTTTAGTTTTTGATTTGGAGGATGTAGTAAATAGATAATATTTTTGTTGTGTATTTTTTTTAGTTTTTGTGTTG</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">+</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">#AAAAA7-7A</span></code></div>
 </div>
 <ol class="arabic simple">
 <li>!/bin/bash</li>
@@ -253,22 +255,22 @@ Each 4 lines makes a block of information that cannot be splitted</p>
 <p>cd $PBS_O_WORKDIR</p>
 <p>mkdir -p WGBS/split echo $file split -d -a 3 -l 2400000 WGBS/${file}
 WGBS/split/${file}_</p>
-</pre><p>The submission script will create a job called &#8220;SPLIT&#8221; using one node
+</pre><p>The submission script will create a job called “SPLIT” using one node
 (nodes=1) and one process per node (ppn=1). We set a walltime in 4
 hours, the limit for the standby queue. We suppose to submit this job
 from the scratch directory. So the first step is to move into that
-directory using <tt class="docutils literal"><span class="pre">cd</span> <span class="pre">$PBS_O_WORKDIR</span></tt>, we create a folder for the split
+directory using <code class="docutils literal"><span class="pre">cd</span> <span class="pre">$PBS_O_WORKDIR</span></code>, we create a folder for the split
 files inside WGBS. The split command:</p>
-<p><tt class="docutils literal"><span class="pre">split&nbsp;-d&nbsp;-a&nbsp;3&nbsp;-l&nbsp;2400000&nbsp;WGBS/${file}&nbsp;WGBS/split/${file}_</span></tt></p>
+<p><code class="docutils literal"><span class="pre">split&nbsp;-d&nbsp;-a&nbsp;3&nbsp;-l&nbsp;2400000&nbsp;WGBS/${file}&nbsp;WGBS/split/${file}_</span></code></p>
 <p>The split command will create split files with 3 digits (-a 3), starting
 from 000. It will split every 2.4 million lines, the file indicated
 under the file variable that will will use next. All those split files
 will be stored at WGBS/split using the same name as the original but
-with a suffix being underscored &#8220;_&#8221; and the 3 digits mentioned before.</p>
+with a suffix being underscored “_” and the 3 digits mentioned before.</p>
 <p>We submit the jobs like this:</p>
 <div class="line-block">
-<div class="line"><tt class="docutils literal"><span class="pre">qsub&nbsp;runjob_split.pbs&nbsp;-v&nbsp;file=Estrogen_24_1.clean.fq</span></tt></div>
-<div class="line"><tt class="docutils literal"><span class="pre">qsub&nbsp;runjob_split.pbs&nbsp;-v&nbsp;file=Estrogen_24_2.clean.fq</span></tt></div>
+<div class="line"><code class="docutils literal"><span class="pre">qsub&nbsp;runjob_split.pbs&nbsp;-v&nbsp;file=Estrogen_24_1.clean.fq</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">qsub&nbsp;runjob_split.pbs&nbsp;-v&nbsp;file=Estrogen_24_2.clean.fq</span></code></div>
 </div>
 <p>Those two jobs takes around 30 minutes in one of our compute nodes. Once
 that splitting is complete you can see many files populating the
@@ -280,11 +282,11 @@ WGBS/split folder. Those are the files we will use in our next step</p>
 <a class="reference external" href="http://pellegrini.mcdb.ucla.edu/BS_Seeker2/">1</a> Copy the link and
 download the software, at the time of writing this (April 2017), the
 latest version was 2.1.0 and the download URL was:</p>
-<p><tt class="docutils literal"><span class="pre">wget&nbsp;``\</span> <span class="pre">```http://pellegrini.mcdb.ucla.edu/BS_Seeker2/BSseeker2_v2.1.0.tar.bz</span></tt> &lt;<a class="reference external" href="http://pellegrini.mcdb.ucla.edu/BS_Seeker2/BSseeker2_v2.1.0.tar.bz">http://pellegrini.mcdb.ucla.edu/BS_Seeker2/BSseeker2_v2.1.0.tar.bz</a>&gt;`__</p>
+<p><code class="docutils literal"><span class="pre">wget&nbsp;``\</span> <span class="pre">```http://pellegrini.mcdb.ucla.edu/BS_Seeker2/BSseeker2_v2.1.0.tar.bz</span></code> &lt;<a class="reference external" href="http://pellegrini.mcdb.ucla.edu/BS_Seeker2/BSseeker2_v2.1.0.tar.bz">http://pellegrini.mcdb.ucla.edu/BS_Seeker2/BSseeker2_v2.1.0.tar.bz</a>&gt;`__</p>
 <p>Once you have the code, uncompress it with:</p>
-<p><tt class="docutils literal"><span class="pre">tar&nbsp;-jxvf&nbsp;BSseeker2_v2.1.0.tar.bz</span></tt></p>
+<p><code class="docutils literal"><span class="pre">tar&nbsp;-jxvf&nbsp;BSseeker2_v2.1.0.tar.bz</span></code></p>
 <p>The submission script (runjob.pbs) will look like:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>#!/bin/sh
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/sh
 
 #PBS -N ALIGN_${PBS_ARRAYID}
 #PBS -l nodes=1:ppn=4
@@ -331,7 +333,7 @@ echo &#39;Job complete: &#39;`date`
 million lines in order to be sure we can process them in our 4 hour
 walltime. The Job Array start with 0 and ends at 279. This piece of code
 ensures 3 digit numbers filling with leading zeros as needed:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>if [ ${PBS_ARRAYID} -lt 10 ]
+<div class="highlight-default"><div class="highlight"><pre><span></span>if [ ${PBS_ARRAYID} -lt 10 ]
 then
     JAID=00${PBS_ARRAYID}
 elif [ ${PBS_ARRAYID} -lt 100 ]
@@ -345,7 +347,7 @@ fi
 <p>The rest of the script defines locations for references, the split files
 and output. Finally it launches BSseeker2. Remember to replace
 [username] with your username.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>SCRATCH=/scratch/[username]
+<div class="highlight-default"><div class="highlight"><pre><span></span>SCRATCH=/scratch/[username]
 REFS=${SCRATCH}/REFS
 WGBS=${SCRATCH}/WGBS
 TEMP=${SCRATCH}/TMP
@@ -374,7 +376,7 @@ set ppn=4.</p>
 check the output one by one to see if some job needs to be executed
 again. This small python script could help you with that task
 (BSresubmit.py)</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 
 <span class="kn">import</span> <span class="nn">argparse</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -383,10 +385,10 @@ again. This small python script could help you with that task
 
     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Process some integers.&#39;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-output_directory&#39;</span><span class="p">,</span> <span class="s1">&#39;-d&#39;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;PATH&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Directory for search output files&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-prefix&#39;</span><span class="p">,</span> <span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;PREFIX&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Filenames must be prefix+NUM+suffix&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-suffix&#39;</span><span class="p">,</span> <span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;SUFFIX&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Filenames must be prefix+NUM+suffix&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-prefix&#39;</span><span class="p">,</span> <span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;PREFIX&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Filenames must be prefix+NUM+suffix&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-suffix&#39;</span><span class="p">,</span> <span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;SUFFIX&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Filenames must be prefix+NUM+suffix&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-min_split_number&#39;</span><span class="p">,</span> <span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;min number of split&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-max_split_number&#39;</span><span class="p">,</span> <span class="s1">&#39;-n&#39;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;max number of split&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-max_split_number&#39;</span><span class="p">,</span> <span class="s1">&#39;-n&#39;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;max number of split&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
 
@@ -403,10 +405,10 @@ again. This small python script could help you with that task
             <span class="n">failures</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">failures</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;All the jobs are complete in the range&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All the jobs are complete in the range&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Some jobs need to be resubmitted:&quot;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">failures</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Some jobs need to be resubmitted:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">failures</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>In order to check if all the jobs are complete execute:</p>
@@ -461,11 +463,11 @@ using samtools:</p>
           var DOCUMENTATION_OPTIONS = {
               URL_ROOT:'../',
               VERSION:'1.0',
-              LANGUAGE:'',
+              LANGUAGE:'None',
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>

@@ -1,8 +1,8 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -28,6 +28,8 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Getting Access" href="21.GettingAccess.html" />
     <link rel="prev" title="Policies" href="13.Policies.html" /> 
 
@@ -87,7 +89,7 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="10.Introduction.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Quick Start</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="21.GettingAccess.html">Getting Access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="22.Connect.html">Connect to the cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="23.CommandLine.html">Command Line Interface</a></li>
@@ -155,7 +157,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/20.QuickStart.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/20.QuickStart.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -171,8 +173,8 @@
   <div class="section" id="quick-start">
 <span id="chap-quick-start"></span><h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
 <p>This is a short tutorial intended for first-time users. We assume no familiarity with High Performance Computing (HPC). The only requirement is basic familiarity with your own computer in order to install the SSH client needed to connect to the cluster.</p>
-<p>We start on <a class="reference internal" href="21.GettingAccess.html#qs-getting-access"><em>Getting Access</em></a> on how to request and account. Once the access is granted, we proceed to <a class="reference internal" href="22.Connect.html#qs-connect"><em>Connect to the cluster</em></a> to install and use a SSH client that allow you to get a terminal on the HPC cluster. A Terminal and its command line interface can be the first barrier for an user only familiarized with Graphical User Interfaces (GUI), on <a class="reference internal" href="23.CommandLine.html#qs-command-line"><em>Command Line Interface</em></a> we present the most basic commands that will help you to create and manipulate folders and files. The next step is to learn how to edit files, on <a class="reference internal" href="24.EditFiles.html#qs-edit-files"><em>Editing Files</em></a> we show how to use <tt class="docutils literal"><span class="pre">nano</span></tt> a very simple but effective text editor. We will use it to create the first program in FORTRAN that we will use later to explain execution on a batch system.  The next section, <a class="reference internal" href="25.Storage.html#qs-storage"><em>Storage</em></a>, explains the several options to store data on the cluster, this is very important for first time users as they have the tendency to rely only on the <tt class="docutils literal"><span class="pre">$HOME</span></tt> folder a storage space that is very limited in most scientific purposes. At this point we are ready to submit our first job. The section <a class="reference internal" href="26.JobSubmission.html#qs-job-submission"><em>Job Submission</em></a> shows how to write a submission script and submit the job to the queue system.
-Finally, section <a class="reference internal" href="27.TransferFiles.html#qs-transfer-files"><em>Transferring Files</em></a> explains how to move files in and out between the HPC cluster and your own computer.</p>
+<p>We start on <a class="reference internal" href="21.GettingAccess.html#qs-getting-access"><span class="std std-ref">Getting Access</span></a> on how to request and account. Once the access is granted, we proceed to <a class="reference internal" href="22.Connect.html#qs-connect"><span class="std std-ref">Connect to the cluster</span></a> to install and use a SSH client that allow you to get a terminal on the HPC cluster. A Terminal and its command line interface can be the first barrier for an user only familiarized with Graphical User Interfaces (GUI), on <a class="reference internal" href="23.CommandLine.html#qs-command-line"><span class="std std-ref">Command Line Interface</span></a> we present the most basic commands that will help you to create and manipulate folders and files. The next step is to learn how to edit files, on <a class="reference internal" href="24.EditFiles.html#qs-edit-files"><span class="std std-ref">Editing Files</span></a> we show how to use <code class="docutils literal"><span class="pre">nano</span></code> a very simple but effective text editor. We will use it to create the first program in FORTRAN that we will use later to explain execution on a batch system.  The next section, <a class="reference internal" href="25.Storage.html#qs-storage"><span class="std std-ref">Storage</span></a>, explains the several options to store data on the cluster, this is very important for first time users as they have the tendency to rely only on the <code class="docutils literal"><span class="pre">$HOME</span></code> folder a storage space that is very limited in most scientific purposes. At this point we are ready to submit our first job. The section <a class="reference internal" href="26.JobSubmission.html#qs-job-submission"><span class="std std-ref">Job Submission</span></a> shows how to write a submission script and submit the job to the queue system.
+Finally, section <a class="reference internal" href="27.TransferFiles.html#qs-transfer-files"><span class="std std-ref">Transferring Files</span></a> explains how to move files in and out between the HPC cluster and your own computer.</p>
 <p>At the end of this tutorial, you should have your account activated, connected to spruce, able to create files and folders, submitting simple jobs to the queue system and taking the data back to your own machine.</p>
 <div class="toctree-wrapper compound">
 <ul>
@@ -261,11 +263,11 @@ Finally, section <a class="reference internal" href="27.TransferFiles.html#qs-tr
           var DOCUMENTATION_OPTIONS = {
               URL_ROOT:'../',
               VERSION:'1.0',
-              LANGUAGE:'',
+              LANGUAGE:'None',
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>

@@ -1,8 +1,8 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -28,6 +28,8 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Executing HADOOP jobs" href="46.Hadoop.html" />
     <link rel="prev" title="Miniconda" href="44.Miniconda.html" /> 
 
@@ -95,7 +97,7 @@
 <li class="toctree-l2"><a class="reference internal" href="42.SingularityContainers.html">Singularity Containers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="43.UserInstallation.html">Installing Packages in User Locations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="44.Miniconda.html">Miniconda</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Using MPI on RC HPC Clusters</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using MPI on RC HPC Clusters</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#mpi-standards">MPI Standards</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#useful-books">Useful Books</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#libraries">Libraries</a></li>
@@ -165,7 +167,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/text/45.MPIUser.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/text/45.MPIUser.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -182,12 +184,12 @@
 <h1>Using MPI on RC HPC Clusters<a class="headerlink" href="#using-mpi-on-rc-hpc-clusters" title="Permalink to this headline">¶</a></h1>
 <p>Many parallel programs take advantage of Message Passing Interface (MPI)
 to communicate across compute nodes and efficiently scale up
-computational analysis. While we can&#8217;t give instructions on how to run
+computational analysis. While we can’t give instructions on how to run
 every program using MPI, all the programs using MPI need to be told
 which hosts and cpus to run. Generally, most programs use the mpirun
 executable that comes pre-packaged with MPI libraries to accomplish this
 task. The general syntax for running parallel programs with mpirun is:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>mpirun -np &lt;processor number&gt; -machinefile &lt;procs file&gt; command [..args]
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="o">&lt;</span><span class="n">processor</span> <span class="n">number</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">machinefile</span> <span class="o">&lt;</span><span class="n">procs</span> <span class="n">file</span><span class="o">&gt;</span> <span class="n">command</span> <span class="p">[</span><span class="o">..</span><span class="n">args</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>With -np option specifying the number of processors the job requires,
@@ -199,10 +201,10 @@ processors will be the same number of processors requested with the
 know which hosts your job will run on, since that is determined by a
 number of factors with the current state of the system. Therefore
 Moab/Torque provides a machinefile for each job that is executed through
-the scheduler, and it&#8217;s location is stored in the $PBS_NODEFILE
+the scheduler, and it’s location is stored in the $PBS_NODEFILE
 variable. Therefore, on our clusters, the general syntax of running a
 program parallel with MPI is:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>module load &lt;mpi/modulefile&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>module load &lt;mpi/modulefile&gt;
 
 mpirun -np &lt;processor number&gt; -machinefile $PBS_NODEFILE command [..args]
 </pre></div>
@@ -212,7 +214,7 @@ MPI package the program was compiled with. Of course, you should consult
 the programs documentation for details, as some programs come with their
 own mpirun substitute and/or work better with certain MPI libraries than
 others. Also, each MPI libraries have differences with their mpirun
-commands, and therefore you should take a look at the MPI&#8217;s own
+commands, and therefore you should take a look at the MPI’s own
 documentation (links below).</p>
 <div class="section" id="mpi-standards">
 <h2>MPI Standards<a class="headerlink" href="#mpi-standards" title="Permalink to this headline">¶</a></h2>
@@ -301,11 +303,11 @@ in their respective <a class="reference external" href="Using_Modulefiles">modul
           var DOCUMENTATION_OPTIONS = {
               URL_ROOT:'../',
               VERSION:'1.0',
-              LANGUAGE:'',
+              LANGUAGE:'None',
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
               HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: ''
+              SOURCELINK_SUFFIX: '.txt'
           };
       </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
